@@ -1,3 +1,4 @@
+
 clc;
 clear;
 close all;
@@ -59,7 +60,7 @@ end
 
 %% 2.1 
 % Evaluate PUE(p) for both codes using their weight spectra.
-p_bsc = 0.5     % Bernoulli probability for BSC
+p_bsc = 0.5;     % Bernoulli probability for BSC
 
 PUE1_bsc = 0;
 PUE2_bsc = 0;
