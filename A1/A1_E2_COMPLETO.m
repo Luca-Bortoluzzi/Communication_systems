@@ -37,8 +37,8 @@ I_k = eye(k);                      % Matrice identità di dimensione k x k
 % Le righe di G sono ricavate passando le colonne dell'identità I_k nel sistema CRC
 for i = 1:k
     v_col = I_k(i, :)';            % Estrazione dell'i-esima riga dell'identità e trasposizione
-    codeword_col = crc_encoder(v_col); % Il CRC appende i bit di parità in coda al vettore
-    G(i, :) = codeword_col';       % Salvataggio della parola di codice ottenuta come riga di G
+    G_col = crc_encoder(v_col); % Il CRC appende i bit di parità in coda al vettore
+    G(i, :) = G_col';       % Salvataggio delle righe di G
 end
 
 disp('=== MATRICE GENERATRICE SISTEMATICA G ===');
@@ -188,7 +188,7 @@ fprintf('3. Poiché il fattore z^j è coprimo con g(z), la condizione di divisib
 fprintf('   g(z) deve dividere il polinomio (z^L + 1), dove L = i - j è la distanza tra i due bit a 1.\n\n');
 fprintf('4. Il polinomio p(z) = z^3 + z + 1 è un polinomio PRIMITIVO di grado r_p = 3.\n');
 fprintf('   Il suo periodo (o ordine) è pari a N = 2^(r_p) - 1 = 2^3 - 1 = 7.\n');
-fprintf('   Per teoria dei campi finiti, p(z) divide (z^L + 1) se e solo se L è un multiplo di N = 7.\n\n');
+fprintf('   p(z) divide (z^L + 1) se e solo se L è un multiplo di N = 7.\n\n');
 fprintf('5. La minima distanza non nulla tra i due bit affinché p(z) divida (z^L + 1) è dunque L = 7.\n');
 fprintf('   Il fattore (z + 1) divide sempre (z^7 + 1) in aritmetica modulo 2, quindi g(z) divide (z^7 + 1).\n\n');
 fprintf('6. Per ospitare due bit a 1 distanti L = 7 (ovvero per avere il polinomio z^7 + 1),\n');
@@ -196,8 +196,6 @@ fprintf('   il grado della codeword deve essere almeno 7, il che richiede una lu
 fprintf('   minima del codice pari a n = L + 1 = 7 + 1 = 8.\n\n');
 fprintf('7. Sapendo che la lunghezza del codice è n = k + r con r = 4 (grado di g(z)):\n');
 fprintf('   n >= 8  ==>  k + 4 >= 8  ==>  k >= 4.\n');
-fprintf('   Ecco spiegato matematicamente perché la prima parola di codice di peso 2\n');
-fprintf('   è comparsa esattamente per k = 4!\n');
 
 
 
@@ -246,7 +244,7 @@ e2 = [1,1,1,0,1,0,0,0]';        % e2(D) = D^4 + D^3 + D^2 + 1 = g(D)
 % Per e1: 
 %  il grado di deg(e1)=3  è minore del grado del polinomio generatore
 %  deg(g)=4, di conseguenza la divisione e1(D)/g(D) dà un resto non nullo:
-%       rem(e1(D,g(D)) = D^3 + D + 1 != 0
+%       rem(e1(D),g(D)) = D^3 + D + 1 != 0
 %  La sindrome è diversa da zero, quindi il CRC Rileva l'errore
 % Per e2:
 % e2(D) coincide con il polinomio generatore g(D), quindi è divisibile

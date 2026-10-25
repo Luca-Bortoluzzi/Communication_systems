@@ -1,52 +1,25 @@
-clear all
-clc
-close all
-
-% Definisco il polinomio generatore g(D) = (D+1)*(D^3 + D + 1) = (D^4 + D^3 + D^2 + 1) e ne ricavo
-% il vettore dei coefficienti
-g_pol = [1 1 1 0 1];
-r = length(g_pol) - 1; %grado del polinomio generatore
-
-for k=2:4 
-    m = k + r; %calcolo della lunghezza della codeword
-    num_seq = 2^k;
-    V = dec2bin(0:num_seq-1, k) - '0'; % Matrice 2^k x k
-
-    C = zeros(num_seq, m);
-    weights = zeros(num_seq, 1);
-    
-    fprintf('--------------------------------------------------\n');
-    fprintf(' Risultati per k = %d (Lunghezza codice m = %d)\n', k, m);
-    fprintf('--------------------------------------------------\n');
-    
-    if k == 2
-        fprintf('v_vec\t\tc_vec\t\t\tWeight\n');
-    end
-
-end
-
 %% struttura base CRC ESEMPIO (non c'entra nulla on la task)
-clc
-clear all
-close all
+clc;
+clear;
+close all;
 % 1\. PARAMETRI DEL SISTEMA E POLINOMIO GENERATORE g(D) 
 % Messaggio di informazione v di k = 4 bit 
-v = [0 1 0 0]; 
-k = length(v);
-
+k = 2;
+v = dec2bin(0:2^k-1)-'0';
 % Polinomi su F2: % p(D) = D^3 + D + 1 (Polinomio primitivo di grado 3: ) 
 % (D + 1) = (Fattore per parità pari) 
 % g(D) = (D + 1) * p(D) = D^4 + D^3 + D^2 + 1 -> Vettore: 
 g = 'z^4 + z^3 + z^2 + 1';
 crc_encoder = comm.CRCGenerator('Polynomial', g);
 crc_detector = comm.CRCDetector('Polynomial', g); 
-
-r = length(g) - 1;
+r=3;
+codeword = crc_encoder(v);
+[~,err] = crc_detector(codeword); 
 
 
 % 2\. CODIFICA SISTEMATICA DEL CRC
 % Passo A: Traslazione a sinistra di r posizioni -> v(D) * D^r 
-v_shifted = [v, zeros(1, r)];
+%v_shifted = [v, zeros(1, r)];
 %Passo B: Divisione polinomiale su F2 tra v(D)*D^r e g(D) per trovare il
 %resto r(D)
 [~, resto] = gfdeconv(v_shifted, g);
