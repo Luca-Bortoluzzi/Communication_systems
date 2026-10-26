@@ -19,6 +19,7 @@ crc_encoder = comm.CRCGenerator('Polynomial', g_str);
 
 
 
+
 % --- 3. Parametri iniziali del codice e sequenze d'ingresso ---
 k = 2;                             % Numero di bit di informazione da trasmettere
 r = 4;                             % Grado del polinomio generatore g(z) (numero di bit di parità)

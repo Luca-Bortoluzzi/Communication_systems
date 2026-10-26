@@ -6,7 +6,7 @@ close all;
 % Non-systematic generator matrix G (3 x 6)
 G = [1 1 0 1 0 1; 
     0 1 1 0 1 1; 
-    1 0 1 1 1 0];
+    1 1 1 1 1 0];
 
 k = size(G, 1); % Length of information bits (k = 3)
 n = size(G, 2); % Length of codeword bits (n = 6)
@@ -42,13 +42,25 @@ min_val = min(Hd, [], 1);
 fprintf('=========================================================\n');
 fprintf('      DECISION REGIONS WITH RANDOM TIE-BREAKING         \n');
 fprintf('=========================================================\n\n');
-
+rule_check=input('select a value from 1 to 8:\n');
+flag=NaN;
 for i = 1:2^k
     % Logical indexing: select logical 1s where the assigned codeword index equals i
     vector_indices = (Hd(i, :) == min_val);
 
     % Extract all received vectors y that belong to the decision region D(c_i)
     y_region = y(vector_indices, :);
+    if i==1
+        D_0=y_region;
+    end
+    if i==rule_check
+        D_C = mod(c(i,:)+D_0,2)
+        if sort(y_region)==sort(D_C)
+            flag=true;  
+        else
+            flag=false;
+        end
+    end
 
     % sprintf('%d', c(i,:)) formats the binary vector compactly without extra spaces (e.g., [1 0 1 1 1 0] -> 101110)
     c_str = sprintf('%d ', c(i, :)); % Converts vector with a single space between bits
@@ -69,5 +81,11 @@ for i = 1:2^k
     end
     fprintf('---------------------------------------------------------\n');
 end
+if flag==true
+    fprintf("Rule verified\n");
+else 
+    fprintf('Rule not Verified\n');
+end
 
-%% Because of the repetition of codeword in every decision region, there are 30 codewords, althought they're are not the same for every decision region
+
+%% Because of the repetition of codeword in every decision region, there are 10 Codewords, although they're are not the same for every decision region
