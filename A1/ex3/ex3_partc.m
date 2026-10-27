@@ -11,7 +11,7 @@ close all;
 
 % 3.1 Let's start defining Codewords manually C(4,2)
 
-C = [0 0 0 0 ;
+c = [0 0 0 0 ;
      0 0 1 0 ;
      0 0 1 1 ;
      1 1 0 0];
@@ -21,8 +21,8 @@ k = 2; %information length
 
 % proving the property for non-linear codes
 
-c1 = C(2,:); % 1 1 1 0 0
-c2 = C(4,:); % 0 0 1 1 1
+c1 = c(2,:); % 1 1 1 0 0
+c2 = c(4,:); % 0 0 1 1 1
 verify = mod(c1 + c2, 2);
 fprintf("The codeword sum of the 2nd and the 4th is: %s\n", sprintf("%d", verify));
 
@@ -38,7 +38,7 @@ for i = 1:2^k
     for j = 1:2^n
         % xor compares elements bit by bit (returns 1 if different, 0 if equal).
         % sum counts the total number of differing bits (Hamming Distance).
-        Hd(i, j) = sum(xor(C(i, :), y(j, :)));
+        Hd(i, j) = sum(xor(c(i, :), y(j, :)));
     end
 end
 
@@ -70,15 +70,15 @@ for i = 1:2^k
 
     if i == rule_check
         % D(c) = c + D(0)
-        D_C = mod(C(i,:) + D_0, 2);
-        if isequal(sortrows(y_region), sortrows(D_C))
+        D_c = mod(c(i,:) + D_0, 2);
+        if isequal(sortrows(y_region), sortrows(D_c))
             flag = true;  
         else
             flag = false;
         end
     end
     % sprintf('%d', c(i,:)) formats the binary vector compactly without extra spaces (e.g., [1 0 1 1 1 0] -> 101110)
-    c_str = sprintf('%d ', C(i, :)); % Converts vector with a single space between bits
+    c_str = sprintf('%d ', c(i, :)); % Converts vector with a single space between bits
 
     fprintf('Codeword c(%d) = [%s] --> Contains %d received vectors y:\n', ...
         i, strtrim(c_str), size(y_region, 1));
@@ -103,9 +103,20 @@ else
     fprintf('Rule not Verified\n');
 end
 
-% 3.4 and 3.5
-% The property D(C) = C + D(0) is not verified for non-linear codes, if we
-% try inserting the rows of C form the 2nd to the 4th the property is not
-% verified, instead for the 1st row because of the fact that the 1st row is
-% equal to D(0) for construction, the rule is verified for it is a trivial
-% case: D(0) = 0 + D(0)
+% =================================================================
+%        ANALYSIS OF THE DECISION REGION SHIFT PROPERTY            
+% =================================================================
+% 
+% Property tested: D(c) = c + D(0),  ∀ c ∈ C
+% 
+% 1. RESULT FOR NON-LINEAR CODES:
+%    The property does NOT hold in general for non-linear codes.
+%    When testing rows 2 to 4 (c_2, c_3, c_4), the equality fails
+%    because non-linear codes lack vector space closure under addition:
+%           c_i ⊕ c_j ∉ C
+%    Consequently, decision regions cannot be obtained simply by translating D(0).
+% 
+% 2. TRIVIAL CASE (1st Row):
+%    The property holds ONLY for c_1 = [0 0 0 0] as a trivial identity:
+%           D(c_1) = c_1 + D(0)  ==>  D(0) = 0 + D(0)
+% =================================================================
