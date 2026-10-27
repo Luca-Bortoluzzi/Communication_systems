@@ -54,7 +54,7 @@ for i = 1:2^k
         D_0=y_region;
     end
     if i==rule_check
-        D_C = mod(c(i,:)+D_0,2)
+        D_C = mod(c(i,:)+D_0,2);
         if sort(y_region)==sort(D_C)
             flag=true;  
         else
