@@ -3,7 +3,7 @@ clear;
 close all;
 
 %% part 4
-% previous part to make work the code
+% previous part to make the code work
 A = [1 1 1 0 0;
     0 1 1 1 0;
     0 0 1 1 1;
