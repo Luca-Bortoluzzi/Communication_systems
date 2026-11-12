@@ -1,0 +1,46 @@
+clc;
+clear;
+close all;
+n=63;
+k=57;
+r=n-k;
+%% 1
+c = dec2bin(1:2^r-1,r)' - '0'; %matrix 6x63
+w = sum(c,1); % weight=1;
+P_T= c(:, w >= 2); %6x57
+H = [P_T, eye(r)]; % parity check matrix
+P=P_T';
+G = [eye(k), P]; %Generator Matrix
+%% 2
+p_an = logspace(-3,-0.5,100);
+pW_an = 1 -(1-p_an).^n -n.*p_an.*(1-p_an).^(n-1); %Analytical Formula
+%% 3
+figure,plot(p_an,pW_an,'b'),axis('tight');
+title('Analytical Performance curve'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
+
+%% 4
+p_sim = logspace(-2.5,-1,8);
+pW_sim = seros(size(p_sim));
+target_errors = 100;
+twos= 2.^(m-1:-1:0);%Powers of 2
+H_dec = twos*H; % To quicken the syndrome lookup we convert H to decimal
+for i=1:length(p_sim)
+    p=p_sim(i);
+    current_errors=0;
+    totalWords = 0;
+    while current_errors < target_errors
+        % message and codeword generation
+        messageBits = randi([0 1], 1, k);
+        codeword = mod(messageBits * G, 2);
+        %vector erro
+        receivedWord = xor(codeword, rand(1, n) < p);
+        syndrome = mod(H_dec * receivedWord', 2^r - 1);
+        decodedWord = receivedWord;
+        if syndrome > 0
+            decodedWord(syndrome) = ~decodedWord(syndrome);
+        end
+        current_errors = current_errors + any(decodedWord ~= codeword);
+        totalWords = totalWords + 1;
+    end
+    pW_sim(i) = current_errors / totalWords;
+end
