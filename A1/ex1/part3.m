@@ -30,7 +30,7 @@ HT = [P; I];
 m = [1 0 0 1 0]; % 5-bit binary input message vector (1x5)
 
 % Encoding: generate valid codeword y1 = m * G1 (1x10)
-y1 = m*G1; 
+y1 = mod(m*G1,2) 
 
 % Single-bit error vector with an error at position 1 (1x10)
 e = [1 0 0 0 0 0 0 0 0 0];
@@ -47,7 +47,11 @@ HT_1 = HT;
 % Column 1 = Column 1 XOR Column 2.
 % This represents multiplying H^T by an invertible matrix M in GL(5, GF(2)).
 % It leaves the kernel unchanged: Ker(H1) = Ker(H) = Code C.
-HT_1(:, 1) = mod(HT(:, 1) + HT(:, 2), 2);
+HT_1(:, 1) = mod(HT(:, 1) + HT(:, 2), 2)
+
+s1 = mod(y1*HT_1, 2) %null sindrome
+s2 = mod(y2*HT_1, 2) %NON null sindrome
+
 
 % -------------------------------------------------------------------------
 % 3.4
@@ -55,12 +59,12 @@ HT_1(:, 1) = mod(HT(:, 1) + HT(:, 2), 2);
 % Extend H^T to size (10x7) by appending two redundant columns
 % (specifically, duplicating Column 1 and Column 2 of HT).
 % The column rank remains 5, so Ker(H2) = Ker(H).
-HT_2 = [HT, HT(:, 1), HT(:, 2)];
+HT_2 = [HT, HT(:, 1), HT(:, 2)]
 
 % Calculate 7-bit syndrome for valid codeword y1:
 % s1 = y1 * H2^T mod 2 -> Expects [0 0 0 0 0 0 0] (Zero Syndrome)
-s1 = mod(y1*HT_2, 2);
+s1 = mod(y1*HT_2, 2)
 
 % Calculate 7-bit syndrome for corrupted vector y2:
 % s2 = y2 * H2^T mod 2 -> Expects Non-Zero Syndrome (Row 1 of H2^T)
-s2 = mod(y2*HT_2, 2);
+s2 = mod(y2*HT_2, 2)

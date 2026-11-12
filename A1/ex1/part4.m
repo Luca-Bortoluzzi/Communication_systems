@@ -80,9 +80,9 @@ end
 
 % 4.6 (ppt part)
 figure;
-semilogy(p, PUE(1, :), '-o', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 10 Errori');
+semilogy(p, PUE(1, :), '-o', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 10 Errors');
 hold on;
-semilogy(p, PUE(2, :), '-s', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 100 Errori');
+semilogy(p, PUE(2, :), '-s', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 100 Errors');
 hold on;
 % Theoretical Analytic Curve given by p_interval values
 semilogy(p, PUE_analytical, '--r', 'LineWidth', 2.0, 'DisplayName', 'Theoretical Analytic Curve');
