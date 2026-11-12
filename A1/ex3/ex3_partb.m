@@ -55,7 +55,7 @@ for i = 1:2^k
     end
     if i==rule_check
         D_C = mod(c(i,:)+D_0,2);
-        if sort(y_region)==sort(D_C)
+        if isequal(sortrows(y_region), sortrows(D_C))
             flag=true;  
         else
             flag=false;

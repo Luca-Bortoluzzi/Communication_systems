@@ -54,5 +54,26 @@ for i=1:31
     min2(i,:) = min(setdiff(unique(hd2(i,:)), 0));
 end
 
+figure,bar(0:10, mult1);
+title("multiplicity for G_1")
+xlabel('Hamming weight');
+ylabel('Multiplicity');
+figure,bar(0:10, mult2, 'FaceAlpha', 0.6);
+xlabel('Hamming weight');
+ylabel('Multiplicity');
+title("multiplicity for G_2")
 
 
+% plot della distanza minima in due istpgrammi
+figure;
+subplot(1,2,1);
+histogram(min1, 'BinMethod', 'integers');
+title('Minimum distances for G_1');
+xlabel('Minimum Hamming distance');
+ylabel('Frequency');
+
+subplot(1,2,2);
+histogram(min2, 'BinMethod', 'integers');
+title('Minimum distances for G_2');
+xlabel('Minimum Hamming distance');
+ylabel('Frequency');

@@ -21,8 +21,8 @@ k = 2; %information length
 
 % proving the property for non-linear codes
 
-c1 = c(2,:); % 1 1 1 0 0
-c2 = c(4,:); % 0 0 1 1 1
+c1 = c(2,:); 
+c2 = c(4,:); 
 verify = mod(c1 + c2, 2);
 fprintf("The codeword sum of the 2nd and the 4th is: %s\n", sprintf("%d", verify));
 
