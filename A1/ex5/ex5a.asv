@@ -18,29 +18,49 @@ pW_an = 1 -(1-p_an).^n -n.*p_an.*(1-p_an).^(n-1); %Analytical Formula
 figure,plot(p_an,pW_an,'b'),axis('tight');
 title('Analytical Performance curve'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
 
+
 %% 4
-p_sim = logspace(-2.5,-1,8);
-pW_sim = seros(size(p_sim));
+p_sim = logspace(-2.5, -1, 8);
+pW_sim = zeros(size(p_sim));
 target_errors = 100;
-twos= 2.^(m-1:-1:0);%Powers of 2
-H_dec = twos*H; % To quicken the syndrome lookup we convert H to decimal
-for i=1:length(p_sim)
-    p=p_sim(i);
-    current_errors=0;
+
+twos = 2.^(r-1:-1:0); % Powers of 2
+H_dec = twos * H;     % Valore decimale di ciascuna colonna di H (1 x 63)
+
+for i = 1:length(p_sim)
+    p = p_sim(i);
+    current_errors = 0;
     totalWords = 0;
+
     while current_errors < target_errors
-        % message and codeword generation
+        % 1. Generazione messaggio e codeword
         messageBits = randi([0 1], 1, k);
         codeword = mod(messageBits * G, 2);
-        %vector erro
-        receivedWord = xor(codeword, rand(1, n) < p);
-        syndrome = mod(H_dec * receivedWord', 2^r - 1);
+
+        % 2. Canale BSC: parola ricevuta
+        receivedWord = mod(codeword + (rand(1, n) < p), 2);
+
+        % 3. Calcolo sindrome in GF(2) e conversione in decimale
+        syndrome_vec = mod(receivedWord * H', 2);
+        syndrome = syndrome_vec * twos';
+
+        % 4. Correzione cercando la colonna corrispondente in H_dec
         decodedWord = receivedWord;
         if syndrome > 0
-            decodedWord(syndrome) = ~decodedWord(syndrome);
+            err_pos = find(H_dec == syndrome, 1);
+            decodedWord(err_pos) = mod(decodedWord(err_pos) + 1, 2);
         end
+
         current_errors = current_errors + any(decodedWord ~= codeword);
         totalWords = totalWords + 1;
     end
+
     pW_sim(i) = current_errors / totalWords;
 end
+%% 5
+figure,plot(p_sim,pW_sim,'b'),axis('tight');
+xlabel('$$\widehat{Bit\ Error\ Probability}$$','Interpreter','latex'),ylabel('$$\widehat{Codeword\ Error\ Probability}$$','Interpreter','latex');
+title('Simulated Performance Curve');
+
+%% 6
+figure,plot(p_an,pW_an,'b',p_sim,pW_sim,'g--');
