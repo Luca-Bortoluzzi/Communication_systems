@@ -12,15 +12,15 @@ H = [P_T, eye(r)]; % parity check matrix
 P=P_T';
 G = [eye(k), P]; %Generator Matrix
 %% 2
-p_an = logspace(-3,-0.5,100);
+p_an = logspace(-3,-1,100);
 pW_an = 1 -(1-p_an).^n -n.*p_an.*(1-p_an).^(n-1); %Analytical Formula
 %% 3
-figure,plot(p_an,pW_an,'b'),axis('tight');
+figure,plot(p_an,pW_an,'b'),axis('tight'),grid("on");
 title('Analytical Performance curve'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
 
 
 %% 4
-p_sim = logspace(-2.5, -1, 8);
+p_sim = logspace(-3, -1, 8);
 pW_sim = zeros(size(p_sim));
 target_errors = 100;
 
@@ -58,14 +58,15 @@ for i = 1:length(p_sim)
     pW_sim(i) = current_errors / totalWords;
 end
 %% 5
-figure,plot(p_sim,pW_sim,'b'),axis('tight');
+figure,plot(p_sim,pW_sim,'b'),axis('tight'),grid("on");
 xlabel('$$\widehat{Bit\ Error\ Probability}$$','Interpreter','latex'),ylabel('$$\widehat{Codeword\ Error\ Probability}$$','Interpreter','latex');
 title('Simulated Performance Curve');
 
 %% 6
-figure,plot(p_an,pW_an,'b',p_sim,pW_sim,'g--'),legend('Analytical Curve','Simulated Curve'),axis('tight');
+figure,plot(p_an,pW_an,'b',p_sim,pW_sim,'g--'),legend('Analytical Curve','Simulated Curve'),axis('tight'),grid('on');
 title('Performance curves'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
-% To be commented on the results
+% The simulated curve closely follows the analytical one showing how
+% accurate the bounded-distance decoder is.
 
 %% 7
 %The C(63,57) binary Hamming code is a perfect code: the 2^57 is joint Hamming spheres of radius t = 1 
