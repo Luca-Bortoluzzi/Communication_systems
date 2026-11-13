@@ -78,21 +78,27 @@ for i=1:length(p)
     PUE_analytical(i) = pue_sum;
 end
 
-% 4.6 (ppt part)
-figure;
-semilogy(p, PUE(1, :), '-o', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 10 Errors');
-hold on;
-semilogy(p, PUE(2, :), '-s', 'LineWidth', 1.8, 'MarkerSize', 7, 'DisplayName', 'Target: 100 Errors');
-hold on;
-% Theoretical Analytic Curve given by p_interval values
-semilogy(p, PUE_analytical, '--r', 'LineWidth', 2.0, 'DisplayName', 'Theoretical Analytic Curve');
+% Colori coordinati con la presentazione Beamer
+plot_blue   = [30, 136, 229] / 255;
+plot_orange = [251, 140, 0] / 255;
+plot_red    = [229, 57, 53] / 255;
 
-grid on;
-% to see how much the curves are close to the theoretical remove 'ylim'
-ylim([min(PUE(:))*0.5, max(PUE(:))*2]);     % add limits and zoom the y axis to better reading
+fig_p4 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
 
-xlabel('Error Probability in the channel (p)');
-ylabel('Probability of Undetected Error (PUE)');
-title('Comparison between Monte Carlo simulations and Analytic Curve');
-legend('Location', 'best');
-set(gca, 'XDir', 'reverse'); % Invert the X axis to better see p from 0.10 to 0.06
+semilogy(p, PUE(1, :), '-o', 'Color', plot_blue, 'MarkerFaceColor', plot_blue, ...
+    'LineWidth', 1.8, 'MarkerSize', 6, 'DisplayName', 'Target: 10 Errors');
+hold on;
+semilogy(p, PUE(2, :), '-s', 'Color', plot_orange, 'MarkerFaceColor', plot_orange, ...
+    'LineWidth', 1.8, 'MarkerSize', 6, 'DisplayName', 'Target: 100 Errors');
+semilogy(p, PUE_analytical, '--', 'Color', plot_red, ...
+    'LineWidth', 2.2, 'DisplayName', 'Theoretical Analytic Curve');
+
+grid on; box off;
+ylim([min([PUE(:); PUE_analytical(:)])*0.55, max([PUE(:); PUE_analytical(:)])*1.8]);
+xlim([0.058, 0.102]);
+xticks(fliplr(p)); % Mantiene i tick ordinati: 0.06, 0.07, 0.08, 0.09, 0.10
+xlabel('BSC crossover probability p', 'FontSize', 11);
+ylabel('Probability of Undetected Error (P_{UE})', 'FontSize', 11);
+title('Monte Carlo Simulation vs. Analytical P_{UE}', 'FontSize', 12, 'FontWeight', 'bold');
+legend('Location', 'northwest', 'FontSize', 10);
+exportgraphics(fig_p4, 'E1_P4_Q1.png', 'Resolution', 300);

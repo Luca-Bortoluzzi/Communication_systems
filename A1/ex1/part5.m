@@ -213,31 +213,24 @@ y1 = 1 - p0_i(1,:);
 y2 = 1 - p0_i(2,:);
 y3 = 1 - p0_i(3,:);
 
-% Plot
-figure;
+% Colori coordinati con la presentazione Beamer
+plot_blue   = [30, 136, 229] / 255;
+plot_orange = [251, 140, 0] / 255;
+plot_red    = [229, 57, 53] / 255;
 
-% Plot 1 - P(COR,1)
-semilogx(p, y1, 'LineWidth', 1.5);
+fig_p5 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
+
+semilogx(p, y1, '-', 'Color', plot_blue, 'LineWidth', 2.2);
 hold on;
+semilogx(p, y2, '-', 'Color', plot_orange, 'LineWidth', 2.2);
+semilogx(p, y3, '-', 'Color', plot_red, 'LineWidth', 2.2);
 
-% Plot 1 - P(COR,2)
-semilogx(p, y2, 'LineWidth', 1.5);
+grid on; box off;
+xlim([1e-2, 1e-1]);
+ylim([0, 1.03]);
+xlabel('BSC crossover probability p', 'FontSize', 11);
+ylabel('1 - P(COR, i)', 'FontSize', 11);
+title('ARQ: 1 - P(COR, i) vs. Channel Error Probability', 'FontSize', 12, 'FontWeight', 'bold');
+legend('i = 1', 'i = 2', 'i = 3', 'Location', 'southeast', 'FontSize', 10);
 
-% Plot 1 - P(COR,3)
-semilogx(p, y3, 'LineWidth', 1.5);
-
-% Add grid
-grid on;
-
-% Label x-axis
-xlabel('BSC crossover probability p');
-
-% Label y-axis
-ylabel('1 - P(COR,i)');
-
-% Add legend for the three ARQ cases
-legend('i = 1', 'i = 2', 'i = 3', ...
-    'Location', 'best');
-
-% Add title
-title('ARQ: 1 - P(COR,i)');
+exportgraphics(fig_p5, 'E1_P5_Q3.png', 'Resolution', 300);

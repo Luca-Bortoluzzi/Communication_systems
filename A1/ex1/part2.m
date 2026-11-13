@@ -87,18 +87,23 @@ for idx= 1:num
     end
 end
 
-figure
-loglog(p_interval, PUE1_log, 'b-', 'LineWidth', 2)
-hold on
-loglog(p_interval, PUE2_log, 'r--', 'LineWidth', 2)
+% Colori coordinati con la presentazione Beamer
+navy = [18, 43, 73] / 255;
+red_plot = [229, 57, 53] / 255;
 
-grid on
-grid minor
-xlabel('p')
-ylabel('P_{UE}(p)')
-title('Undetected-error probability on BSC')
-legend('Code 1', 'Code 2', 'Location', 'best')
-xlim([1e-6 1e-1])
+fig_p2 = figure('Color', 'w', 'Position', [100, 100, 720, 380]);
+loglog(p_interval, PUE1_log, '-', 'Color', navy, 'LineWidth', 2.2);
+hold on;
+loglog(p_interval, PUE2_log, '--', 'Color', red_plot, 'LineWidth', 2.2);
+grid on; box off;
+xlabel('BSC crossover probability p', 'FontSize', 11);
+ylabel('P_{UE}(p)', 'FontSize', 11);
+title('Undetected-error probability on BSC', 'FontSize', 12, 'FontWeight', 'bold');
+legend('Code 1 (G_1, d_{min} = 4)', 'Code 2 (G_2, d_{min} = 3)', 'Location', 'southeast', 'FontSize', 10);
+xlim([1e-6, 1e-1]);
+ylim([1e-24, 1e0]);
+
+exportgraphics(fig_p2, 'E1_P2_Q2.png', 'Resolution', 300);
 
 %% 2.3
 % For small p, find the leading term of the two PUE expressions and explain its relationship with d_min and A_min.
