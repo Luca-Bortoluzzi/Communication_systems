@@ -1321,20 +1321,84 @@
   \vfill
 \end{frame}
 
-\begin{frame}{Exercise 5.1}
-  \question{2. Write the analytical expression for the codeword error probability over a BSC.}
+\begin{frame}{Exercise 5.1 - Question 2}
+	\question{2. Derive and plot the analytical codeword error probability $P_W(p)$ for $p \in [10^{-3}, 10^{-1}]$.}
+	
+	\vspace{0.15cm}
+	\begin{columns}[c]
+		\begin{column}{0.52\textwidth}
+			\footnotesize
+			\begin{itemize}
+				\item The $(63, 57)$ binary Hamming code has $d_{\min} = 3$, so it corrects up to $t = \lfloor (d_{\min}-1)/2 \rfloor = 1$ bit error per codeword.
+				\item A codeword error occurs whenever 2 or more bit errors happen over $n = 63$ bits:
+				\[
+				P_W(p) = 1 - (1-p)^{63} - 63\,p(1-p)^{62}
+				\]
+				\item For small $p$ ($p \approx 10^{-3}$), $P_W(p) \approx \binom{63}{2} p^2 = 1953\,p^2 \approx 1.95 \times 10^{-3}$.
+				\item As $p$ approaches $10^{-1}$, multiple errors become dominant and $P_W(p)$ rises steeply toward $1$ ($P_W(0.1) \approx 0.99$).
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q2.png}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1}
-  \question{3. Plot the analytical performance curve as a function of the channel bit error probability $p$}
+\begin{frame}{Exercise 5.1 - Question 3}
+	\question{3. Simulate the bounded-distance decoder over the BSC for 8 values of $p \in [10^{-3}, 10^{-1}]$ (stopping at 100 codeword errors per point) and plot the estimated $\hat{P}_W(p)$.}
+	
+	\vspace{0.15cm}
+	\begin{columns}[c]
+		\begin{column}{0.52\textwidth}
+			\footnotesize
+			\begin{itemize}
+				\item For each of the 8 logarithmically spaced values of $p$, random codewords $c = uG \bmod 2$ are transmitted over a BSC until 100 decoding errors occur.
+				\item At the receiver, the syndrome $s = yH^T \bmod 2$ is computed:
+				\begin{itemize}
+					\item if $s = 0$, no error is assumed;
+					\item if $s \neq 0$, the bit corresponding to the matching column of $H$ is flipped.
+				\end{itemize}
+				\item A codeword error is counted whenever $\hat{c} \neq c$, yielding the Monte Carlo estimate $\hat{P}_W(p) = 100 / N_{\text{words}}$.
+				\item Stopping at 100 errors ensures a consistent relative confidence interval across all simulated points, even at low $p$.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q3.png}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1}
-  \question{5. Plot the simulated codeword error probability of the implemented decoder.}
+\begin{frame}{Exercise 5.1 - Question 5}
+	\question{5. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder for this code.}
+	
+	\vspace{0.15cm}
+	\begin{columns}[c]
+		\begin{column}{0.52\textwidth}
+			\footnotesize
+			\begin{itemize}
+				\item The $(63, 57)$ binary Hamming code is a perfect code: the $2^{57}$ disjoint Hamming spheres of radius $t = 1$, each containing $1 + 63 = 2^6$ vectors, completely partition $\{0,1\}^{63}$ ($2^{57} \cdot 2^6 = 2^{63}$).
+				\item Every possible $6$-bit syndrome maps uniquely to an error pattern of weight $w \le 1$, so no received vector ever falls outside the decoding spheres and decoding failures never occur.
+				\item Thus, the bounded-distance decoder is identical to a complete minimum-distance decoder, as confirmed by the exact overlap between the simulated curve and the analytical bound.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q5.png}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1}
-  \question{7. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder}
+\begin{frame}{Exercise 5.1 - Question 7}
+	\question{7. Discuss how changing $(n, k)$ affects error-correction capability and code rate, and whether any $(n, k)$ pair can be chosen for a binary Hamming code.}
+	
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item No: a binary Hamming code cannot have an arbitrary $(n, k)$ pair. Its parameters are strictly constrained to $(n, k) = (2^r - 1,\, 2^r - 1 - r)$ for an integer $r \ge 3$.
+		\item Every binary Hamming code has $d_{\min} = 3$, meaning its error-correction capability is always fixed at $t = 1$ bit error per codeword regardless of $r$ (to achieve $t > 1$, other code families such as BCH codes are required).
+		\item Increasing $r$ raises the code rate $R = k/n = 1 - \frac{r}{2^r - 1}$ (less redundancy overhead), but since $t = 1$ remains fixed over a longer block $n$, multiple errors become more likely and $P_W(p) \approx \binom{n}{2}p^2$ degrades.
+	\end{itemize}
 \end{frame}
 
 % ==============================================================================

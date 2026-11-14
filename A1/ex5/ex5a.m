@@ -14,9 +14,16 @@ G = [eye(k), P]; %Generator Matrix
 %% 2
 p_an = logspace(-3,-1,100);
 pW_an = 1 -(1-p_an).^n -n.*p_an.*(1-p_an).^(n-1); %Analytical Formula
+
 %% 3
-figure,plot(p_an,pW_an,'b'),axis('tight'),grid("on");
-title('Analytical Performance curve'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
+fig_q2 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
+loglog(p_an, pW_an, '-', 'Color', [30, 136, 229]/255, 'LineWidth', 2.2);
+grid on; box off;
+xlim([1e-3, 1e-1]);
+xlabel('Bit Error Probability p', 'FontSize', 11);
+ylabel('Codeword Error Probability P_W(p)', 'FontSize', 11);
+title('Analytical Codeword Error Probability - Hamming (63, 57)', 'FontSize', 12);
+exportgraphics(fig_q2, 'E5_1_Q2.png', 'Resolution', 300);
 
 
 %% 4
@@ -58,13 +65,31 @@ for i = 1:length(p_sim)
     pW_sim(i) = current_errors / totalWords;
 end
 %% 5
-figure,plot(p_sim,pW_sim,'b'),axis('tight'),grid("on");
-xlabel('$$\widehat{Bit\ Error\ Probability}$$','Interpreter','latex'),ylabel('$$\widehat{Codeword\ Error\ Probability}$$','Interpreter','latex');
-title('Simulated Performance Curve');
+fig_q3 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
+loglog(p_sim, pW_sim, 'o-', 'Color', [251, 140, 0]/255, 'LineWidth', 2.0, 'MarkerSize', 6, 'MarkerFaceColor', [251, 140, 0]/255);
+grid on; box off;
+xlim([1e-3, 1e-1]);
+xlabel('Bit Error Probability p', 'FontSize', 11);
+ylabel('Estimated Codeword Error Probability \hat{P}_W(p)', 'FontSize', 11);
+title('Monte Carlo Simulation - Hamming (63, 57) (100 target errors)', 'FontSize', 12);
+exportgraphics(fig_q3, 'E5_1_Q3.png', 'Resolution', 300);
 
 %% 6
-figure,plot(p_an,pW_an,'b',p_sim,pW_sim,'g--'),legend('Analytical Curve','Simulated Curve'),axis('tight'),grid('on');
-title('Performance curves'),xlabel('Bit Error Probability'),ylabel('Codeword Error Probability');
+fig_q5 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
+loglog(p_an, pW_an, '-', 'Color', [30, 136, 229]/255, 'LineWidth', 2.2, ...
+    'DisplayName', 'Complete MD / Analytical P_W(p)');
+hold on;
+loglog(p_sim, pW_sim, 'o--', 'Color', [251, 140, 0]/255, 'LineWidth', 2.0, ...
+    'MarkerSize', 6, 'MarkerFaceColor', [251, 140, 0]/255, ...
+    'DisplayName', 'Bounded-Distance Decoder (Simulated)');
+
+grid on; box off;
+xlim([1e-3, 1e-1]);
+xlabel('Bit Error Probability p', 'FontSize', 11);
+ylabel('Codeword Error Probability P_W(p)', 'FontSize', 11);
+title('Bounded-Distance vs. Complete Minimum-Distance Decoder - Hamming (63, 57)', 'FontSize', 11);
+legend('Location', 'northwest', 'FontSize', 9.5);
+exportgraphics(fig_q5, 'E5_1_Q5.png', 'Resolution', 300);
 % The simulated curve closely follows the analytical one showing how
 % accurate the bounded-distance decoder is.
 

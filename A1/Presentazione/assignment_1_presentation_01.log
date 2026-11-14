@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  13 NOV 2026 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  14 NOV 2026 11:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1555,18 +1555,36 @@ Package pdftex.def Info: A1_E4b.png  used on input line 1230.
 [75
 
 ]
+<E5_1_Q2.png, id=435, 491.436pt x 289.5618pt>
+File: E5_1_Q2.png Graphic file (type png)
+<use E5_1_Q2.png>
+Package pdftex.def Info: E5_1_Q2.png  used on input line 1346.
+(pdftex.def)             Requested size: 179.24892pt x 105.61627pt.
+
 
 [76
 
-]
+ <./E5_1_Q2.png (PNG copy)>]
+<E5_1_Q3.png, id=441, 489.027pt x 289.5618pt>
+File: E5_1_Q3.png Graphic file (type png)
+<use E5_1_Q3.png>
+Package pdftex.def Info: E5_1_Q3.png  used on input line 1371.
+(pdftex.def)             Requested size: 179.25075pt x 106.13763pt.
+
 
 [77
 
-]
+ <./E5_1_Q3.png (PNG copy)>]
+<E5_1_Q5.png, id=447, 491.436pt x 288.5982pt>
+File: E5_1_Q5.png Graphic file (type png)
+<use E5_1_Q5.png>
+Package pdftex.def Info: E5_1_Q5.png  used on input line 1391.
+(pdftex.def)             Requested size: 179.24892pt x 105.2648pt.
+
 
 [78
 
-]
+ <./E5_1_Q5.png (PNG copy)>]
 
 [79
 
@@ -1658,13 +1676,13 @@ anged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36454 strings out of 467874
- 848177 string characters out of 5430466
+ 36475 strings out of 467874
+ 848552 string characters out of 5430466
  1391703 words of memory out of 5000000
- 64459 multiletter control sequences out of 15000+600000
+ 64480 multiletter control sequences out of 15000+600000
  728211 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,14n,123p,751b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,14n,123p,751b,706s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Programmi/MikTeX/fonts/type1/public/lm/lmex10.pfb><D:/Programmi/MikTeX/fo
 nts/type1/public/lm/lmmi10.pfb><D:/Programmi/MikTeX/fonts/type1/public/lm/lmmi6
 .pfb><D:/Programmi/MikTeX/fonts/type1/public/lm/lmmi7.pfb><D:/Programmi/MikTeX/
@@ -1682,9 +1700,9 @@ Programmi/MikTeX/fonts/type1/public/lm/lmsy9.pfb><D:/Programmi/MikTeX/fonts/typ
 e1/public/lm/lmtt9.pfb><D:/Programmi/MikTeX/fonts/type1/public/amsfonts/symbols
 /msam10.pfb><D:/Programmi/MikTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 >
-Output written on assignment_1_presentation_01.pdf (96 pages, 2396528 bytes).
+Output written on assignment_1_presentation_01.pdf (96 pages, 2761845 bytes).
 PDF statistics:
- 694 PDF objects out of 1000 (max. 8388607)
+ 697 PDF objects out of 1000 (max. 8388607)
  193 named destinations out of 1000 (max. 500000)
- 83 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 98 words of extra memory for PDF output out of 10000 (max. 10000000)
 
