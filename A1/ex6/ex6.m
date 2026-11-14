@@ -54,6 +54,7 @@ yticks([-1 0 1]);
 xlabel('Bit index (n)');
 ylabel('Bipolar Amplitude');
 title('First 20 bits of the bipolar LFSR sequence (P(x) = x^{10} + x^7 + 1)');
+exportgraphics(gcf, 'E6_Seq_Q3.png', 'Resolution', 300);
 
 %% --- 2. Balance and Transition Properties ---
 % Circularly shift by 1 position to evaluate periodic bit transitions
@@ -150,6 +151,7 @@ xlabel('Starting index in the sequence (Starting point)');
 ylabel('Run length (i)');
 title('Run length vs. Starting point in the sequence (m = 10)');
 legend('Location', 'best');
+exportgraphics(gcf, 'E6_Runs_Q2.png', 'Resolution', 300);
 
 %% --- 4. Periodic Autocorrelation of the Full m-sequence ---
 % Compute sample mean of bipolar symbols (expected E[a_i] ≈ 0)
@@ -177,6 +179,7 @@ ylim([-100, N + 100]);
 xlabel('\tau');
 ylabel('R_{v''}(\tau)');
 title('Periodic Autocorrelation of the bipolar sequence (m = 10, N = 1023)');
+exportgraphics(gcf, 'E6_Autocorr_Q1.png', 'Resolution', 300);
 
 %% --- 5. Truncated Sequences: MPSL Degradation Analysis (1 <= z <= 200) ---
 z_vals = 1:200;
@@ -207,6 +210,7 @@ ylim([min(MPSL) - 10, max(MPSL) + 10]);
 xlabel('Number of removed bits (z)');
 ylabel('Maximum Peak Side Lobe max_{\tau \neq 0} |R(\tau)|');
 title('Autocorrelation degradation as a function of removed bits z');
+exportgraphics(gcf, 'E6_MPSL_Q5.png', 'Resolution', 300);
 
 %% --- 6. Truncated Sequence with z = 23: Comparison of Two Starting Seeds ---
 % --- Case A: Seed 1 = [1 1 1 1 1 0 0 0 0 0] ---
@@ -240,6 +244,7 @@ ylabel('R_{v''_{23}}(\tau)');
 seed_str = sprintf('%d', seed_1);
 title({sprintf('Periodic Autocorrelation of Truncated Sequence (z = %d, MPSL = %d)', z, MPSL_1), ...
     sprintf('Seed = [%s]', seed_str)});
+exportgraphics(gcf, 'E6_Seed_Q4.png', 'Resolution', 300);
 
 % --- Case B: Seed 2 = [1 1 0 0 1 1 0 0 1 1] ---
 seed_2 = [1 1 0 0 1 1 0 0 1 1];
@@ -292,3 +297,4 @@ ylabel('R_{v''_{23}}(\tau)');
 seed_str = sprintf('%d', seed_2);
 title({sprintf('Periodic Autocorrelation of Truncated Sequence (z = %d, MPSL = %d)', z, MPSL_2), ...
     sprintf('Seed = [%s]', seed_str)});
+exportgraphics(gcf, 'E6_Seed_Q5.png', 'Resolution', 300);
