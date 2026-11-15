@@ -45,7 +45,7 @@ bipolar_s1 = 2 * prbs_s1 - 1;
 figure;
 theme(gcf, 'light');
 hold on;
-stairs(1:20, bipolar_s1(1:20), 'LineWidth', 1); % Square-wave representation
+stairs(1:20, bipolar_s1(1:20), 'LineWidth', 2); % Square-wave representation
 grid on;
 ylim([-1.5 1.5]);
 xlim([0 21]);
