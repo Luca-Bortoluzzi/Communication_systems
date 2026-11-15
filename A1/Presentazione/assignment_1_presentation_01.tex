@@ -566,11 +566,17 @@
 
 % Slide 26
 \begin{frame}{Exercise 1 - Part 5}
-  \question{3. Plot $1 - P(\text{COR}, i)$ versus $p$ over $10^{-2} \le p \le 10^{-1}$ for $i = 1, 2, 3$ on the same figure}
-
-  \vspace{0.15cm}
-  \centering
-  \includegraphics[width=0.82\textwidth, height=4.8cm, keepaspectratio]{E1_P5_Q3.png}
+	\question{3. Plot $1 - P(\text{COR}, i)$ versus $p$ over $10^{-2} \le p \le 10^{-1}$ for $i = 1, 2, 3$ on the same figure}
+	
+	\vspace{0.1cm}
+	\centering
+	\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E1_P5_Q3.png}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item Allowing more ARQ retransmissions ($i = 1 \to 2 \to 3$) significantly lowers the delivery failure probability $1 - P(\text{COR}, i)$, with the curve slope steepening as $\mathcal{O}(p^i)$ for small $p$.
+	\end{itemize}
 \end{frame}
 
 % Slides 27-32: Exercise 1 - Part 6 (Discussion on ARQ)
@@ -1192,7 +1198,7 @@
 
   \vspace{0.1cm}
   \centering
-  \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{A1_E4a.png}
+  \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{E4_A_Q3.png}
 \end{frame}
 
 \begin{frame}[plain]
@@ -1225,7 +1231,7 @@
 
   \vspace{0.1cm}
   \begin{center}
-    \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{A1_E4b.png}
+    \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{E4_B_Q3.png}
   \end{center}
 \end{frame}
 
@@ -1299,14 +1305,30 @@
 \end{frame}
 
 \begin{frame}{Exercise 4c}
-  \question{5. Compare the results obtained for the two codes and comment on any differences.}
+	\question{5. Compare the results obtained for the two codes and comment on any differences.}
+	
+	\vspace{0.2cm}
+	\begin{columns}[T]
+		\begin{column}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.5cm, keepaspectratio]{E4_C_Q5.png}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.5cm, keepaspectratio]{E4_C_Q6.png}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-  \vspace{0.25cm}
-  \begin{itemize}
-    \item Both codes have $k = 4$, $d_{\min} = 3$, and $t = 1$, but the $(8,4)$ code uses an extra parity bit ($n = 8$ instead of $n = 7$), lowering the code rate from $R = 4/7 \approx 0.57$ to $R = 4/8 = 0.5$.
-    \item Since $n$ is larger while $t = 1$ stays the same, there are more double-bit error combinations ($\binom{8}{2} = 28$ vs. $\binom{7}{2} = 21$), so the $(8,4)$ code has a slightly higher word error probability ($P_W(E) \approx 28p^2$ vs. $\approx 21p^2$ for small $p$).
-    \item Unlike the Hamming $(7,4)$ code, which is perfect ($16 \times 8 = 128 = 2^7$), the $(8,4)$ code is not perfect ($16 \times 9 = 144 < 256$), leaving $112$ vectors outside the Hamming spheres of radius $1$.
-  \end{itemize}
+\begin{frame}{Exercise 4c}
+	\question{5. Compare the results obtained for the two codes and comment on any differences.}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Both codes share $k = 4$, $d_{\min} = 3$, and $t = 1$, but the extra parity bit in $(8,4)$ lowers the code rate from $R = 4/7 \approx 0.57$ to $R = 4/8 = 0.5$.
+		\item With $t = 1$ unchanged, a larger $n$ increases double-error combinations ($\binom{8}{2} = 28$ vs. $\binom{7}{2} = 21$), yielding a slightly higher $P_W(E)$ ($\approx 28p^2$ vs. $\approx 21p^2$ for small $p$).
+		\item Hamming $(7,4)$ is a perfect code ($16 \times 8 = 2^7$), whereas $(8,4)$ is non-perfect ($16 \times 9 = 144 < 2^8$), leaving $112$ vectors outside the radius-$1$ spheres.
+	\end{itemize}
 \end{frame}
 
 % ==============================================================================
@@ -1432,14 +1454,13 @@
 \begin{frame}{Exercise 6 - Properties of m-sequences}
 	\question{2. Draw the LFSR.}
 	
-	\vspace{0.2cm}
+	\vspace{0.15cm}
 	\begin{center}
-		\fbox{
-			\begin{minipage}[c][4.2cm][c]{0.85\textwidth}
-				\centering
-				\textit{Insert LFSR block diagram here}
-			\end{minipage}
-		}
+		\includegraphics[width=0.82\textwidth, height=4.2cm, keepaspectratio]{E6_LFSR_Q2.png}
+		
+		\vspace{0.2cm}
+		\small
+		\textcolor{SlateNeutral}{LFSR corresponding to $P(x) = x^{10} + x^7 + 1$ with $m = 10$ cells and feedback $Q_1 = Q_7 \oplus Q_{10}$.}
 	\end{center}
 \end{frame}
 
@@ -1573,10 +1594,16 @@
 \begin{frame}{Exercise 6 - Truncated sequences - MPSL}
 	\question{5. Plot $MPSL(z)$ vs. $z$}
 	
-	\vspace{0.15cm}
+	\vspace{0.1cm}
 	\begin{center}
-		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_MPSL_Q5.png}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_MPSL_Q5.png}
 	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item Reducing sequence length from $1023$ to $823$ (Truncating with $z \in [1, 200]$).
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - MPSL}
@@ -1593,19 +1620,31 @@
 \begin{frame}{Exercise 6 - Truncated sequences - seed}
 	\question{4. Plot it}
 	
-	\vspace{0.15cm}
+	\vspace{0.1cm}
 	\begin{center}
-		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_Seed_Q4.png}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_Seed_Q4.png}
 	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item For the first seed ($[1\,1\,1\,1\,1\,0\,0\,0\,0\,0]$) with $z = 23$, the main autocorrelation peak equals $R_{v'_{23}}(0) = N - z = 1000$, while the sidelobes fluctuate around zero with $\text{MPSL} = 68$.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - seed}
 	\question{5. Repeat and plot with the same $z$ but another starting seed}
 	
-	\vspace{0.15cm}
+	\vspace{0.1cm}
 	\begin{center}
-		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_Seed_Q5.png}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_Seed_Q5.png}
 	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item For the second seed ($[1\,1\,0\,0\,1\,1\,0\,0\,1\,1]$) with $z = 23$, the main autocorrelation peak remains $R_{v'_{23}}(0) = N - z = 1000$, while the sidelobes show a different profile with $\text{MPSL} = 60$.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - seed}

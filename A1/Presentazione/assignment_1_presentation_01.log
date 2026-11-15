@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  14 NOV 2026 15:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  15 NOV 2026 17:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1319,11 +1319,11 @@ Package pdftex.def Info: E1_P4_Q2.png  used on input line 475.
 [25
 
 ]
-<E1_P5_Q3.png, id=171, 483.4863pt x 289.3209pt>
+<E1_P5_Q3.png, id=171, 489.027pt x 289.5618pt>
 File: E1_P5_Q3.png Graphic file (type png)
 <use E1_P5_Q3.png>
-Package pdftex.def Info: E1_P5_Q3.png  used on input line 574.
-(pdftex.def)             Requested size: 228.23453pt x 136.57681pt.
+Package pdftex.def Info: E1_P5_Q3.png  used on input line 580.
+(pdftex.def)             Requested size: 182.60117pt x 108.12148pt.
 
 
 [26
@@ -1345,7 +1345,7 @@ Package pdftex.def Info: E1_P5_Q3.png  used on input line 574.
 [30
 
 ]
-Overfull \vbox (5.44612pt too high) detected at line 652
+Overfull \vbox (5.44612pt too high) detected at line 658
  []
 
 
@@ -1446,7 +1446,7 @@ Overfull \vbox (5.44612pt too high) detected at line 652
 
 ]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-052.
+058.
  (D:\Programmi\MikTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1479,12 +1479,12 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 1143.
+(Font)              <12> on input line 1149.
 LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <12> not available
-(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 1143.
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 1149.
 
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1143.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 1149.
 
 
 
@@ -1499,16 +1499,16 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <12> not available
 [64
 
 ]
-<A1_E4a.png, id=376, 571.8966pt x 383.5128pt>
-File: A1_E4a.png Graphic file (type png)
-<use A1_E4a.png>
-Package pdftex.def Info: A1_E4a.png  used on input line 1196.
-(pdftex.def)             Requested size: 190.93425pt x 128.04015pt.
+<E4_A_Q3.png, id=376, 542.9886pt x 362.5545pt>
+File: E4_A_Q3.png Graphic file (type png)
+<use E4_A_Q3.png>
+Package pdftex.def Info: E4_A_Q3.png  used on input line 1202.
+(pdftex.def)             Requested size: 191.75563pt x 128.03558pt.
 
 
 [65
 
- <./A1_E4a.png (PNG copy)>]
+ <./E4_A_Q3.png (PNG copy)>]
 
 [66
 
@@ -1517,16 +1517,16 @@ Package pdftex.def Info: A1_E4a.png  used on input line 1196.
 [67
 
 ]
-<A1_E4b.png, id=393, 577.6782pt x 379.1766pt>
-File: A1_E4b.png Graphic file (type png)
-<use A1_E4b.png>
-Package pdftex.def Info: A1_E4b.png  used on input line 1230.
-(pdftex.def)             Requested size: 195.05934pt x 128.03311pt.
+<E4_B_Q3.png, id=393, 548.2884pt x 360.1455pt>
+File: E4_B_Q3.png Graphic file (type png)
+<use E4_B_Q3.png>
+Package pdftex.def Info: E4_B_Q3.png  used on input line 1236.
+(pdftex.def)             Requested size: 194.92401pt x 128.03664pt.
 
 
 [68
 
- <./A1_E4b.png (PNG copy)>]
+ <./E4_B_Q3.png (PNG copy)>]
 
 [69
 
@@ -1547,48 +1547,59 @@ Package pdftex.def Info: A1_E4b.png  used on input line 1230.
 [73
 
 ]
+<E4_C_Q5.png, id=425, 542.2659pt x 362.5545pt>
+File: E4_C_Q5.png Graphic file (type png)
+<use E4_C_Q5.png>
+Package pdftex.def Info: E4_C_Q5.png  used on input line 1321.
+(pdftex.def)             Requested size: 191.20253pt x 127.83644pt.
+<E4_C_Q6.png, id=426, 547.5657pt x 360.3864pt>
+File: E4_C_Q6.png Graphic file (type png)
+<use E4_C_Q6.png>
+Package pdftex.def Info: E4_C_Q6.png  used on input line 1321.
+(pdftex.def)             Requested size: 191.19968pt x 125.84018pt.
+
 
 [74
 
-]
+ <./E4_C_Q5.png (PNG copy)> <./E4_C_Q6.png (PNG copy)>]
 
 [75
 
 ]
-<E5_1_Q2.png, id=435, 491.436pt x 289.5618pt>
-File: E5_1_Q2.png Graphic file (type png)
-<use E5_1_Q2.png>
-Package pdftex.def Info: E5_1_Q2.png  used on input line 1346.
-(pdftex.def)             Requested size: 179.24892pt x 105.61627pt.
-
 
 [76
 
- <./E5_1_Q2.png (PNG copy)>]
-<E5_1_Q3.png, id=441, 489.027pt x 289.5618pt>
-File: E5_1_Q3.png Graphic file (type png)
-<use E5_1_Q3.png>
-Package pdftex.def Info: E5_1_Q3.png  used on input line 1371.
-(pdftex.def)             Requested size: 179.25075pt x 106.13763pt.
+]
+<E5_1_Q2.png, id=442, 491.436pt x 289.5618pt>
+File: E5_1_Q2.png Graphic file (type png)
+<use E5_1_Q2.png>
+Package pdftex.def Info: E5_1_Q2.png  used on input line 1368.
+(pdftex.def)             Requested size: 179.24892pt x 105.61627pt.
 
 
 [77
 
- <./E5_1_Q3.png (PNG copy)>]
-<E5_1_Q5.png, id=447, 491.436pt x 288.5982pt>
-File: E5_1_Q5.png Graphic file (type png)
-<use E5_1_Q5.png>
-Package pdftex.def Info: E5_1_Q5.png  used on input line 1391.
-(pdftex.def)             Requested size: 179.24892pt x 105.2648pt.
+ <./E5_1_Q2.png (PNG copy)>]
+<E5_1_Q3.png, id=448, 489.027pt x 289.5618pt>
+File: E5_1_Q3.png Graphic file (type png)
+<use E5_1_Q3.png>
+Package pdftex.def Info: E5_1_Q3.png  used on input line 1393.
+(pdftex.def)             Requested size: 179.25075pt x 106.13763pt.
 
 
 [78
 
- <./E5_1_Q5.png (PNG copy)>]
+ <./E5_1_Q3.png (PNG copy)>]
+<E5_1_Q5.png, id=454, 491.436pt x 288.5982pt>
+File: E5_1_Q5.png Graphic file (type png)
+<use E5_1_Q5.png>
+Package pdftex.def Info: E5_1_Q5.png  used on input line 1413.
+(pdftex.def)             Requested size: 179.24892pt x 105.2648pt.
+
 
 [79
 
-]
+ <./E5_1_Q5.png (PNG copy)>]
 
 [80
 
@@ -1601,24 +1612,30 @@ Package pdftex.def Info: E5_1_Q5.png  used on input line 1391.
 [82
 
 ]
+<E6_LFSR_Q2.png, id=476, 2394.9475pt x 699.61375pt>
+File: E6_LFSR_Q2.png Graphic file (type png)
+<use E6_LFSR_Q2.png>
+Package pdftex.def Info: E6_LFSR_Q2.png  used on input line 1465.
+(pdftex.def)             Requested size: 326.62946pt x 95.41522pt.
+
 
 [83
 
-]
-<E6_Seq_Q3.png, id=479, 841.4637pt x 559.1289pt>
-File: E6_Seq_Q3.png Graphic file (type png)
-<use E6_Seq_Q3.png>
-Package pdftex.def Info: E6_Seq_Q3.png  used on input line 1466.
-(pdftex.def)             Requested size: 196.97362pt x 130.8834pt.
-
+ <./E6_LFSR_Q2.png>]
 
 [84
 
- <./E6_Seq_Q3.png (PNG copy)>]
+]
+<E6_Seq_Q3.png, id=489, 529.98pt x 360.3864pt>
+File: E6_Seq_Q3.png Graphic file (type png)
+<use E6_Seq_Q3.png>
+Package pdftex.def Info: E6_Seq_Q3.png  used on input line 1487.
+(pdftex.def)             Requested size: 192.4747pt x 130.8828pt.
+
 
 [85
 
-]
+ <./E6_Seq_Q3.png (PNG copy)>]
 
 [86
 
@@ -1631,74 +1648,78 @@ Package pdftex.def Info: E6_Seq_Q3.png  used on input line 1466.
 [88
 
 ]
-<E6_Runs_Q2.png, id=506, 843.6318pt x 555.9972pt>
-File: E6_Runs_Q2.png Graphic file (type png)
-<use E6_Runs_Q2.png>
-Package pdftex.def Info: E6_Runs_Q2.png  used on input line 1539.
-(pdftex.def)             Requested size: 198.5882pt x 130.87993pt.
-
 
 [89
 
- <./E6_Runs_Q2.png (PNG copy)>]
+]
+<E6_Runs_Q2.png, id=516, 532.1481pt x 357.7365pt>
+File: E6_Runs_Q2.png Graphic file (type png)
+<use E6_Runs_Q2.png>
+Package pdftex.def Info: E6_Runs_Q2.png  used on input line 1560.
+(pdftex.def)             Requested size: 194.69121pt x 130.88113pt.
+
 
 [90
 
-]
-<E6_Autocorr_Q1.png, id=518, 670.9065pt x 415.7934pt>
-File: E6_Autocorr_Q1.png Graphic file (type png)
-<use E6_Autocorr_Q1.png>
-Package pdftex.def Info: E6_Autocorr_Q1.png  used on input line 1560.
-(pdftex.def)             Requested size: 211.1831pt x 130.88043pt.
-
+ <./E6_Runs_Q2.png (PNG copy)>]
 
 [91
 
- <./E6_Autocorr_Q1.png (PNG copy)>]
+]
+<E6_Autocorr_Q1.png, id=529, 547.8066pt x 355.3275pt>
+File: E6_Autocorr_Q1.png Graphic file (type png)
+<use E6_Autocorr_Q1.png>
+Package pdftex.def Info: E6_Autocorr_Q1.png  used on input line 1581.
+(pdftex.def)             Requested size: 201.7825pt x 130.88354pt.
+
 
 [92
 
-]
-<E6_MPSL_Q5.png, id=531, 666.5703pt x 417.9615pt>
-File: E6_MPSL_Q5.png Graphic file (type png)
-<use E6_MPSL_Q5.png>
-Package pdftex.def Info: E6_MPSL_Q5.png  used on input line 1580.
-(pdftex.def)             Requested size: 208.72989pt x 130.8805pt.
-
+ <./E6_Autocorr_Q1.png (PNG copy)>]
 
 [93
 
- <./E6_MPSL_Q5.png (PNG copy)>]
+]
+<E6_MPSL_Q5.png, id=541, 542.025pt x 357.4956pt>
+File: E6_MPSL_Q5.png Graphic file (type png)
+<use E6_MPSL_Q5.png>
+Package pdftex.def Info: E6_MPSL_Q5.png  used on input line 1607.
+(pdftex.def)             Requested size: 163.92378pt x 108.11684pt.
+
 
 [94
 
-]
-<E6_Seed_Q4.png, id=542, 858.5676pt x 567.0786pt>
-File: E6_Seed_Q4.png Graphic file (type png)
-<use E6_Seed_Q4.png>
-Package pdftex.def Info: E6_Seed_Q4.png  used on input line 1600.
-(pdftex.def)             Requested size: 198.16072pt x 130.88393pt.
-
+ <./E6_MPSL_Q5.png (PNG copy)>]
 
 [95
 
- <./E6_Seed_Q4.png (PNG copy)>]
-<E6_Seed_Q5.png, id=548, 858.5676pt x 567.0786pt>
-File: E6_Seed_Q5.png Graphic file (type png)
-<use E6_Seed_Q5.png>
-Package pdftex.def Info: E6_Seed_Q5.png  used on input line 1609.
-(pdftex.def)             Requested size: 198.16072pt x 130.88393pt.
+]
+<E6_Seed_Q4.png, id=552, 546.3612pt x 368.8179pt>
+File: E6_Seed_Q4.png Graphic file (type png)
+<use E6_Seed_Q4.png>
+Package pdftex.def Info: E6_Seed_Q4.png  used on input line 1633.
+(pdftex.def)             Requested size: 160.1664pt x 108.11937pt.
 
 
 [96
 
- <./E6_Seed_Q5.png (PNG copy)>]
+ <./E6_Seed_Q4.png (PNG copy)>]
+<E6_Seed_Q5.png, id=558, 546.3612pt x 368.8179pt>
+File: E6_Seed_Q5.png Graphic file (type png)
+<use E6_Seed_Q5.png>
+Package pdftex.def Info: E6_Seed_Q5.png  used on input line 1648.
+(pdftex.def)             Requested size: 160.1664pt x 108.11937pt.
+
 
 [97
 
-]
+ <./E6_Seed_Q5.png (PNG copy)>]
 
 [98
+
+]
+
+[99
 
 ]
 \tf@nav=\write6
@@ -1720,10 +1741,10 @@ anged.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36527 strings out of 467874
- 849544 string characters out of 5430466
+ 36552 strings out of 467874
+ 849991 string characters out of 5430466
  1391703 words of memory out of 5000000
- 64527 multiletter control sequences out of 15000+600000
+ 64550 multiletter control sequences out of 15000+600000
  728532 words of font info for 106 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,751b,706s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1745,9 +1766,9 @@ e1/public/lm/lmsy9.pfb><D:/Programmi/MikTeX/fonts/type1/public/lm/lmtt8.pfb><D:
 /Programmi/MikTeX/fonts/type1/public/lm/lmtt9.pfb><D:/Programmi/MikTeX/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb><D:/Programmi/MikTeX/fonts/type1/public/
 amsfonts/symbols/msbm10.pfb>
-Output written on assignment_1_presentation_01.pdf (98 pages, 3558345 bytes).
+Output written on assignment_1_presentation_01.pdf (99 pages, 4140374 bytes).
 PDF statistics:
- 724 PDF objects out of 1000 (max. 8388607)
- 197 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 735 PDF objects out of 1000 (max. 8388607)
+ 199 named destinations out of 1000 (max. 500000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
