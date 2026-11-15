@@ -76,6 +76,7 @@ ylabel('Codeword error probability P_W(E)');
 title(sprintf('P_W(E) for a (%d, %d) code with t = %d', n, k, t));
 legend('Code with correction', 'Location', 'southeast');
 axis tight;
+exportgraphics(gcf, 'E4_C_Q5.png', 'Resolution', 300);
 
 %% 4b
 
@@ -139,3 +140,4 @@ xlabel('Channel bit error probability (p)');
 ylabel('Word error probability P_W(E)');
 title('Monte Carlo vs Analytical Comparison for P_W(E)');
 legend('Location', 'southeast');
+exportgraphics(gcf, 'E4_C_Q6.png', 'Resolution', 300);

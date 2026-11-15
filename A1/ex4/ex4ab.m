@@ -73,6 +73,7 @@ ylabel('Codeword error probability P_W(E)');
 title(sprintf('Theoretical P_W(E) for a (%d, %d) perfect code (t = %d)', n, k, t));
 legend('Theoretical P_W(E)', 'Location', 'southeast');
 axis('tight');
+exportgraphics(gcf, 'E4_A_Q3.png', 'Resolution', 300);
 
 %% 4b
 
@@ -136,3 +137,4 @@ xlabel('Channel bit error probability (p)');
 ylabel('Word error probability P_W(E)');
 title('Monte Carlo vs Analytical Comparison for P_W(E)');
 legend('Location', 'southeast');
+exportgraphics(gcf, 'E4_B_Q3.png', 'Resolution', 300);
