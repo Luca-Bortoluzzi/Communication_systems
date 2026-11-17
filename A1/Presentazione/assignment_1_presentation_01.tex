@@ -659,18 +659,23 @@
 
 % Slide 32
 \begin{frame}{Exercise 1 - Part 6}
-	\question{5. Use your result from Question 4 to support your discussion in Question 3.}
+	\question{5. Prove that the probability of an undetected error, conditioned on the receiver accepting a codeword, is independent of the maximum number of allowed transmission attempts $i$. Discuss the meaning of this result}
 	
-	\vspace{0.2cm}
-	\footnotesize
-	\begin{itemize}
-		\item The expected number of transmissions $E[N]_i = \frac{1 - p_2^i}{1 - p_2}$ directly quantifies the average transmission delay and channel usage, while $P(\text{COR}, i) = p_0 \frac{1 - p_2^i}{1 - p_2}$ quantifies reliability.
-		\item Both quantities scale with the same factor $\frac{1 - p_2^i}{1 - p_2}$: increasing $i$ reduces packet loss ($p_2^i$) and raises reliability, at the price of a higher average number of transmissions $E[N]_i$ (lower throughput and higher latency).
-		\item At low $p$ ($p_2 \ll 1$), higher-order terms $p_2^k$ vanish rapidly, so $E[N]_i \approx 1$ even for large $i$: we gain reliability with almost zero extra average delay.
-		\item At high $p$ ($p_2$ closer to $1$), increasing $i$ significantly boosts $E[N]_i$ toward $\frac{1}{1 - p_2}$, making the latency penalty substantial.
-	\end{itemize}
+\vspace{0.2cm}
+\footnotesize
+\begin{itemize}
+	\item A block is accepted by the receiver when $s = 0$, which includes both correct receptions ($\text{COR}$) and undetected errors ($\text{UE}$):
+	\[
+	P(\text{accepted}, i) = P(\text{COR}, i) + P(\text{UE}, i)
+	\]
+	\item Using the expressions derived previously, the conditional probability is:
+	\[
+	P(\text{UE} \mid \text{accepted}, i) = \frac{P(\text{UE}, i)}{P(\text{COR}, i) + P(\text{UE}, i)} = \frac{p_1 \frac{1 - p_2^i}{1 - p_2}}{(p_0 + p_1) \frac{1 - p_2^i}{1 - p_2}} = \frac{p_1}{p_0 + p_1}
+	\]
+	\item Since the factor $\frac{1 - p_2^i}{1 - p_2}$ cancels out, the result does not depend on $i$.
+	\item Allowing more retransmissions lowers the packet drop rate, but does not change the reliability of an accepted block: since every attempt is independent over the same BSC, the relative ratio between undetected errors and valid receptions stays constant.
+\end{itemize}
 \end{frame}
-
 % ==============================================================================
 % EXERCISE 2a & 2b: CRC (Slides 33-48)
 % ==============================================================================
@@ -1343,57 +1348,70 @@
   \vfill
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 2}
-	\question{2. Derive and plot the analytical codeword error probability $P_W(p)$ for $p \in [10^{-3}, 10^{-1}]$.}
+\begin{frame}{Exercise 5.1 }
+	\question{2. Write the analytical expression for the codeword error probability over a BSC}
+	\vspace{0.2cm}
+	\footnotesize
+	\begin{itemize}
+		\item Over a Binary Symmetric Channel (BSC) with bit error probability $p$, a bounded-distance decoder with radius $t = 1$ correctly decodes a codeword if and only if $0$ or $1$ bit error occurs out of $n = 63$ bits (since Hamming codes are perfect, the radius-$1$ Hamming spheres completely partition $\{0,1\}^{63}$).
+		\item The probability of correct decoding is:
+		\[
+		P_c(p) = (1 - p)^{63} + \binom{63}{1} p (1 - p)^{62} = (1 - p)^{63} + 63 p (1 - p)^{62}
+		\]
+		\item The analytical codeword error probability $P_w(p)$ is:
+		\[
+		P_w(p) = 1 - P_c(p) = 1 - (1 - p)^{63} - 63 p (1 - p)^{62}
+		\]
+	\end{itemize}
+	\end{frame}
+
+\begin{frame}{Exercise 5.1}
+	\question{3. Plot the analytical performance curve as a function of the channel bit error $p$}
 	
 	\vspace{0.15cm}
-	\begin{columns}[c]
-		\begin{column}{0.52\textwidth}
-			\footnotesize
-			\begin{itemize}
-				\item The $(63, 57)$ binary Hamming code has $d_{\min} = 3$, so it corrects up to $t = \lfloor (d_{\min}-1)/2 \rfloor = 1$ bit error per codeword.
-				\item A codeword error occurs whenever 2 or more bit errors happen over $n = 63$ bits:
-				\[
-				P_W(p) = 1 - (1-p)^{63} - 63\,p(1-p)^{62}
-				\]
-				\item For small $p$ ($p \approx 10^{-3}$), $P_W(p) \approx \binom{63}{2} p^2 = 1953\,p^2 \approx 1.95 \times 10^{-3}$.
-				\item As $p$ approaches $10^{-1}$, multiple errors become dominant and $P_W(p)$ rises steeply toward $1$ ($P_W(0.1) \approx 0.99$).
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q2.png}
-		\end{column}
-	\end{columns}
+\begin{columns}[c]
+	\begin{column}{0.52\textwidth}
+		\footnotesize
+		\begin{itemize}
+			\item The curve shows the theoretical codeword error probability $P_W(p) = 1 - (1-p)^{63} - 63p(1-p)^{62}$ over a BSC for $p \in [10^{-3}, 10^{-1}]$.
+			\item At low crossover probabilities ($p \approx 10^{-3}$), double-bit errors dominate and the curve follows a linear slope of $2$ on log-log axes ($P_W(p) \approx \binom{63}{2}p^2 = 1953\,p^2$).
+			\item As $p$ increases toward $10^{-1}$, multi-bit error patterns ($w \ge 3$) become frequent and $P_W(p)$ saturates toward $1$ ($P_W(0.1) \approx 0.99$).
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q3.png}
+	\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 3}
-	\question{3. Simulate the bounded-distance decoder over the BSC for 8 values of $p \in [10^{-3}, 10^{-1}]$ (stopping at 100 codeword errors per point) and plot the estimated $\hat{P}_W(p)$.}
+\begin{frame}{Exercise 5.1 }
+	\question{5. Plot the simulated codeword error probability of the implemented decoder}
 	
-	\vspace{0.15cm}
-	\begin{columns}[c]
-		\begin{column}{0.52\textwidth}
-			\footnotesize
+	\vspace{0.2cm}
+\begin{columns}[c]
+	\begin{column}{0.52\textwidth}
+		\footnotesize
+		\begin{itemize}
+			\item For each of the 8 logarithmically spaced values of $p$, random codewords $c = uG \bmod 2$ are transmitted over a BSC until 100 decoding errors occur.
+			\item At the receiver, the syndrome $s = yH^T \bmod 2$ is computed:
 			\begin{itemize}
-				\item For each of the 8 logarithmically spaced values of $p$, random codewords $c = uG \bmod 2$ are transmitted over a BSC until 100 decoding errors occur.
-				\item At the receiver, the syndrome $s = yH^T \bmod 2$ is computed:
-				\begin{itemize}
-					\item if $s = 0$, no error is assumed;
-					\item if $s \neq 0$, the bit corresponding to the matching column of $H$ is flipped.
-				\end{itemize}
-				\item A codeword error is counted whenever $\hat{c} \neq c$, yielding the Monte Carlo estimate $\hat{P}_W(p) = 100 / N_{\text{words}}$.
-				\item Stopping at 100 errors ensures a consistent relative confidence interval across all simulated points, even at low $p$.
+				\item if $s = 0$, no error is assumed;
+				\item if $s \neq 0$, the bit corresponding to the matching column of $H$ is flipped.
 			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q3.png}
-		\end{column}
-	\end{columns}
+			\item A codeword error is counted whenever $\hat{c} \neq c$, yielding the Monte Carlo estimate $\hat{P}_W(p) = 100 / N_{\text{words}}$.
+			\item Stopping at 100 errors keeps the relative confidence interval constant across all points, even at low $p$, and the resulting curve closely tracks the theoretical behavior.
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q5.png}
+	\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 5}
-	\question{5. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder for this code.}
+\begin{frame}{Exercise 5.1}
+	\question{7. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder for this code.}
 	
 	\vspace{0.15cm}
 	\begin{columns}[c]
@@ -1407,21 +1425,12 @@
 		\end{column}
 		\begin{column}{0.45\textwidth}
 			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q5.png}
+			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q6.png}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 7}
-	\question{7. Discuss how changing $(n, k)$ affects error-correction capability and code rate, and whether any $(n, k)$ pair can be chosen for a binary Hamming code.}
-	
-	\vspace{0.2cm}
-	\begin{itemize}
-		\item No: a binary Hamming code cannot have an arbitrary $(n, k)$ pair. Its parameters are strictly constrained to $(n, k) = (2^r - 1,\, 2^r - 1 - r)$ for an integer $r \ge 3$.
-		\item Every binary Hamming code has $d_{\min} = 3$, meaning its error-correction capability is always fixed at $t = 1$ bit error per codeword regardless of $r$ (to achieve $t > 1$, other code families such as BCH codes are required).
-		\item Increasing $r$ raises the code rate $R = k/n = 1 - \frac{r}{2^r - 1}$ (less redundancy overhead), but since $t = 1$ remains fixed over a longer block $n$, multiple errors become more likely and $P_W(p) \approx \binom{n}{2}p^2$ degrades.
-	\end{itemize}
-\end{frame}
+
 
 % ==============================================================================
 % EXERCISE 6: Properties of m-sequences
