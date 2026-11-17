@@ -314,7 +314,7 @@
 
 % Slide 14
 \begin{frame}{Exercise 1 - Part 3}
-	\question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+	\question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (1/2)}
 	
 	\vspace{0.1cm}
 	\begin{itemize}
@@ -327,7 +327,7 @@
 			\end{aligned}
 			\]
 		}
-		\item Adding two columns is an elementary operation that keeps the columns linearly independent and preserves the rank of $H^T$, so the vectors giving a zero syndrome remain the exact same codewords.
+		\item Adding two columns is an operation that keeps the columns linearly independent and preserves the rank of $H^T$, so the vectors giving a zero syndrome remain the exact same codewords.
 	\end{itemize}
 	{\footnotesize
 		\renewcommand{\arraystretch}{0.84}
@@ -350,7 +350,7 @@
 
 % Slide 15
 \begin{frame}{Exercise 1 - Part 3}
-  \question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+  \question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (2/2)}
 
   \vspace{0.2cm}
   \begin{itemize}
@@ -377,7 +377,7 @@
 
 % Slide 16
 \begin{frame}{Exercise 1 - Part 3}
-	\question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+	\question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (1/2)}
 	
 	\vspace{0.1cm}
 	\begin{itemize}
@@ -408,7 +408,7 @@
 
 % Slide 17
 \begin{frame}{Exercise 1 - Part 3}
-  \question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+  \question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (2/2)}
 
   \vspace{0.2cm}
   \begin{itemize}
@@ -476,7 +476,7 @@
 
 % Slide 21
 \begin{frame}{Exercise 1 - Part 4}
-  \question{3. Compare the results, discussing statistical fluctuations, agreement with the analytical curve, and the trade-off between simulation accuracy and computational time.}
+  \question{3. Compare the results, discussing statistical fluctuations, agreement with the analytical curve, and the trade-off between simulation accuracy and computational time. (1/2)}
 
   \vspace{0.25cm}
   \begin{itemize}
@@ -489,7 +489,7 @@
 
 % Slide 22
 \begin{frame}{Exercise 1 - Part 4}
-	\question{3. Explain the advantages of having an analytical expression for $P_{UE}$.}
+	\question{3. Explain the advantages of having an analytical expression for $P_{UE}$. (2/2)}
 	
 	\vspace{0.18cm}
 	\begin{itemize}
@@ -566,11 +566,17 @@
 
 % Slide 26
 \begin{frame}{Exercise 1 - Part 5}
-  \question{3. Plot $1 - P(\text{COR}, i)$ versus $p$ over $10^{-2} \le p \le 10^{-1}$ for $i = 1, 2, 3$ on the same figure}
-
-  \vspace{0.15cm}
-  \centering
-  \includegraphics[width=0.82\textwidth, height=4.8cm, keepaspectratio]{E1_P5_Q3.png}
+	\question{3. Plot $1 - P(\text{COR}, i)$ versus $p$ over $10^{-2} \le p \le 10^{-1}$ for $i = 1, 2, 3$ on the same figure}
+	
+	\vspace{0.1cm}
+	\centering
+	\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E1_P5_Q3.png}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item Allowing more ARQ retransmissions ($i = 1 \to 2 \to 3$) significantly lowers the delivery failure probability $1 - P(\text{COR}, i)$, with the curve slope steepening as $\mathcal{O}(p^i)$ for small $p$.
+	\end{itemize}
 \end{frame}
 
 % Slides 27-32: Exercise 1 - Part 6 (Discussion on ARQ)
@@ -594,7 +600,7 @@
 		P(\text{COR}, i) = \sum_{k=1}^{i} p_2^{k-1} p_0 = p_0 \frac{1 - p_2^i}{1 - p_2}
 		\]
 		\item Whenever a block is rejected (with probability $p_2 < 1$), the transmitter gets another chance to send it correctly, adding a positive term $p_2^i p_0 > 0$.
-		\item As $i$ grows, $P(\text{COR}, i)$ approaches its maximum limit $\frac{p_0}{p_0 + p_1}$ (meaning the failure curve $1 - P(\text{COR}, i)$ shifts downward, as seen in the previous plot).
+		\item As $i$ grows, $P(\text{COR}, i)$ approaches its maximum limit $\frac{p_0}{p_0 + p_1}$
 	\end{itemize}
 \end{frame}
 
@@ -653,18 +659,23 @@
 
 % Slide 32
 \begin{frame}{Exercise 1 - Part 6}
-	\question{5. Use your result from Question 4 to support your discussion in Question 3.}
+	\question{5. Prove that the probability of an undetected error, conditioned on the receiver accepting a codeword, is independent of the maximum number of allowed transmission attempts $i$. Discuss the meaning of this result}
 	
-	\vspace{0.2cm}
-	\footnotesize
-	\begin{itemize}
-		\item The expected number of transmissions $E[N]_i = \frac{1 - p_2^i}{1 - p_2}$ directly quantifies the average transmission delay and channel usage, while $P(\text{COR}, i) = p_0 \frac{1 - p_2^i}{1 - p_2}$ quantifies reliability.
-		\item Both quantities scale with the same factor $\frac{1 - p_2^i}{1 - p_2}$: increasing $i$ reduces packet loss ($p_2^i$) and raises reliability, at the price of a higher average number of transmissions $E[N]_i$ (lower throughput and higher latency).
-		\item At low $p$ ($p_2 \ll 1$), higher-order terms $p_2^k$ vanish rapidly, so $E[N]_i \approx 1$ even for large $i$: we gain reliability with almost zero extra average delay.
-		\item At high $p$ ($p_2$ closer to $1$), increasing $i$ significantly boosts $E[N]_i$ toward $\frac{1}{1 - p_2}$, making the latency penalty substantial.
-	\end{itemize}
+\vspace{0.2cm}
+\footnotesize
+\begin{itemize}
+	\item A block is accepted by the receiver when $s = 0$, which includes both correct receptions ($\text{COR}$) and undetected errors ($\text{UE}$):
+	\[
+	P(\text{accepted}, i) = P(\text{COR}, i) + P(\text{UE}, i)
+	\]
+	\item The conditional probability is:
+	\[
+	P(\text{UE} \mid \text{accepted}, i) = \frac{P(\text{UE}, i)}{P(\text{COR}, i) + P(\text{UE}, i)} = \frac{p_1 \frac{1 - p_2^i}{1 - p_2}}{(p_0 + p_1) \frac{1 - p_2^i}{1 - p_2}} = \frac{p_1}{p_0 + p_1}
+	\]
+	\item Since the factor $\frac{1 - p_2^i}{1 - p_2}$ cancels out, the result does not depend on $i$.
+	\item Allowing more retransmissions lowers the packet drop rate, but does not change the reliability of an accepted block: since every attempt is independent over the same BSC, the relative ratio between undetected errors and valid receptions stays constant.
+\end{itemize}
 \end{frame}
-
 % ==============================================================================
 % EXERCISE 2a & 2b: CRC (Slides 33-48)
 % ==============================================================================
@@ -759,7 +770,7 @@
   \vspace{0.25cm}
   \begin{itemize}
     \item The code has a minimum Hamming distance of $d_{\min} = 4$, which guarantees the detection of up to 3 bit errors and the correction of a single-bit error.
-    \item Another important property is that all codewords have an even Hamming weight ($w_H \in \{0, 4, 6\}$). This is ensured by the presence of the factor $(D+1)$ in the generator polynomial, which forces every codeword to contain an even number of ones.
+    \item Another important property is that all codewords have an even Hamming weight ($w_H \in \{0, 4, 6, ...\}$). This is ensured by the presence of the factor $(D+1)$ in the generator polynomial, which forces every codeword to contain an even number of ones.
     \item As a result, the code can detect any channel error involving an odd number of bit flips, since such errors change the parity of the received word, making it immediately recognizable as an invalid codeword.
   \end{itemize}
 \end{frame}
@@ -799,7 +810,7 @@
     \item Being a primitive polynomial of degree 3, $p(D)$ has order: $N = 2^3 - 1 = 7$.
     \item Therefore, the smallest possible distance is $L = 7$. The corresponding minimum codeword is: $c(D) = D^7 + 1$.
     \item Its degree is 7, requiring a codeword length of at least $n = 8$. Since $n = k + r$, with $r = 4$: $k + 4 \ge 8 \implies k \ge 4$.
-    \item \textbf{Conclusion:} Weight-2 codewords first appear at $k = 4$, because this is the minimum information length that allows two non-zero bits separated by 7 positions.
+    \item Weight-2 codewords first appear at $k = 4$, because this is the minimum information length that allows two non-zero bits separated by 7 positions.
   \end{itemize}
 \end{frame}
 
@@ -937,8 +948,8 @@
       \begin{aligned}
         D(c) &= \{ y \in \mathbb{F}_2^n : d_H(y, c) \le d_H(y, c'), \; \forall c' \in C \} \\
              &= \{ c + e \in \mathbb{F}_2^n : d_H(c + e + c, c + c) \le d_H(c + e + c, c' + c), \; \forall c' \in C \} \\
-             &= \{ c + e \in \mathbb{F}_2^n : d_H(e, 0) \le d_H(e, c''), \; \forall c'' \in C \} \\
-             &= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c'' \in C \}
+             &= \{ c + e \in \mathbb{F}_2^n : d_H(e, 0) \le d_H(e, c''), \; \forall c' \in C \} \\
+             &= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c' \in C \}
       \end{aligned}
     \]
   \end{itemize}
@@ -964,6 +975,15 @@
     \[
       D(c) = \{ c + e_0, c + e_1, \dots, c + e_{N-1} \} = \{ e_0, e_1, \dots, e_{N-1} \} + c = D(0) + c = c + D(0)
     \]
+     \item We can therefore write:
+     \[
+     \begin{aligned}
+     	D(0) + c
+     	&= \{ e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c'), \; \forall c' \in C \} + c \\
+     	&= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c' \in C \} \\
+     	&= D(c).
+     \end{aligned}
+     \]
   \end{itemize}
 \end{frame}
 
@@ -1006,7 +1026,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{5. Write all the decision regions $D(c)$}
+  \question{5. Write all the decision regions $D(c)$ (1/2)}
 
   \vspace{0.15cm}
   \footnotesize
@@ -1023,7 +1043,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{5. Write all the decision regions $D(c)$}
+  \question{5. Write all the decision regions $D(c)$ (2/2)}
 
   \vspace{0.25cm}
   \begin{itemize}
@@ -1038,17 +1058,79 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (1/3)}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Verification Logic implemented in MATLAB:
+		\begin{itemize}
+			\item Extract the reference region $D_0$ corresponding to $c_1 = 0\ 0\ 0\ 0\ 0\ 0$
+			\item Compute the shifted set $D_C = c_i \oplus D_0 \bmod 2$
+			\item Compare sorted sets with the command: \texttt{isequal(sortrows(y\_region), sortrows(D\_C))} $\rightarrow$ Rule Verified for all $i \in \{1, \dots, 8\}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
-  \vspace{0.25cm}
-  \begin{itemize}
-    \item Verification Logic implemented in MATLAB:
-    \begin{itemize}
-      \item Extract the reference region $D_0$ corresponding to $c_1 = 0\ 0\ 0\ 0\ 0\ 0$
-      \item Compute the shifted set $D_C = c_i \oplus D_0 \bmod 2$
-      \item Compare sorted sets with the command: \texttt{isequal(sortrows(y\_region), sortrows(D\_C))} $\rightarrow$ Rule Verified for all $i \in \{1, \dots, 8\}$
-    \end{itemize}
-  \end{itemize}
+% --- SLIDE 2/3: Tabella di verifica c1 - c4 ---
+\begin{frame}{Exercise 3b}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (2/3)}
+	
+	\vspace{0.15cm}
+	\begin{table}
+		\centering
+		\scriptsize
+		\renewcommand{\arraystretch}{1.15}
+		\begin{tabular}{c | c c c c}
+			\toprule
+			\textbf{$D(0) = D(c_1)$} & \textbf{$c_1 \oplus D(0)$} & \textbf{$c_2 \oplus D(0)$} & \textbf{$c_3 \oplus D(0)$} & \textbf{$c_4 \oplus D(0)$} \\
+			($c_1 = \mathbf{000000}$) & ($c_1 = \mathbf{000000}$) & ($c_2 = \mathbf{111110}$) & ($c_3 = \mathbf{011011}$) & ($c_4 = \mathbf{100101}$) \\
+			\midrule
+			\textbf{000000} & \textbf{000000} & \textbf{111110} & \textbf{011011} & \textbf{100101} \\
+			000001 & 000001 & 111111 & 011010 & 100100 \\
+			000010 & 000010 & 111100 & 011001 & 100111 \\
+			000100 & 000100 & 111010 & 011111 & 100001 \\
+			001000 & 001000 & 110110 & 010011 & 101101 \\
+			100000 & 100000 & 011110 & 111011 & 000101 \\
+			000110 & 000110 & 111000 & 011101 & 100011 \\
+			001100 & 001100 & 110010 & 010111 & 101001 \\
+			100010 & 100010 & 011100 & 111001 & 000111 \\
+			101000 & 101000 & 010110 & 110011 & 001101 \\
+			\midrule
+			\textbf{Result} & $= D(c_1)$ \checkmark & $= D(c_2)$ \checkmark & $= D(c_3)$ \checkmark & $= D(c_4)$ \checkmark \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+% --- SLIDE 3/3: Tabella di verifica c5 - c8 ---
+\begin{frame}{Exercise 3b}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (3/3)}
+	
+	\vspace{0.15cm}
+	\begin{table}
+		\centering
+		\scriptsize
+		\renewcommand{\arraystretch}{1.15}
+		\begin{tabular}{c | c c c c}
+			\toprule
+			\textbf{$D(0) = D(c_1)$} & \textbf{$c_5 \oplus D(0)$} & \textbf{$c_6 \oplus D(0)$} & \textbf{$c_7 \oplus D(0)$} & \textbf{$c_8 \oplus D(0)$} \\
+			($c_1 = \mathbf{000000}$) & ($c_5 = \mathbf{110101}$) & ($c_6 = \mathbf{001011}$) & ($c_7 = \mathbf{101110}$) & ($c_8 = \mathbf{010000}$) \\
+			\midrule
+			\textbf{000000} & \textbf{110101} & \textbf{001011} & \textbf{101110} & \textbf{010000} \\
+			000001 & 110100 & 001010 & 101111 & 010001 \\
+			000010 & 110111 & 001001 & 101100 & 010010 \\
+			000100 & 110001 & 001111 & 101010 & 010100 \\
+			001000 & 111101 & 000011 & 100110 & 011000 \\
+			100000 & 010101 & 101011 & 001110 & 110000 \\
+			000110 & 110011 & 001101 & 101000 & 010110 \\
+			001100 & 111001 & 000111 & 100010 & 011100 \\
+			100010 & 010111 & 101001 & 001100 & 110010 \\
+			101000 & 011101 & 100011 & 000110 & 111000 \\
+			\midrule
+			\textbf{Result} & $= D(c_5)$ \checkmark & $= D(c_6)$ \checkmark & $= D(c_7)$ \checkmark & $= D(c_8)$ \checkmark \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 \end{frame}
 
 \begin{frame}[plain]
@@ -1097,7 +1179,7 @@
 
   \vspace{0.25cm}
   \begin{itemize}
-    \item \textbf{Verification of $D(c) = c + D(0)$ for the Non-Linear Code}
+    \item Verification of $D(c) = c + D(0)$ for the Non-Linear Code
     \item Counterexample ($c_2 = 0\ 0\ 1\ 0$):
     \begin{itemize}
       \item $c_2 \oplus D_0$ (6 vectors): $\{0010, 0011, 0110, 0111, 1010, 1011\}$
@@ -1192,7 +1274,7 @@
 
   \vspace{0.1cm}
   \centering
-  \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{A1_E4a.png}
+  \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{E4_A_Q3.png}
 \end{frame}
 
 \begin{frame}[plain]
@@ -1225,7 +1307,7 @@
 
   \vspace{0.1cm}
   \begin{center}
-    \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{A1_E4b.png}
+    \includegraphics[width=0.72\textwidth, height=4.5cm, keepaspectratio]{E4_B_Q3.png}
   \end{center}
 \end{frame}
 
@@ -1299,14 +1381,30 @@
 \end{frame}
 
 \begin{frame}{Exercise 4c}
-  \question{5. Compare the results obtained for the two codes and comment on any differences.}
+	\question{5. Compare the results obtained for the two codes and comment on any differences. (1/2)}
+	
+	\vspace{0.2cm}
+	\begin{columns}[T]
+		\begin{column}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.5cm, keepaspectratio]{E4_C_Q5.png}
+		\end{column}
+		\begin{column}{0.48\textwidth}
+			\centering
+			\includegraphics[width=\textwidth, height=4.5cm, keepaspectratio]{E4_C_Q6.png}
+		\end{column}
+	\end{columns}
+\end{frame}
 
-  \vspace{0.25cm}
-  \begin{itemize}
-    \item Both codes have $k = 4$, $d_{\min} = 3$, and $t = 1$, but the $(8,4)$ code uses an extra parity bit ($n = 8$ instead of $n = 7$), lowering the code rate from $R = 4/7 \approx 0.57$ to $R = 4/8 = 0.5$.
-    \item Since $n$ is larger while $t = 1$ stays the same, there are more double-bit error combinations ($\binom{8}{2} = 28$ vs. $\binom{7}{2} = 21$), so the $(8,4)$ code has a slightly higher word error probability ($P_W(E) \approx 28p^2$ vs. $\approx 21p^2$ for small $p$).
-    \item Unlike the Hamming $(7,4)$ code, which is perfect ($16 \times 8 = 128 = 2^7$), the $(8,4)$ code is not perfect ($16 \times 9 = 144 < 256$), leaving $112$ vectors outside the Hamming spheres of radius $1$.
-  \end{itemize}
+\begin{frame}{Exercise 4c}
+	\question{5. Compare the results obtained for the two codes and comment on any differences. (2/2)}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Both codes share $k = 4$, $d_{\min} = 3$, and $t = 1$, but the extra parity bit in $(8,4)$ lowers the code rate from $R = 4/7 \approx 0.57$ to $R = 4/8 = 0.5$.
+		\item With $t = 1$ unchanged, a larger $n$ increases double-error combinations ($\binom{8}{2} = 28$ vs. $\binom{7}{2} = 21$), yielding a slightly higher $P_W(E)$ ($\approx 28p^2$ vs. $\approx 21p^2$ for small $p$).
+		\item Hamming $(7,4)$ is a perfect code ($16 \times 8 = 2^7$), whereas $(8,4)$ is non-perfect ($16 \times 9 = 144 < 2^8$), leaving $112$ vectors outside the radius-$1$ spheres.
+	\end{itemize}
 \end{frame}
 
 % ==============================================================================
@@ -1321,57 +1419,70 @@
   \vfill
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 2}
-	\question{2. Derive and plot the analytical codeword error probability $P_W(p)$ for $p \in [10^{-3}, 10^{-1}]$.}
+\begin{frame}{Exercise 5.1 }
+	\question{2. Write the analytical expression for the codeword error probability over a BSC}
+	\vspace{0.2cm}
+	\footnotesize
+	\begin{itemize}
+		\item Over a Binary Symmetric Channel (BSC) with bit error probability $p$, a bounded-distance decoder with radius $t = 1$ correctly decodes a codeword if and only if $0$ or $1$ bit error occurs out of $n = 63$ bits (since Hamming codes are perfect, the radius-$1$ Hamming spheres completely partition $\{0,1\}^{63}$).
+		\item The probability of correct decoding is:
+		\[
+		P_c(p) = (1 - p)^{63} + \binom{63}{1} p (1 - p)^{62} = (1 - p)^{63} + 63 p (1 - p)^{62}
+		\]
+		\item The analytical codeword error probability $P_w(p)$ is:
+		\[
+		P_w(p) = 1 - P_c(p) = 1 - (1 - p)^{63} - 63 p (1 - p)^{62}
+		\]
+	\end{itemize}
+	\end{frame}
+
+\begin{frame}{Exercise 5.1}
+	\question{3. Plot the analytical performance curve as a function of the channel bit error $p$}
 	
 	\vspace{0.15cm}
-	\begin{columns}[c]
-		\begin{column}{0.52\textwidth}
-			\footnotesize
-			\begin{itemize}
-				\item The $(63, 57)$ binary Hamming code has $d_{\min} = 3$, so it corrects up to $t = \lfloor (d_{\min}-1)/2 \rfloor = 1$ bit error per codeword.
-				\item A codeword error occurs whenever 2 or more bit errors happen over $n = 63$ bits:
-				\[
-				P_W(p) = 1 - (1-p)^{63} - 63\,p(1-p)^{62}
-				\]
-				\item For small $p$ ($p \approx 10^{-3}$), $P_W(p) \approx \binom{63}{2} p^2 = 1953\,p^2 \approx 1.95 \times 10^{-3}$.
-				\item As $p$ approaches $10^{-1}$, multiple errors become dominant and $P_W(p)$ rises steeply toward $1$ ($P_W(0.1) \approx 0.99$).
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q2.png}
-		\end{column}
-	\end{columns}
+\begin{columns}[c]
+	\begin{column}{0.52\textwidth}
+		\footnotesize
+		\begin{itemize}
+			\item The curve shows the theoretical codeword error probability $P_W(p) = 1 - (1-p)^{63} - 63p(1-p)^{62}$ over a BSC for $p \in [10^{-3}, 10^{-1}]$.
+			\item At low crossover probabilities ($p \approx 10^{-3}$), double-bit errors dominate and the curve follows a linear slope of $2$ on log-log axes ($P_W(p) \approx \binom{63}{2}p^2 = 1953\,p^2$).
+			\item As $p$ increases toward $10^{-1}$, multi-bit error patterns ($w \ge 3$) become frequent and $P_W(p)$ saturates toward $1$ ($P_W(0.1) \approx 0.99$).
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q3.png}
+	\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 3}
-	\question{3. Simulate the bounded-distance decoder over the BSC for 8 values of $p \in [10^{-3}, 10^{-1}]$ (stopping at 100 codeword errors per point) and plot the estimated $\hat{P}_W(p)$.}
+\begin{frame}{Exercise 5.1 }
+	\question{5. Plot the simulated codeword error probability of the implemented decoder}
 	
-	\vspace{0.15cm}
-	\begin{columns}[c]
-		\begin{column}{0.52\textwidth}
-			\footnotesize
+	\vspace{0.2cm}
+\begin{columns}[c]
+	\begin{column}{0.52\textwidth}
+		\footnotesize
+		\begin{itemize}
+			\item For each of the 8 logarithmically spaced values of $p$, random codewords $c = uG \bmod 2$ are transmitted over a BSC until 100 decoding errors occur.
+			\item At the receiver, the syndrome $s = yH^T \bmod 2$ is computed:
 			\begin{itemize}
-				\item For each of the 8 logarithmically spaced values of $p$, random codewords $c = uG \bmod 2$ are transmitted over a BSC until 100 decoding errors occur.
-				\item At the receiver, the syndrome $s = yH^T \bmod 2$ is computed:
-				\begin{itemize}
-					\item if $s = 0$, no error is assumed;
-					\item if $s \neq 0$, the bit corresponding to the matching column of $H$ is flipped.
-				\end{itemize}
-				\item A codeword error is counted whenever $\hat{c} \neq c$, yielding the Monte Carlo estimate $\hat{P}_W(p) = 100 / N_{\text{words}}$.
-				\item Stopping at 100 errors ensures a consistent relative confidence interval across all simulated points, even at low $p$.
+				\item if $s = 0$, no error is assumed;
+				\item if $s \neq 0$, the bit corresponding to the matching column of $H$ is flipped.
 			\end{itemize}
-		\end{column}
-		\begin{column}{0.45\textwidth}
-			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q3.png}
-		\end{column}
-	\end{columns}
+			\item A codeword error is counted whenever $\hat{c} \neq c$, yielding the Monte Carlo estimate $\hat{P}_W(p) = 100 / N_{\text{words}}$.
+			\item Stopping at 100 errors keeps the relative confidence interval constant across all points, even at low $p$, and the resulting curve closely tracks the theoretical behavior.
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q5.png}
+	\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 5}
-	\question{5. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder for this code.}
+\begin{frame}{Exercise 5.1}
+	\question{7. Compare the performance of the bounded-distance decoder with that of a complete minimum-distance decoder for this code.}
 	
 	\vspace{0.15cm}
 	\begin{columns}[c]
@@ -1385,21 +1496,12 @@
 		\end{column}
 		\begin{column}{0.45\textwidth}
 			\centering
-			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q5.png}
+			\includegraphics[width=\textwidth, height=4.4cm, keepaspectratio]{E5_1_Q6.png}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Exercise 5.1 - Question 7}
-	\question{7. Discuss how changing $(n, k)$ affects error-correction capability and code rate, and whether any $(n, k)$ pair can be chosen for a binary Hamming code.}
-	
-	\vspace{0.2cm}
-	\begin{itemize}
-		\item No: a binary Hamming code cannot have an arbitrary $(n, k)$ pair. Its parameters are strictly constrained to $(n, k) = (2^r - 1,\, 2^r - 1 - r)$ for an integer $r \ge 3$.
-		\item Every binary Hamming code has $d_{\min} = 3$, meaning its error-correction capability is always fixed at $t = 1$ bit error per codeword regardless of $r$ (to achieve $t > 1$, other code families such as BCH codes are required).
-		\item Increasing $r$ raises the code rate $R = k/n = 1 - \frac{r}{2^r - 1}$ (less redundancy overhead), but since $t = 1$ remains fixed over a longer block $n$, multiple errors become more likely and $P_W(p) \approx \binom{n}{2}p^2$ degrades.
-	\end{itemize}
-\end{frame}
+
 
 % ==============================================================================
 % EXERCISE 6: Properties of m-sequences
@@ -1413,64 +1515,227 @@
   \vfill
 \end{frame}
 
-\begin{frame}{Exercise 6 - Sequence}
-  \question{1. Choose a random seed and write it.}
+\begin{frame}{Exercise 6 - Properties of m-sequences}
+	\question{1. Choose and write down a primitive polynomial.}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item For an LFSR of length $m = 10$ flip-flops, the chosen primitive generator polynomial over $GF(2)$ is:
+		\[
+		P(x) = x^{10} + x^7 + 1
+		\]
+		\item Since $P(x)$ is primitive of degree $10$, the shift register generates a maximum-length sequence (m-sequence) of period:
+		\[
+		N = 2^{10} - 1 = 1023 \text{ bits}
+		\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercise 6 - Properties of m-sequences}
+	\question{2. Draw the LFSR.}
+	
+	\vspace{0.15cm}
+	\begin{center}
+		\includegraphics[width=0.82\textwidth, height=4.2cm, keepaspectratio]{E6_LFSR_Q2.png}
+		
+		\vspace{0.2cm}
+		\small
+		\textcolor{SlateNeutral}{LFSR corresponding to $P(x) = x^{10} + x^7 + 1$ with $m = 10$ cells and feedback $Q_1 = Q_7 \oplus Q_{10}$.}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Sequence}
-  \question{3. Plot the first 20 bits of the bipolar sequence ($0 \to -1$ and $1 \to +1$)}
+	\question{1. Choose a random seed and write it.}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item For $m = 10$ register cells, any non-zero binary vector is a valid initial state (the all-zero state must be avoided since it locks the LFSR into outputting only zeros).
+		\item The chosen initial seed is:
+		\[
+		\text{seed}_1 = [1\; 1\; 1\; 1\; 1\; 0\; 0\; 0\; 0\; 0]
+		\]
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Sequence}
-  \question{3. Comment the result.}
+	\question{3. Plot the first 20 bits of the bipolar sequence ($0 \to -1$ and $1 \to +1$)}
+	
+	\vspace{0.15cm}
+	\begin{center}
+		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_Seq_Q3.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Exercise 6 - Sequence}
+	\question{4. Comment the result.}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Using the primitive polynomial $P(x) = x^{10} + x^7 + 1$ and the seed $[1\,1\,1\,1\,1\,0\,0\,0\,0\,0]$, the LFSR generates a full $m$-sequence of period $N = 2^{10} - 1 = 1023$ bits.
+		\item Mapped to bipolar levels ($0 \to -1$, $1 \to +1$), the first 20 bits exhibit pseudo-random transitions between $-1$ and $+1$ despite being generated by a deterministic linear recurrence.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Number of zero/ones, number of transitions}
-  \question{1. Write a table with $N_1$ and $N_0$ (number of bits equal to 1 and 0), $N_T$ and $N_{NT}$ (number of transitions and no transitions, view the sequence as periodic).}
+	\question{1. Write a table with $N_1$ and $N_0$ (number of bits equal to 1 and 0), $N_T$ and $N_{NT}$ (number of transitions and no transitions, view the sequence as periodic).}
+	
+	\vspace{0.3cm}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			\toprule
+			$N$ & $N_1$ & $N_0$ & $N_T$ & $N_{NT}$ \\
+			\midrule
+			1023 & 512 & 511 & 512 & 511 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Number of zero/ones, number of transitions}
-  \question{2. Check if the properties of an ideal binary sequences are verified and discuss the result}
+	\question{2. Check if the properties of an ideal binary sequences are verified and discuss the result}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Over one complete period ($N = 1023$), we obtain $N_1 = 512$, $N_0 = 511$, $N_T = 512$, and $N_{NT} = 511$.
+		\item Since $N = 2^{10} - 1$ is odd, the counts differ by the minimum possible $1$ bit ($N_1 = 2^{m-1}$, $N_0 = 2^{m-1} - 1$).
+		\item For large $N$, $N_1 \approx N_0 \approx N/2$ ($511.5$) and $N_T \approx N_{NT} \approx N/2$ ($511.5$), confirming that both the balance and transition properties of an ideal random binary sequence are verified.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Runs}
-  \question{1. Write a table with the values of $N_R(T)$ (total number of runs), $N_R(i)$ (number of runs of length $i$), $N_{R0}(i)$ and $N_{R1}(i)$ (number of runs of zeros and ones of length $i$)}
+	\question{1. Write a table with the values of $N_R(T)$ (total number of runs), $N_R(i)$ (number of runs of length $i$), $N_{R0}(i)$ and $N_{R1}(i)$ (number of runs of zeros and ones of length $i$)}
+	
+	\vspace{0.1cm}
+	\begin{center}
+		\scriptsize
+		Total number of runs: $N_R(T) = 512$
+		\vspace{0.15cm}
+		
+		\begin{tabular}{ccccc}
+			\toprule
+			Length $i$ & $N_{R0}(i)$ & $N_{R1}(i)$ & $N_R(i)$ & Ideal $N_R(T)/2^i$ \\
+			\midrule
+			1 & 128 & 128 & 256 & 256 \\
+			2 & 64 & 64 & 128 & 128 \\
+			3 & 32 & 32 & 64 & 64 \\
+			4 & 16 & 16 & 32 & 32 \\
+			5 & 8 & 8 & 16 & 16 \\
+			6 & 4 & 4 & 8 & 8 \\
+			7 & 2 & 2 & 4 & 4 \\
+			8 & 1 & 1 & 2 & 2 \\
+			9 & 1 & 0 & 1 & 1 \\
+			10 & 0 & 1 & 1 & 0.5 \\
+			\bottomrule
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Runs}
-  \question{2. Plot the run lengths vs. their starting point in the sequence (use different colors for 0 and 1 runs)}
+	\question{2. Plot the run lengths vs. their starting point in the sequence (use different colors for 0 and 1 runs)}
+	
+	\vspace{0.15cm}
+	\begin{center}
+		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_Runs_Q2.png}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Runs}
-  \question{3. Compare against the run properties of an ideal binary random sequence and discuss the results.}
+	\question{3. Compare against the run properties of an ideal binary random sequence and discuss the results.}
+	
+	\vspace{0.15cm}
+	\footnotesize
+	\begin{itemize}
+		\item Note on run alignment: to prevent splitting a run that wraps around the period boundary, the sequence was circularly shifted by one position (\texttt{shift\_amount = 1}) until the first and last bits differed; thus, run counts in the table are exact, while starting positions in the plot are shifted by one index.
+		\item Out of $N_R(T) = 512$ total runs, lengths $1 \le i \le m - 2$ ($1 \le i \le 8$) strictly match the ideal random binary distribution $N_R(i) = N_R(T) / 2^i$, with $N_{R0}(i) = N_{R1}(i) = 2^{m-1-i}$.
+		\item At the upper boundary, due to the missing all-zero state in the LFSR, there is one run of $m - 1 = 9$ zeros (and none of length $10$) and one run of $m = 10$ ones (and none of length $9$).
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Autocorrelation}
-  \question{1. Plot the autocorrelation}
+	\question{1. Plot the autocorrelation}
+	
+	\vspace{0.15cm}
+	\begin{center}
+		\includegraphics[width=0.82\textwidth, height=4.6cm, keepaspectratio]{E6_Autocorr_Q1.png}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Autocorrelation}
-  \question{2. Compare its properties with those of an ideal binary random sequences.}
+	\question{2. Compare its properties with those of an ideal binary random sequences.}
+	
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item The periodic autocorrelation $R_{v'}(\tau)$ shows an ideal two-level profile: a main peak $R_{v'}(0) = N = 1023$ at $\tau = 0$ and a constant sidelobe floor $R_{v'}(\tau) = -1$ for all $\tau \neq 0$.
+		\item Compared to an ideal random binary sequence ($R(\tau) = 0$ for $\tau \neq 0$), the $-1$ offset (normalized $-1/N \approx -9.78 \times 10^{-4}$) is negligible for large $N$.
+		\item This sharp autocorrelation peak and flat low sidelobe floor make $m$-sequences well suited for synchronization.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - MPSL}
-  \question{5. Plot $MPSL(z)$ vs. $z$}
+	\question{5. Plot $MPSL(z)$ vs. $z$}
+	
+	\vspace{0.1cm}
+	\begin{center}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_MPSL_Q5.png}
+	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item Reducing sequence length from $1023$ to $823$ (Truncating with $z \in [1, 200]$).
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - MPSL}
-  \question{6. Comment the results}
+	\question{6. Comment the results}
+	
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item Removing even $z = 1$ bit breaks the cyclic structure of the $m$-sequence, causing $\text{MPSL}(z) = \max_{\tau \neq 0} |R_{v'_z}(\tau)|$ to jump immediately from $1$ to $54$.
+		\item Across $1 \le z \le 200$, $\text{MPSL}(z)$ fluctuates irregularly between $51$ and $73$, while the main autocorrelation peak drops to $N - z$.
+		\item Consequently, truncated $m$-sequences lose their ideal two-level autocorrelation property and degrade into finite random-like sequences.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - seed}
-  \question{4. Plot it}
+	\question{4. Plot it}
+	
+	\vspace{0.1cm}
+	\begin{center}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_Seed_Q4.png}
+	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item For the first seed ($[1\,1\,1\,1\,1\,0\,0\,0\,0\,0]$) with $z = 23$, the main autocorrelation peak equals $R_{v'_{23}}(0) = N - z = 1000$, while the sidelobes fluctuate around zero with $\text{MPSL} = 68$.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - seed}
-  \question{5. Repeat and plot with the same $z$ but another starting seed}
+	\question{5. Repeat and plot with the same $z$ but another starting seed}
+	
+	\vspace{0.1cm}
+	\begin{center}
+		\includegraphics[width=0.78\textwidth, height=3.8cm, keepaspectratio]{E6_Seed_Q5.png}
+	\end{center}
+	
+	\vspace{0.1cm}
+	\footnotesize
+	\begin{itemize}
+		\item For the second seed ($[1\,1\,0\,0\,1\,1\,0\,0\,1\,1]$) with $z = 23$, the main autocorrelation peak remains $R_{v'_{23}}(0) = N - z = 1000$, while the sidelobes show a different profile with $\text{MPSL} = 60$.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Exercise 6 - Truncated sequences - seed}
-  \question{6. Comment the results}
+	\question{6. Comment the results}
+	
+	\vspace{0.2cm}
+	\begin{itemize}
+		\item Changing the starting seed over a complete period ($N = 1023$) only shifts the $m$-sequence cyclically without altering its periodic autocorrelation properties.
+		\item However, truncating $z = 23$ bits ($N_{\text{trunc}} = 1000$) selects two different $1000$-bit windows depending on the initial seed.
+		\item Consequently, the main peak remains $R_{v'_z}(0) = 1000$ for both seeds, whereas the sidelobe profile and $\text{MPSL}$ value change (from $\text{MPSL} = 68$ for the first seed to $\text{MPSL} = 60$ for the second seed).
+	\end{itemize}
 \end{frame}
 
 % Slide finale

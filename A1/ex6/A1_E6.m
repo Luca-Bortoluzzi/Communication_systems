@@ -2,11 +2,15 @@ clc;
 close all;
 clear;
 
-%% --- Properties of m sequences --- 
-% Design a randomizer with m = 10
+%% --- 1. LFSR Randomizer Design and m-sequence Generation ---
+% Number of shift-register cells (flip-flops)
+m = 10;
+% Primitive generator polynomial: P(x) = x^{10} + x^7 + 1
 
-m = 10; % number of flip-flops
+% Initial non-zero state (Seed 1)
+seed_1 = [1 1 1 1 1 0 0 0 0 0];
 
+<<<<<<< HEAD:A1/ex6/A1_E6.m
 % 6.1 chosen polynomial
 % P_x = x^{10} + x^7 + 1;
 
@@ -14,42 +18,44 @@ m = 10; % number of flip-flops
 state = [1 1 1 1 1 0 0 0 0 0];
 
 % 6.4 generate an entire m-sequence
+=======
+% Generate one complete period of the m-sequence (N = 2^m - 1 = 1023 bits)
+>>>>>>> b0d366bc9c1cf1de679e9cbbb49e15c3e99d1183:A1/ex6/ex6.m
 N = 2^m - 1;
-
-prbs_seq = zeros(1, N);     % Sequenza seriale di bit (1..1023)
-states_history = zeros(N, m); % Storico di tutti gli stati
+prbs_s1 = zeros(1, N);        % Output serial binary sequence (0s and 1s)
+seed_1_history = zeros(N, m); % History of all internal register states
 
 for k = 1:N
-    % 1. Salva lo stato corrente e il bit in uscita (cella 10)
-    states_history(k, :) = state;
-    prbs_seq(k) = state(10);
-
-    % 2. Calcola il bit di retroazione (XOR tra cella 10 e cella 7)
-    feedback = xor(state(10), state(7));
-
-    % 3. Scorrimento a destra: il feedback entra in Q1, Q10 esce
-    state = [feedback, state(1:end-1)];
+    % 1. Store current register state and output bit from cell 10 (Q10)
+    seed_1_history(k, :) = seed_1;
+    prbs_s1(k) = seed_1(10);
+    
+    % 2. Compute feedback bit via XOR between taps Q10 and Q7 (x^10 + x^7 + 1)
+    feedback = xor(seed_1(10), seed_1(7));
+    
+    % 3. Shift register right: feedback enters Q1, Q10 exits
+    seed_1 = [feedback, seed_1(1:end-1)];
 end
 
-% Verifica dei risultati
-fprintf('Primi 20 bit generati: ');
-fprintf('%d', prbs_seq(1:20));
-N0 = sum(prbs_seq == 0);
-N1 = sum(prbs_seq == 1);
-fprintf('\nNumero di 1 generati: %d (atteso: %d)\n', N1, 2^(m-1));
-fprintf('Numero di 0 generati: %d (atteso: %d)\n', N0, 2^(m-1) - 1);
+% Verify generated bit counts and maximum-period property
+fprintf('First 20 generated bits: ');
+fprintf('%d', prbs_s1(1:20));
+N0 = sum(prbs_s1 == 0);
+N1 = sum(prbs_s1 == 1);
+fprintf('\nNumber of 1s generated: %d (expected: %d)\n', N1, 2^(m-1));
+fprintf('Number of 0s generated: %d (expected: %d)\n', N0, 2^(m-1) - 1);
 
-% Verifica che lo stato dopo 1023 cicli torni esattamente al seed iniziale
-if isequal(state, states_history(1, :))
-    disp('Verifica periodo massimo: SUPERATA (ritorno al seed dopo 1023 cicli).');
+% Verify that the register returns to the initial seed after exactly N = 1023 cycles
+if isequal(seed_1, seed_1_history(1, :))
+    disp('Maximum period verification: PASSED (returned to initial seed after 1023 cycles).');
 end
 
-% Conversion to bipolar sequence (0 -> -1, 1 -> +1) and plot
-bipolar_seq = 2 * prbs_seq - 1;     % zero and ones to -1 and +1
+% Map binary symbols to bipolar levels (0 -> -1, 1 -> +1) and plot first 20 bits
+bipolar_s1 = 2 * prbs_s1 - 1;   
 figure;
+theme(gcf, 'light');
 hold on;
-stairs(1:20, bipolar_seq(1:20), 'LineWidth', 1); % square wave
-
+stairs(1:20, bipolar_s1(1:20), 'LineWidth', 2); % Square-wave representation
 grid on;
 ylim([-1.5 1.5]);
 xlim([0 21]);
@@ -57,25 +63,24 @@ xticks(1:20);
 yticks([-1 0 1]);
 xlabel('Bit index (n)');
 ylabel('Bipolar Amplitude');
-title('First 20 bit of the bipolar sequence LFSR (P(x) = x^{10} + x^7 + 1)');
+title('First 20 bits of the bipolar LFSR sequence (P(x) = x^{10} + x^7 + 1)');
+exportgraphics(gcf, 'E6_Seq_Q3.png', 'Resolution', 300);
 
-%% --- Number of zero/ones, number of transitions ---
-% make a table with N1 and N0
+%% --- 2. Balance and Transition Properties ---
+% Circularly shift by 1 position to evaluate periodic bit transitions
+shifted_seq = circshift(prbs_s1, -1);
+transitions = xor(prbs_s1, shifted_seq);
+NT  = sum(transitions == 1); % Number of transitions (0->1 or 1->0)
+NNT = sum(transitions == 0); % Number of non-transitions (0->0 or 1->1)
 
-% Circular shift by 1 position to evaluate periodic transitions
-shifted_seq = circshift(prbs_seq, -1);
-transitions = xor(prbs_seq, shifted_seq);
-
-NT  = sum(transitions == 1);
-NNT = sum(transitions == 0);
-
+% Display summary table of bit and transition counts
 T = table(N, N1, N0, NT, NNT, ...
     'VariableNames', {'Period_N', 'N1', 'N0', 'NT', 'NNT'});
 disp(T);
 
-% Verify ideal binary sequence balance property
-% For an m-sequence (N = 2^m - 1), N1 and N0 differ by exactly 1 bit,
-% so N0 ≈ N1 ≈ N/2 for large N.
+% Verify ideal random binary sequence balance properties:
+% For an m-sequence (N = 2^m - 1), N1 and N0 differ by 1 bit,
+% so N0 ≈ N1 ≈ N/2 and NT ≈ NNT ≈ N/2 for large N.
 if abs(N1 - N0) <= 1 && abs(NT - NNT) <= 1
     fprintf('Verified: N0 (%d) \x2248 N1 (%d) \x2248 N/2 (%.1f)\n', N0, N1, N/2);
     fprintf('Verified: NT (%d) \x2248 NNT (%d) \x2248 N/2 (%.1f)\n', NT, NNT, N/2);
@@ -83,112 +88,223 @@ else
     fprintf('Balance property NOT satisfied.\n');
 end
 
-%% --- Runs---
-
-% 1. Allinea la sequenza in modo che non inizi e finisca con lo stesso bit
-
-seq_runs = prbs_seq();      % to not lose the original value when rotate with circshift
+%% --- 3. Run-Length Distribution Analysis ---
+% 1. Circularly align the sequence so that the first and last bits differ,
+%    preventing boundary-wrapping runs from being split into two shorter runs.
+seq_runs = prbs_s1();
 shift_amount = 0;
-
 while seq_runs(1) == seq_runs(end)
-    seq_runs = circshift(prbs_seq, 1);
+    seq_runs = circshift(seq_runs, 1);
     shift_amount = shift_amount + 1;
 end
 
-% 2. Conta la lunghezza di ogni run con un ciclo semplice
-NR0 = zeros(1, m);   % zeros counter
-NR1 = zeros(1, m);   % ones counter
-
+% 2. Measure the length and starting index of every run of 0s and 1s
+NR0 = zeros(1, m); % Run-length histogram for 0s (lengths 1..m)
+NR1 = zeros(1, m); % Run-length histogram for 1s (lengths 1..m)
 run_lengths = [];
 run_starts = [];
 run_bits = [];
-
 count = 1;
 current_start = 1;
 
 for k = 2:N
     if seq_runs(k) == seq_runs(k-1)
-        count = count + 1;          % Il bit è uguale al precedente: allungo il run
+        count = count + 1; % Current bit matches previous bit: extend run
     else
+        % Save completed run statistics
         run_lengths(end+1) = count;
         run_starts(end+1) = current_start;
         run_bits(end+1) = seq_runs(k-1);
-
         if seq_runs(k-1) == 0
             NR0(count) = NR0(count) + 1;
         else
             NR1(count) = NR1(count) + 1;
         end
-
-        % Resetta per il nuovo run
+        % Reset counters for the new run
         count = 1;
         current_start = k;
     end
 end
 
-% Salva l'ultimo run della sequenza
+% Record the final run at the end of the aligned period
 run_lengths(end+1) = count;
 run_starts(end+1)  = current_start;
 run_bits(end+1)    = seq_runs(N);
-
 if seq_runs(N) == 0
     NR0(count) = NR0(count) + 1;
 else
     NR1(count) = NR1(count) + 1;
 end
 
-% 3. Costruzione e stampa della tabella
+% 3. Build and display summary table comparing measured runs with ideal values (NR_T / 2^i)
 NR_i = NR0 + NR1;
 NR_T = sum(NR_i);
 ideal_vals = (NR_T ./ (2 .^ (1:m)))';
-
-fprintf('Numero totale di run NR(T) = %d\n\n', NR_T);
+fprintf('Total number of runs NR(T) = %d\n\n', NR_T);
 T_runs = table((1:m)', NR0', NR1', NR_i', ideal_vals, ...
     'VariableNames', {'Length_i', 'NR0_i', 'NR1_i', 'NR_i', 'Ideal_NR_over_2i'});
 disp(T_runs);
 
-% 4. Grafico: Run length vs. Starting point (colori diversi per 0 e 1)
+% 4. Plot run length vs. starting index (separate series for 0-runs and 1-runs)
 idx_0 = (run_bits == 0);
 idx_1 = (run_bits == 1);
-
 figure;
-stem(run_starts(idx_0), run_lengths(idx_0), 'cyan', 'filled', 'DisplayName', 'Run di 0');
+theme(gcf, 'light');
+stem(run_starts(idx_0), run_lengths(idx_0), 'Marker', 'none', 'DisplayName', 'Runs of 0s');
 hold on;
-stem(run_starts(idx_1), run_lengths(idx_1), 'o', 'filled', 'DisplayName', 'Run di 1');
-
+stem(run_starts(idx_1), run_lengths(idx_1), 'Marker', 'none', 'DisplayName', 'Runs of 1s');
 grid on;
 xlim([1, N]);
 ylim([0, m + 1]);
 yticks(1:m);
-xlabel('Indice di inizio nella sequenza (Starting point)');
-ylabel('Lunghezza del run (i)');
-title('Lunghezza dei run vs. Punto di inizio nella sequenza (m = 10)');
+xlabel('Starting index in the sequence (Starting point)');
+ylabel('Run length (i)');
+title('Run length vs. Starting point in the sequence (m = 10)');
 legend('Location', 'best');
+exportgraphics(gcf, 'E6_Runs_Q2.png', 'Resolution', 300);
 
+%% --- 4. Periodic Autocorrelation of the Full m-sequence ---
+% Compute sample mean of bipolar symbols (expected E[a_i] ≈ 0)
+mean_val = mean(bipolar_s1);
+fprintf('Mean of bipolar symbols E[a_i]: %.5f (\x2248 0)\n', mean_val);
 
-%% --- Periodic autocorrelation ---
-% mean value E[ai] = 0
-mean_val = mean(bipolar_seq);
-fprintf('Media simboli bipolari E[a_i]: %.5f (\x2248 0)\n', mean_val);
-
-% Intervallo di tau richiesto dalla consegna: -(N-1)/2 <= tau <= +(N-1)/2
-max_tau = (N - 1) / 2;            % Per N = 1023 vale 511
-lags    = -max_tau : max_tau;     % Vettore dei ritardi da -511 a +511
+% Evaluate periodic autocorrelation R_{v'}(tau) over -(N-1)/2 <= tau <= +(N-1)/2
+max_tau = (N - 1) / 2;            % Equals 511 for N = 1023
+lags    = -max_tau : max_tau;     % Lag vector from -511 to +511
 R_tau   = zeros(size(lags));
 
-% Ciclo for che fa scorrere tau
 for k = 1:length(lags)
     tau = lags(k);
-    shifted_seq = circshift(bipolar_seq, tau);      % Calcola v'(i - tau) periodico
-    R_tau(k)    = sum(bipolar_seq .* shifted_seq);  % Somma da i=0 a N-1
+    shifted_seq = circshift(bipolar_s1, tau);      % Circularly shifted sequence v'(i - tau)
+    R_tau(k)    = sum(bipolar_s1 .* shifted_seq);  % Periodic correlation sum
 end
 
-% Plot dell'autocorrelazione
+% Plot periodic autocorrelation (two-level: N at tau = 0, -1 for tau != 0)
 figure;
+theme(gcf, 'light');
 plot(lags, R_tau, 'LineWidth', 1.5);
 grid on;
 xlim([-max_tau, max_tau]);
 ylim([-100, N + 100]);
 xlabel('\tau');
 ylabel('R_{v''}(\tau)');
-title('Autocorrelazione Periodica della sequenza bipolare (m = 10, N = 1023)');
+title('Periodic Autocorrelation of the bipolar sequence (m = 10, N = 1023)');
+exportgraphics(gcf, 'E6_Autocorr_Q1.png', 'Resolution', 300);
+
+%% --- 5. Truncated Sequences: MPSL Degradation Analysis (1 <= z <= 200) ---
+z_vals = 1:200;
+for z = z_vals
+    % Truncate the last z symbols from the bipolar sequence (new length = N - z)
+    bipolar_trunc = bipolar_s1(1 : end - z);
+    N_trunc = length(bipolar_trunc);
+    
+    % Compute periodic autocorrelation on the truncated sequence
+    max_tau = floor((N_trunc - 1) / 2);
+    lags_trunc = -max_tau : max_tau;
+    R_trunc = zeros(size(lags_trunc));
+    for k = 1:length(lags_trunc)
+        tau = lags_trunc(k);
+        R_trunc(k) = sum(bipolar_trunc .* circshift(bipolar_trunc, tau));
+    end
+    
+    % Extract Maximum Peak Side Lobe: MPSL(z) = max_{tau != 0} |R(tau)|
+    MPSL(z) = max(abs(R_trunc(lags_trunc ~= 0)));
+end
+
+% Plot MPSL(z) versus number of removed bits z
+figure;
+theme(gcf, 'light');
+plot(z_vals, MPSL, 'LineWidth', 1.5);
+grid on;
+ylim([min(MPSL) - 10, max(MPSL) + 10]);
+xlabel('Number of removed bits (z)');
+ylabel('Maximum Peak Side Lobe max_{\tau \neq 0} |R(\tau)|');
+title('Autocorrelation degradation as a function of removed bits z');
+exportgraphics(gcf, 'E6_MPSL_Q5.png', 'Resolution', 300);
+
+%% --- 6. Truncated Sequence with z = 23: Comparison of Two Starting Seeds ---
+% --- Case A: Seed 1 = [1 1 1 1 1 0 0 0 0 0] ---
+z = 23;
+bipolar_trunc_s1 = bipolar_s1(1 : N - z); % Truncate last 23 symbols (length = 1000)
+N_trunc = length(bipolar_trunc_s1);
+
+% Compute periodic autocorrelation for the truncated sequence (Seed 1)
+max_tau = floor((N_trunc - 1) / 2);
+lags_trunc = -max_tau : max_tau;
+R_trunc_s1 = zeros(size(lags_trunc));
+
+for k = 1:length(lags_trunc)
+    tau = lags_trunc(k);
+    R_trunc_s1(k) = sum(bipolar_trunc_s1 .* circshift(bipolar_trunc_s1, tau));
+end
+
+% Compute MPSL for z = 23 (Seed 1)
+MPSL_1= max(abs(R_trunc_s1(lags_trunc ~= 0)));
+fprintf('For z = %d (length N_trunc = %d), MPSL = %d\n', z, N_trunc, MPSL_1);
+
+% Plot periodic autocorrelation of the truncated sequence (Seed 1)
+figure;
+theme(gcf, "light");
+plot(lags_trunc, R_trunc_s1, 'LineWidth', 1.2);
+grid on;
+xlim([-max_tau, max_tau]);
+ylim([-100, N_trunc + 100]);
+xlabel('\tau');
+ylabel('R_{v''_{23}}(\tau)');
+seed_str = sprintf('%d', seed_1);
+title({sprintf('Periodic Autocorrelation of Truncated Sequence (z = %d, MPSL = %d)', z, MPSL_1), ...
+    sprintf('Seed = [%s]', seed_str)});
+exportgraphics(gcf, 'E6_Seed_Q4.png', 'Resolution', 300);
+
+% --- Case B: Seed 2 = [1 1 0 0 1 1 0 0 1 1] ---
+seed_2 = [1 1 0 0 1 1 0 0 1 1];
+prbs_s2 = zeros(1, N);
+seed_history = zeros(N, m); % History of all internal register states for Seed 2
+
+% Generate complete m-sequence starting from Seed 2
+for k = 1:N
+    % 1. Store current register state and output bit from cell 10 (Q10)
+    seed_history(k, :) = seed_2;
+    prbs_s2(k) = seed_2(10);
+    
+    % 2. Compute feedback bit via XOR between taps Q10 and Q7 (x^10 + x^7 + 1)
+    feedback = xor(seed_2(10), seed_2(7));
+    
+    % 3. Shift register right: feedback enters Q1, Q10 exits
+    seed_2 = [feedback, seed_2(1:end-1)];
+end
+
+% Convert Seed 2 binary sequence to bipolar format (0 -> -1, 1 -> +1)
+bipolar_s2 = 2 * prbs_s2 - 1;
+
+% Truncate last z = 23 symbols (length = 1000)
+bipolar_trunc_s2 = bipolar_s2(1 : N - z);
+N_trunc = length(bipolar_trunc_s2);
+
+% Compute periodic autocorrelation for the truncated sequence (Seed 2)
+max_tau = floor((N_trunc - 1) / 2);
+lags_trunc = -max_tau : max_tau;
+R_trunc_s2 = zeros(size(lags_trunc));
+
+for k = 1:length(lags_trunc)
+    tau = lags_trunc(k);
+    R_trunc_s2(k) = sum(bipolar_trunc_s2 .* circshift(bipolar_trunc_s2, tau));
+end
+
+% Compute MPSL for z = 23 (Seed 2)
+MPSL_2 = max(abs(R_trunc_s2(lags_trunc ~= 0)));
+fprintf('For z = %d (length N_trunc = %d), MPSL = %d\n', z, N_trunc, MPSL_2);
+
+% Plot periodic autocorrelation of the truncated sequence (Seed 2)
+figure;
+theme(gcf, "light");
+plot(lags_trunc, R_trunc_s2, 'LineWidth', 1.2);
+grid on;
+xlim([-max_tau, max_tau]);
+ylim([-100, N_trunc + 100]);
+xlabel('\tau');
+ylabel('R_{v''_{23}}(\tau)');
+seed_str = sprintf('%d', seed_2);
+title({sprintf('Periodic Autocorrelation of Truncated Sequence (z = %d, MPSL = %d)', z, MPSL_2), ...
+    sprintf('Seed = [%s]', seed_str)});
+exportgraphics(gcf, 'E6_Seed_Q5.png', 'Resolution', 300);

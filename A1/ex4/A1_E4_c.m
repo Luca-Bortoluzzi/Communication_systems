@@ -67,15 +67,16 @@ end
 p_word_err = 1 - p_corr;
 
 figure;
+theme(gcf, 'light');
 loglog(p, p_word_err, 'b-', 'LineWidth', 2); hold on;
-loglog(p, p, 'r--', 'LineWidth', 1.5); % Riferimento: trasmissione non codificata su 1 bit
 
 grid on;
 xlabel('Bit error probability in channel (p)');
 ylabel('Codeword error probability P_W(E)');
 title(sprintf('P_W(E) for a (%d, %d) code with t = %d', n, k, t));
-legend('Code with correction', 'Without coding (p_b = p)', 'Location', 'southeast');
+legend('Code with correction', 'Location', 'southeast');
 axis tight;
+exportgraphics(gcf, 'E4_C_Q5.png', 'Resolution', 300);
 
 %% 4c.4
 
@@ -130,11 +131,13 @@ end
 
 % 4c.5 --- 3. COMPARISON PLOT ---
 figure;
-loglog(p, PW_E_analytical, 'c-', 'LineWidth', 2, 'DisplayName', 'Analytical'); hold on;
-loglog(p, PW_E(1, :), 'r--o', 'DisplayName', sprintf('MC (target = %d)', target_errors(1)));
-loglog(p, PW_E(2, :), 'y--s', 'DisplayName', sprintf('MC (target = %d)', target_errors(2)));
+theme(gcf, 'light');
+loglog(p, PW_E_analytical, 'b-', 'LineWidth', 2, 'DisplayName', 'Analytical'); hold on;
+loglog(p, PW_E(1, :), 'r--o', 'LineWidth', 1.5, 'DisplayName', sprintf('MC (target = %d)', target_errors(1)));
+loglog(p, PW_E(2, :), 'y--s', 'Color', '#77AC30', 'LineWidth', 1.5, 'DisplayName', sprintf('MC (target = %d)', target_errors(2)));
 grid on;
 xlabel('Channel bit error probability (p)');
 ylabel('Word error probability P_W(E)');
 title('Monte Carlo vs Analytical Comparison for P_W(E)');
 legend('Location', 'southeast');
+exportgraphics(gcf, 'E4_C_Q6.png', 'Resolution', 300);

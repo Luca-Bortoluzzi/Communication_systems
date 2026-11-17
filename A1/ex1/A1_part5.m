@@ -138,57 +138,28 @@ end
 
 
 %% PART 5
-
-% Define the BSC crossover probability p in the range
-% 10^-2 <= p <= 10^-1 using 200 logarithmically spaced points
 p = logspace(-2, -1, 200);
 
-% Probability of correct reception in one transmission attempt:
-% all n bits must be received without error
-% p0 = P(COR, i = 1)
 p0 = (1 - p).^n;
-
-% Initialize the probability of undetected error
-% as a vector with the same length as p
 p1 = zeros(1, length(p));
-
-% Compute the undetected error probability:
-% P_UE(p) = sum_{w=1}^n A_w * p^w * (1-p)^(n-w)
-% where mult1(w+1) corresponds to A_w,
-% i.e. the number of codewords of Hamming weight w
 for w = 1:n
     p1 = p1 + mult1(w+1) * p.^w .* (1-p).^(n-w);
 end
-
-% Probability that the received block is rejected
-% The three possible events are COR, Ue and REJ, therefore:
-% p0 + p1 + p2 = 1
 p2 = 1 - p0 - p1;
 
-% Maximum number of ARQ transmission attempts considered
-i = 3;
-
-% Compute P(COR,k) for k = 1, 2, 3
-if i > 1
-
-    % Initialize a matrix where each row contains
-    % P(COR,k) for all values of p
-    p0_i = zeros(i, length(p2));
-
-    % For the block to be correctly received at attempt k,
-    % the previous k-1 attempts must have been rejected
-    % and the k-th attempt must be correct:
-    % P(COR,k) = p2^(k-1) * p0
-    for k=1:i
-        p0_i(k,:) = (p2.^(k-1)).*p0;
-    end
+i_max = 3;
+P_COR_attempt = zeros(i_max, length(p));
+for k = 1:i_max
+    P_COR_attempt(k, :) = (p2.^(k-1)) .* p0;
 end
 
-% Compute the quantities required by the exercise:
-% 1 - P(COR,i), for i = 1, 2, 3
-y1 = 1 - p0_i(1,:);
-y2 = 1 - p0_i(2,:);
-y3 = 1 - p0_i(3,:);
+% Probabilità cumulativa di ricezione corretta ENTRO i tentativi: P(COR, i)
+P_COR_cum = cumsum(P_COR_attempt, 1);
+
+% 1 - P(COR, i) per i = 1, 2, 3
+y1 = 1 - P_COR_cum(1, :);
+y2 = 1 - P_COR_cum(2, :);
+y3 = 1 - P_COR_cum(3, :);
 
 % Colori coordinati con la presentazione Beamer
 plot_blue   = [30, 136, 229] / 255;
@@ -196,15 +167,13 @@ plot_orange = [251, 140, 0] / 255;
 plot_red    = [229, 57, 53] / 255;
 
 fig_p5 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
-
-semilogx(p, y1, '-', 'Color', plot_blue, 'LineWidth', 2.2);
+loglog(p, y1, '-', 'Color', plot_blue, 'LineWidth', 2.2);
 hold on;
-semilogx(p, y2, '-', 'Color', plot_orange, 'LineWidth', 2.2);
-semilogx(p, y3, '-', 'Color', plot_red, 'LineWidth', 2.2);
-
+loglog(p, y2, '-', 'Color', plot_orange, 'LineWidth', 2.2);
+loglog(p, y3, '-', 'Color', plot_red, 'LineWidth', 2.2);
 grid on; box off;
 xlim([1e-2, 1e-1]);
-ylim([0, 1.03]);
+ylim([1e-4, 1]);
 xlabel('BSC crossover probability p', 'FontSize', 11);
 ylabel('1 - P(COR, i)', 'FontSize', 11);
 title('ARQ: 1 - P(COR, i) vs. Channel Error Probability', 'FontSize', 12, 'FontWeight', 'bold');

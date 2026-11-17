@@ -23,7 +23,7 @@ xlim([1e-3, 1e-1]);
 xlabel('Bit Error Probability p', 'FontSize', 11);
 ylabel('Codeword Error Probability P_W(p)', 'FontSize', 11);
 title('Analytical Codeword Error Probability - Hamming (63, 57)', 'FontSize', 12);
-exportgraphics(fig_q2, 'E5_1_Q2.png', 'Resolution', 300);
+exportgraphics(fig_q2, 'E5_1_Q3.png', 'Resolution', 300);
 
 
 %% 4
@@ -70,18 +70,22 @@ loglog(p_sim, pW_sim, 'o-', 'Color', [251, 140, 0]/255, 'LineWidth', 2.0, 'Marke
 grid on; box off;
 xlim([1e-3, 1e-1]);
 xlabel('Bit Error Probability p', 'FontSize', 11);
+<<<<<<< HEAD:A1/ex5/A1_E5_1.m
 ylabel('$Estimated Codeword Error Probability \hat{P}_W(p)$','Interpreter','Latex', 'FontSize', 11);
+=======
+ylabel('$Estimated\ Codeword\ Error\ Probability\ \hat{P}_W(p)$', 'FontSize', 11,'Interpreter','latex');
+>>>>>>> b0d366bc9c1cf1de679e9cbbb49e15c3e99d1183:A1/ex5/ex5a.m
 title('Monte Carlo Simulation - Hamming (63, 57) (100 target errors)', 'FontSize', 12);
-exportgraphics(fig_q3, 'E5_1_Q3.png', 'Resolution', 300);
+exportgraphics(fig_q3, 'E5_1_Q5.png', 'Resolution', 300);
 
 %% 6
 fig_q5 = figure('Color', 'w', 'Position', [100, 100, 760, 400]);
 loglog(p_an, pW_an, '-', 'Color', [30, 136, 229]/255, 'LineWidth', 2.2, ...
-    'DisplayName', 'Complete MD / Analytical P_W(p)');
+    'DisplayName', 'Analytical P_W(p)');
 hold on;
 loglog(p_sim, pW_sim, 'o--', 'Color', [251, 140, 0]/255, 'LineWidth', 2.0, ...
     'MarkerSize', 6, 'MarkerFaceColor', [251, 140, 0]/255, ...
-    'DisplayName', 'Bounded-Distance Decoder (Simulated)');
+    'DisplayName', 'Simulated P_W(p)');
 
 grid on; box off;
 xlim([1e-3, 1e-1]);
@@ -89,7 +93,7 @@ xlabel('Bit Error Probability p', 'FontSize', 11);
 ylabel('Codeword Error Probability P_W(p)', 'FontSize', 11);
 title('Bounded-Distance vs. Complete Minimum-Distance Decoder - Hamming (63, 57)', 'FontSize', 11);
 legend('Location', 'northwest', 'FontSize', 9.5);
-exportgraphics(fig_q5, 'E5_1_Q5.png', 'Resolution', 300);
+exportgraphics(fig_q5, 'E5_1_Q6.png', 'Resolution', 300);
 % The simulated curve closely follows the analytical one showing how
 % accurate the bounded-distance decoder is.
 
