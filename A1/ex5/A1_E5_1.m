@@ -70,7 +70,7 @@ loglog(p_sim, pW_sim, 'o-', 'Color', [251, 140, 0]/255, 'LineWidth', 2.0, 'Marke
 grid on; box off;
 xlim([1e-3, 1e-1]);
 xlabel('Bit Error Probability p', 'FontSize', 11);
-ylabel('Estimated Codeword Error Probability \hat{P}_W(p)', 'FontSize', 11);
+ylabel('$Estimated Codeword Error Probability \hat{P}_W(p)$','Interpreter','Latex', 'FontSize', 11);
 title('Monte Carlo Simulation - Hamming (63, 57) (100 target errors)', 'FontSize', 12);
 exportgraphics(fig_q3, 'E5_1_Q3.png', 'Resolution', 300);
 

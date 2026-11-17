@@ -7,13 +7,13 @@ clear;
 
 m = 10; % number of flip-flops
 
-% chosen polynomial
+% 6.1 chosen polynomial
 % P_x = x^{10} + x^7 + 1;
 
-% choose a random seed
+% 6.3 choose a random seed
 state = [1 1 1 1 1 0 0 0 0 0];
 
-% generate an entire m-sequence
+% 6.4 generate an entire m-sequence
 N = 2^m - 1;
 
 prbs_seq = zeros(1, N);     % Sequenza seriale di bit (1..1023)

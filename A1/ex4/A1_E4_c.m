@@ -32,7 +32,7 @@ Hw = Hw_0(Hw_0 > 0);
 % minimum distance excluding zero values
 dmin = min(Hw);
 
-%% --- Determine the error-correction capability t of the new code. ---
+%% 4c.1 --- Determine the error-correction capability t of the new code. ---
 t = (dmin - 1) / 2;
 
 % we define S(c, t)
@@ -41,7 +41,7 @@ for i=0:t
     S = S + nchoosek(n, i);
 end
 
-%% --- Verify if it is perfect ---
+%% 4c.2 --- Verify if it is perfect ---
 condition = 2^k * S;
 
 if(condition == 2^n)
@@ -77,7 +77,7 @@ title(sprintf('P_W(E) for a (%d, %d) code with t = %d', n, k, t));
 legend('Code with correction', 'Without coding (p_b = p)', 'Location', 'southeast');
 axis tight;
 
-%% 4b
+%% 4c.4
 
 % Ex1 part 4 Monte Carlo simulation - Word Error Probability PW(E)
 target_errors = [10, 100];     % Stop simulation upon reaching 10 or 100 word errors
@@ -128,7 +128,7 @@ for i = 1:length(p)
     PW_E_analytical(i) = pwe_sum;
 end
 
-% --- 3. COMPARISON PLOT ---
+% 4c.5 --- 3. COMPARISON PLOT ---
 figure;
 loglog(p, PW_E_analytical, 'c-', 'LineWidth', 2, 'DisplayName', 'Analytical'); hold on;
 loglog(p, PW_E(1, :), 'r--o', 'DisplayName', sprintf('MC (target = %d)', target_errors(1)));

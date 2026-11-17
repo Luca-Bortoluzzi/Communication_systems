@@ -1,4 +1,4 @@
-        
+%reinserted previous parts to make the code work       
 clc;
 clear;
 close all;
@@ -87,29 +87,6 @@ for idx= 1:num
     end
 end
 
-
-%% 2.3
-% For small p, find the leading term of the two PUE expressions and explain its relationship with d_min and A_min.
-
-%R: For small probabilities, the '(1-p)' part of the sum, can be discarded and the new
-%formula contains only the multiplicity part multiplied by probability.
-% For linear codes, the dmin between c1 and c2 is equivalent to the result
-% of the XOR between the two codewords that is the hamming weight.
-
-
-%% 2.4
-% Compare the two codes: which one has better error-detection performance, and why?
-
-%R: As you can see in the figure the code1 rather than the code2 has a less
-%ripid curve that means better performance, for a logarithmic graph the dmin
-%leads the gradient because log(Amin) is a constant.
-% log Pue(p) = log(Amin) + dmin*log(p)
-% for small p (p->0) the formula can be approximate to P_UE ~=
-% A_dmin*p^dimn so:
-% for G1 the first not null term is for i =4 --> A_min = 15 --> the main
-% term P_UE ~= 15p^4
-% for G2 the first not null term is for i =3 --> A_min = 1 --> the main
-% term P_UE ~= 2p^3
 
 
 
