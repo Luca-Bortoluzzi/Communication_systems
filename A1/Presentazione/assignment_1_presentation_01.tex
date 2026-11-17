@@ -948,8 +948,8 @@
       \begin{aligned}
         D(c) &= \{ y \in \mathbb{F}_2^n : d_H(y, c) \le d_H(y, c'), \; \forall c' \in C \} \\
              &= \{ c + e \in \mathbb{F}_2^n : d_H(c + e + c, c + c) \le d_H(c + e + c, c' + c), \; \forall c' \in C \} \\
-             &= \{ c + e \in \mathbb{F}_2^n : d_H(e, 0) \le d_H(e, c''), \; \forall c'' \in C \} \\
-             &= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c'' \in C \}
+             &= \{ c + e \in \mathbb{F}_2^n : d_H(e, 0) \le d_H(e, c''), \; \forall c' \in C \} \\
+             &= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c' \in C \}
       \end{aligned}
     \]
   \end{itemize}
@@ -975,6 +975,15 @@
     \[
       D(c) = \{ c + e_0, c + e_1, \dots, c + e_{N-1} \} = \{ e_0, e_1, \dots, e_{N-1} \} + c = D(0) + c = c + D(0)
     \]
+     \item We can therefore write:
+     \[
+     \begin{aligned}
+     	D(0) + c
+     	&= \{ e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c'), \; \forall c' \in C \} + c \\
+     	&= \{ c + e \in \mathbb{F}_2^n : w_H(e) \le d_H(e, c''), \; \forall c' \in C \} \\
+     	&= D(c).
+     \end{aligned}
+     \]
   \end{itemize}
 \end{frame}
 
