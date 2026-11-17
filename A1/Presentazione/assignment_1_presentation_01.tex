@@ -314,7 +314,7 @@
 
 % Slide 14
 \begin{frame}{Exercise 1 - Part 3}
-	\question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+	\question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (1/2)}
 	
 	\vspace{0.1cm}
 	\begin{itemize}
@@ -327,7 +327,7 @@
 			\end{aligned}
 			\]
 		}
-		\item Adding two columns is an elementary operation that keeps the columns linearly independent and preserves the rank of $H^T$, so the vectors giving a zero syndrome remain the exact same codewords.
+		\item Adding two columns is an operation that keeps the columns linearly independent and preserves the rank of $H^T$, so the vectors giving a zero syndrome remain the exact same codewords.
 	\end{itemize}
 	{\footnotesize
 		\renewcommand{\arraystretch}{0.84}
@@ -350,7 +350,7 @@
 
 % Slide 15
 \begin{frame}{Exercise 1 - Part 3}
-  \question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+  \question{3. Construct a different matrix $H^T \in \mathbb{F}_2^{10 \times 5}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (2/2)}
 
   \vspace{0.2cm}
   \begin{itemize}
@@ -377,7 +377,7 @@
 
 % Slide 16
 \begin{frame}{Exercise 1 - Part 3}
-	\question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+	\question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (1/2)}
 	
 	\vspace{0.1cm}
 	\begin{itemize}
@@ -408,7 +408,7 @@
 
 % Slide 17
 \begin{frame}{Exercise 1 - Part 3}
-  \question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2.}
+  \question{4. Construct a matrix $H^T \in \mathbb{F}_2^{10 \times 7}$ such that a vector has zero syndrome if and only if it is a codeword. Compute the syndromes of the two vectors from Point 2. (2/2)}
 
   \vspace{0.2cm}
   \begin{itemize}
@@ -476,7 +476,7 @@
 
 % Slide 21
 \begin{frame}{Exercise 1 - Part 4}
-  \question{3. Compare the results, discussing statistical fluctuations, agreement with the analytical curve, and the trade-off between simulation accuracy and computational time.}
+  \question{3. Compare the results, discussing statistical fluctuations, agreement with the analytical curve, and the trade-off between simulation accuracy and computational time. (1/2)}
 
   \vspace{0.25cm}
   \begin{itemize}
@@ -489,7 +489,7 @@
 
 % Slide 22
 \begin{frame}{Exercise 1 - Part 4}
-	\question{3. Explain the advantages of having an analytical expression for $P_{UE}$.}
+	\question{3. Explain the advantages of having an analytical expression for $P_{UE}$. (2/2)}
 	
 	\vspace{0.18cm}
 	\begin{itemize}
@@ -600,7 +600,7 @@
 		P(\text{COR}, i) = \sum_{k=1}^{i} p_2^{k-1} p_0 = p_0 \frac{1 - p_2^i}{1 - p_2}
 		\]
 		\item Whenever a block is rejected (with probability $p_2 < 1$), the transmitter gets another chance to send it correctly, adding a positive term $p_2^i p_0 > 0$.
-		\item As $i$ grows, $P(\text{COR}, i)$ approaches its maximum limit $\frac{p_0}{p_0 + p_1}$ (meaning the failure curve $1 - P(\text{COR}, i)$ shifts downward, as seen in the previous plot).
+		\item As $i$ grows, $P(\text{COR}, i)$ approaches its maximum limit $\frac{p_0}{p_0 + p_1}$
 	\end{itemize}
 \end{frame}
 
@@ -668,7 +668,7 @@
 	\[
 	P(\text{accepted}, i) = P(\text{COR}, i) + P(\text{UE}, i)
 	\]
-	\item Using the expressions derived previously, the conditional probability is:
+	\item The conditional probability is:
 	\[
 	P(\text{UE} \mid \text{accepted}, i) = \frac{P(\text{UE}, i)}{P(\text{COR}, i) + P(\text{UE}, i)} = \frac{p_1 \frac{1 - p_2^i}{1 - p_2}}{(p_0 + p_1) \frac{1 - p_2^i}{1 - p_2}} = \frac{p_1}{p_0 + p_1}
 	\]
@@ -770,7 +770,7 @@
   \vspace{0.25cm}
   \begin{itemize}
     \item The code has a minimum Hamming distance of $d_{\min} = 4$, which guarantees the detection of up to 3 bit errors and the correction of a single-bit error.
-    \item Another important property is that all codewords have an even Hamming weight ($w_H \in \{0, 4, 6\}$). This is ensured by the presence of the factor $(D+1)$ in the generator polynomial, which forces every codeword to contain an even number of ones.
+    \item Another important property is that all codewords have an even Hamming weight ($w_H \in \{0, 4, 6, ...\}$). This is ensured by the presence of the factor $(D+1)$ in the generator polynomial, which forces every codeword to contain an even number of ones.
     \item As a result, the code can detect any channel error involving an odd number of bit flips, since such errors change the parity of the received word, making it immediately recognizable as an invalid codeword.
   \end{itemize}
 \end{frame}
@@ -810,7 +810,7 @@
     \item Being a primitive polynomial of degree 3, $p(D)$ has order: $N = 2^3 - 1 = 7$.
     \item Therefore, the smallest possible distance is $L = 7$. The corresponding minimum codeword is: $c(D) = D^7 + 1$.
     \item Its degree is 7, requiring a codeword length of at least $n = 8$. Since $n = k + r$, with $r = 4$: $k + 4 \ge 8 \implies k \ge 4$.
-    \item \textbf{Conclusion:} Weight-2 codewords first appear at $k = 4$, because this is the minimum information length that allows two non-zero bits separated by 7 positions.
+    \item Weight-2 codewords first appear at $k = 4$, because this is the minimum information length that allows two non-zero bits separated by 7 positions.
   \end{itemize}
 \end{frame}
 
@@ -1017,7 +1017,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{5. Write all the decision regions $D(c)$}
+  \question{5. Write all the decision regions $D(c)$ (1/2)}
 
   \vspace{0.15cm}
   \footnotesize
@@ -1034,7 +1034,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{5. Write all the decision regions $D(c)$}
+  \question{5. Write all the decision regions $D(c)$ (2/2)}
 
   \vspace{0.25cm}
   \begin{itemize}
@@ -1049,17 +1049,79 @@
 \end{frame}
 
 \begin{frame}{Exercise 3b}
-  \question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (1/3)}
+	
+	\vspace{0.25cm}
+	\begin{itemize}
+		\item Verification Logic implemented in MATLAB:
+		\begin{itemize}
+			\item Extract the reference region $D_0$ corresponding to $c_1 = 0\ 0\ 0\ 0\ 0\ 0$
+			\item Compute the shifted set $D_C = c_i \oplus D_0 \bmod 2$
+			\item Compare sorted sets with the command: \texttt{isequal(sortrows(y\_region), sortrows(D\_C))} $\rightarrow$ Rule Verified for all $i \in \{1, \dots, 8\}$
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
-  \vspace{0.25cm}
-  \begin{itemize}
-    \item Verification Logic implemented in MATLAB:
-    \begin{itemize}
-      \item Extract the reference region $D_0$ corresponding to $c_1 = 0\ 0\ 0\ 0\ 0\ 0$
-      \item Compute the shifted set $D_C = c_i \oplus D_0 \bmod 2$
-      \item Compare sorted sets with the command: \texttt{isequal(sortrows(y\_region), sortrows(D\_C))} $\rightarrow$ Rule Verified for all $i \in \{1, \dots, 8\}$
-    \end{itemize}
-  \end{itemize}
+% --- SLIDE 2/3: Tabella di verifica c1 - c4 ---
+\begin{frame}{Exercise 3b}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (2/3)}
+	
+	\vspace{0.15cm}
+	\begin{table}
+		\centering
+		\scriptsize
+		\renewcommand{\arraystretch}{1.15}
+		\begin{tabular}{c | c c c c}
+			\toprule
+			\textbf{$D(0) = D(c_1)$} & \textbf{$c_1 \oplus D(0)$} & \textbf{$c_2 \oplus D(0)$} & \textbf{$c_3 \oplus D(0)$} & \textbf{$c_4 \oplus D(0)$} \\
+			($c_1 = \mathbf{000000}$) & ($c_1 = \mathbf{000000}$) & ($c_2 = \mathbf{111110}$) & ($c_3 = \mathbf{011011}$) & ($c_4 = \mathbf{100101}$) \\
+			\midrule
+			\textbf{000000} & \textbf{000000} & \textbf{111110} & \textbf{011011} & \textbf{100101} \\
+			000001 & 000001 & 111111 & 011010 & 100100 \\
+			000010 & 000010 & 111100 & 011001 & 100111 \\
+			000100 & 000100 & 111010 & 011111 & 100001 \\
+			001000 & 001000 & 110110 & 010011 & 101101 \\
+			100000 & 100000 & 011110 & 111011 & 000101 \\
+			000110 & 000110 & 111000 & 011101 & 100011 \\
+			001100 & 001100 & 110010 & 010111 & 101001 \\
+			100010 & 100010 & 011100 & 111001 & 000111 \\
+			101000 & 101000 & 010110 & 110011 & 001101 \\
+			\midrule
+			\textbf{Result} & $= D(c_1)$ \checkmark & $= D(c_2)$ \checkmark & $= D(c_3)$ \checkmark & $= D(c_4)$ \checkmark \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+% --- SLIDE 3/3: Tabella di verifica c5 - c8 ---
+\begin{frame}{Exercise 3b}
+	\question{6. Verify that $D(c) = c + D(0), \quad \forall c \in C$ (3/3)}
+	
+	\vspace{0.15cm}
+	\begin{table}
+		\centering
+		\scriptsize
+		\renewcommand{\arraystretch}{1.15}
+		\begin{tabular}{c | c c c c}
+			\toprule
+			\textbf{$D(0) = D(c_1)$} & \textbf{$c_5 \oplus D(0)$} & \textbf{$c_6 \oplus D(0)$} & \textbf{$c_7 \oplus D(0)$} & \textbf{$c_8 \oplus D(0)$} \\
+			($c_1 = \mathbf{000000}$) & ($c_5 = \mathbf{110101}$) & ($c_6 = \mathbf{001011}$) & ($c_7 = \mathbf{101110}$) & ($c_8 = \mathbf{010000}$) \\
+			\midrule
+			\textbf{000000} & \textbf{110101} & \textbf{001011} & \textbf{101110} & \textbf{010000} \\
+			000001 & 110100 & 001010 & 101111 & 010001 \\
+			000010 & 110111 & 001001 & 101100 & 010010 \\
+			000100 & 110001 & 001111 & 101010 & 010100 \\
+			001000 & 111101 & 000011 & 100110 & 011000 \\
+			100000 & 010101 & 101011 & 001110 & 110000 \\
+			000110 & 110011 & 001101 & 101000 & 010110 \\
+			001100 & 111001 & 000111 & 100010 & 011100 \\
+			100010 & 010111 & 101001 & 001100 & 110010 \\
+			101000 & 011101 & 100011 & 000110 & 111000 \\
+			\midrule
+			\textbf{Result} & $= D(c_5)$ \checkmark & $= D(c_6)$ \checkmark & $= D(c_7)$ \checkmark & $= D(c_8)$ \checkmark \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
 \end{frame}
 
 \begin{frame}[plain]
@@ -1108,7 +1170,7 @@
 
   \vspace{0.25cm}
   \begin{itemize}
-    \item \textbf{Verification of $D(c) = c + D(0)$ for the Non-Linear Code}
+    \item Verification of $D(c) = c + D(0)$ for the Non-Linear Code
     \item Counterexample ($c_2 = 0\ 0\ 1\ 0$):
     \begin{itemize}
       \item $c_2 \oplus D_0$ (6 vectors): $\{0010, 0011, 0110, 0111, 1010, 1011\}$
@@ -1310,7 +1372,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 4c}
-	\question{5. Compare the results obtained for the two codes and comment on any differences.}
+	\question{5. Compare the results obtained for the two codes and comment on any differences. (1/2)}
 	
 	\vspace{0.2cm}
 	\begin{columns}[T]
@@ -1326,7 +1388,7 @@
 \end{frame}
 
 \begin{frame}{Exercise 4c}
-	\question{5. Compare the results obtained for the two codes and comment on any differences.}
+	\question{5. Compare the results obtained for the two codes and comment on any differences. (2/2)}
 	
 	\vspace{0.25cm}
 	\begin{itemize}
