@@ -10,17 +10,11 @@ m = 10;
 % Initial non-zero state (Seed 1)
 seed_1 = [1 1 1 1 1 0 0 0 0 0];
 
-<<<<<<< HEAD:A1/ex6/A1_E6.m
 % 6.1 chosen polynomial
 % P_x = x^{10} + x^7 + 1;
 
-% 6.3 choose a random seed
-state = [1 1 1 1 1 0 0 0 0 0];
-
 % 6.4 generate an entire m-sequence
-=======
 % Generate one complete period of the m-sequence (N = 2^m - 1 = 1023 bits)
->>>>>>> b0d366bc9c1cf1de679e9cbbb49e15c3e99d1183:A1/ex6/ex6.m
 N = 2^m - 1;
 prbs_s1 = zeros(1, N);        % Output serial binary sequence (0s and 1s)
 seed_1_history = zeros(N, m); % History of all internal register states
