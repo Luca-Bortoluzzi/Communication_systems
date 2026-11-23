@@ -99,6 +99,7 @@ plot(K_vals, welch_gen,    'LineWidth', 2);
 plot(K_vals, welch_s1,     '--', 'LineWidth', 2);
 plot(K_vals, welch_approx, ':',  'LineWidth', 2);
 
+
 % Aggiunta del singolo punto (129, 17)
 plot(K_gold, rM_gold, 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'r');
 
@@ -112,6 +113,7 @@ legend('Sidelnikov bound', ...
     'Welch approx (\lceil\surdN\rceil)', ...
     ['Gold sequences (K = ', num2str(K_gold), ', r_M = ', num2str(rM_gold), ')'], ...
     'Location', 'southeast');
+exportgraphics(gcf, 'A2_1_10.png', 'Resolution', 300);
 
 % Explanation of how r_M was computed:
 % We generated the entire set of K = 129 Gold sequences of length N = 127

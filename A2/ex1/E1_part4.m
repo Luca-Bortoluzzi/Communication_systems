@@ -31,7 +31,7 @@ for i= 1:K_gold
     u= X_bipolar(i,:);
     auto_corr = round(ifft(fft(u) .* conj(fft(u))));
     R_A = max(R_A, max(abs(auto_corr(2:end))));
-    for j=1+1:K_gold
+    for j=i+1:K_gold
         v=X_bipolar(j,:);
         cross_corr = round(ifft(fft(u) .* conj(fft(v))));
         R_C = max(R_C, max(abs(cross_corr)));
@@ -73,6 +73,7 @@ for idx=1:length(K_vec)
     end
     sidelnikov(idx) = ceil(max_sid);
 end
+
 %1.4.2
 figure;
 plot(K_vec, sidelnikov, 'r-', 'LineWidth', 1.2); hold on;
@@ -84,6 +85,8 @@ xlabel('K');
 ylabel('bound'),ylim([0 22]);
 title('Welch and Sidelnikov bounds for N = 126');
 legend('Sidelnikov binary', 'Welch original', 'Welch formula', 'Welch sqrt(N)', 'Location', 'northwest');
+exportgraphics(gcf, 'A2_1_15.png', 'Resolution', 300);
+
 %1.4.3
 figure;
 plot(K_vec, sidelnikov, 'r-', 'LineWidth', 1.2); hold on;
@@ -98,6 +101,7 @@ title('Welch and Sidelnikov bounds for N = 126');
 legend('Sidelnikov binary', 'Welch original', 'Welch formula', 'Welch sqrt(N)' ...
     ,sprintf('R_M = %d (K = %d)', R_M, K_gold), 'Location', 'northwest');
 ylim([0 max(R_M + 4, 22)]);
+exportgraphics(gcf, 'A2_1_16.png', 'Resolution', 300);
 
 %1.4.4
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.23)  23 NOV 2026 15:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.23)  23 NOV 2026 17:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1292,24 +1292,31 @@ LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
 
 ] [4
 
-] [5
+]
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
+15.
+ (C:\Users\Ivan\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
+File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [5
 
 {C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{
-C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}]
-<immagini/A2_1_2.png, id=46, 550.4565pt x 360.6273pt>
+C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Us
+ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
+<immagini/A2_1_2.png, id=48, 550.4565pt x 360.6273pt>
 File: immagini/A2_1_2.png Graphic file (type png)
 <use immagini/A2_1_2.png>
 Package pdftex.def Info: immagini/A2_1_2.png  used on input line 131.
 (pdftex.def)             Requested size: 214.50078pt x 140.52852pt.
- [6
+
+[6
 
  <./immagini/A2_1_2.png (PNG copy)>]
-<immagini/A2_1_3_m1.png, id=52, 550.4565pt x 360.6273pt>
+<immagini/A2_1_3_m1.png, id=54, 550.4565pt x 360.6273pt>
 File: immagini/A2_1_3_m1.png Graphic file (type png)
 <use immagini/A2_1_3_m1.png>
 Package pdftex.def Info: immagini/A2_1_3_m1.png  used on input line 151.
 (pdftex.def)             Requested size: 191.20119pt x 125.26396pt.
-<immagini/A2_1_3_m2.png, id=53, 550.4565pt x 360.6273pt>
+<immagini/A2_1_3_m2.png, id=55, 550.4565pt x 360.6273pt>
 File: immagini/A2_1_3_m2.png Graphic file (type png)
 <use immagini/A2_1_3_m2.png>
 Package pdftex.def Info: immagini/A2_1_3_m2.png  used on input line 151.
@@ -1319,37 +1326,67 @@ Package pdftex.def Info: immagini/A2_1_3_m2.png  used on input line 151.
  <./immagini/A2_1_3_m1.png (PNG copy)> <./immagini/A2_1_3_m2.png (PNG copy)>] [
 8
 
-{C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}]
-
-! Too many }'s.
-\endframe ->\egroup 
-                    \begingroup \def \@currenvir {frame}
-l.166 \end{frame}
-                 
-You've closed more groups than you opened.
-Such booboos are generally harmless, so keep going.
-
-[9
+] [9
 
 ]
-<immagini/A2_1_6.png, id=74, 562.7424pt x 375.804pt>
+<immagini/A2_1_6.png, id=75, 562.7424pt x 375.804pt>
 File: immagini/A2_1_6.png Graphic file (type png)
 <use immagini/A2_1_6.png>
-Package pdftex.def Info: immagini/A2_1_6.png  used on input line 191.
+Package pdftex.def Info: immagini/A2_1_6.png  used on input line 189.
 (pdftex.def)             Requested size: 210.4354pt x 140.53049pt.
  [10
 
  <./immagini/A2_1_6.png (PNG copy)>]
-<immagini/A2_1_8.png, id=80, 562.7424pt x 375.804pt>
+<immagini/A2_1_8.png, id=81, 562.7424pt x 375.804pt>
 File: immagini/A2_1_8.png Graphic file (type png)
 <use immagini/A2_1_8.png>
-Package pdftex.def Info: immagini/A2_1_8.png  used on input line 208.
+Package pdftex.def Info: immagini/A2_1_8.png  used on input line 206.
 (pdftex.def)             Requested size: 210.4354pt x 140.53049pt.
  [11
 
  <./immagini/A2_1_8.png (PNG copy)>] [12
 
 ] [13
+
+]
+<immagini/A2_1_10.png, id=98, 569.7285pt x 375.804pt>
+File: immagini/A2_1_10.png Graphic file (type png)
+<use immagini/A2_1_10.png>
+Package pdftex.def Info: immagini/A2_1_10.png  used on input line 238.
+(pdftex.def)             Requested size: 213.04782pt x 140.53049pt.
+ [14
+
+ <./immagini/A2_1_10.png (PNG copy)>] [15
+
+] [16
+
+] [17
+
+] [18
+
+] [19
+
+]
+<immagini/A2_1_15.png, id=130, 567.3195pt x 373.6359pt>
+File: immagini/A2_1_15.png Graphic file (type png)
+<use immagini/A2_1_15.png>
+Package pdftex.def Info: immagini/A2_1_15.png  used on input line 309.
+(pdftex.def)             Requested size: 213.38487pt x 140.535pt.
+ [20
+
+ <./immagini/A2_1_15.png (PNG copy)>]
+<immagini/A2_1_16.png, id=136, 572.8602pt x 373.6359pt>
+File: immagini/A2_1_16.png Graphic file (type png)
+<use immagini/A2_1_16.png>
+Package pdftex.def Info: immagini/A2_1_16.png  used on input line 320.
+(pdftex.def)             Requested size: 215.46889pt x 140.535pt.
+ [21
+
+ <./immagini/A2_1_16.png (PNG copy)>] [22
+
+] [23
+
+] [24
 
 ]
 \tf@nav=\write6
@@ -1361,7 +1398,8 @@ Package pdftex.def Info: immagini/A2_1_8.png  used on input line 208.
 \tf@snm=\write8
 \openout8 = `A2_Presentation.snm'.
 
- (A2_Presentation.aux)
+
+(A2_Presentation.aux)
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
@@ -1370,11 +1408,11 @@ Package rerunfilecheck Info: File `A2_Presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36521 strings out of 467310
- 869762 string characters out of 5403299
- 1400245 words of memory out of 5000000
- 65272 multiletter control sequences out of 15000+600000
- 680091 words of font info for 72 fonts, out of 8000000 for 9000
+ 36632 strings out of 467310
+ 871461 string characters out of 5403299
+ 1401245 words of memory out of 5000000
+ 65357 multiletter control sequences out of 15000+600000
+ 680410 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,738b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb
@@ -1386,11 +1424,12 @@ sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmssbx10.pfb><C:/
 Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso10.pfb><C:/
 Users/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsso8.pfb><C:/U
 sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
-ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam
-10.pfb>
-Output written on A2_Presentation.pdf (13 pages, 645823 bytes).
+ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
+rs/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
+0.pfb>
+Output written on A2_Presentation.pdf (24 pages, 1023832 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 68 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 224 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 83 words of extra memory for PDF output out of 10000 (max. 10000000)
 

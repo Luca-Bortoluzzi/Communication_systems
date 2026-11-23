@@ -108,8 +108,8 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Per questa parte abbiamo generato una Gold sequence con indice $i = 1 \geq 0$.
-			\item 
+			\item Using the \texttt{comm.GoldSequence} object in MATLAB with $m = 7$ shift register stages (sequence length $L = 2^7 - 1 = 127$), we generated a Gold code setting \texttt{Index} $= 1 \ge 0$.
+			\item The generator uses the preferred pair of primitive polynomials $x^7 + x^4 + 1$ and $x^7 + x + 1$, both initialized with state $[0\,0\,0\,0\,0\,0\,1]$, and the resulting binary sequence is mapped to bipolar form $\{+1, -1\}$ via $1 - 2x$.
 		\end{itemize}
 		
 	\end{frame}
@@ -150,20 +150,18 @@
 		
 	\end{frame}
 	
-% Slide 8
-\begin{frame}{Exercise 1 - Part 1}
-	\question{4. Comment on the results}
+	% Slide 8
+	\begin{frame}{Exercise 1 - Part 1}
+		\question{4. Comment on the results}
 	
-	\vspace{0.1cm}
-	\begin{itemize}
-		\item \textbf{$i = 1$ (Gold sequence):} The autocorrelation peaks at $L = 127$ ($\tau = 0$) and takes the 3 theoretical values $\{-17, -1, 15\}$ elsewhere, matching $t(m) = 2^{(m+1)/2} + 1 = 17$ for $m = 7$.
-		\item \textbf{$i = -1$ and $i = -2$ (m-sequences):} MATLAB outputs the two generating m-sequences. Even though their bits are different, they share the exact same ideal two-level autocorrelation ($127$ at $\tau = 0$, $-1$ everywhere else).
-		\item \textbf{Main trade-off:} Pure m-sequences have ideal autocorrelation for synchronization, but give only 2 codes. Gold codes trade slightly worse autocorrelation sidelobes for 129 low-interference codes, making them ideal for multi-user CDMA.
-	\end{itemize}
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item \textbf{$i = 1$ (Gold sequence):} The autocorrelation peaks at $L = 127$ ($\tau = 0$) and takes the 3 theoretical values $\{-17, -1, 15\}$ elsewhere, matching $t(m) = 2^{(m+1)/2} + 1 = 17$ for $m = 7$.
+			\item \textbf{$i = -1$ and $i = -2$ (m-sequences):} MATLAB outputs the two generating m-sequences. Even though their bits are different, they share the exact same ideal two-level autocorrelation ($127$ at $\tau = 0$, $-1$ everywhere else).
+			\item Pure m-sequences have ideal autocorrelation for synchronization, but give only 2 codes. Gold codes trade slightly worse autocorrelation sidelobes for 129 low-interference codes, making them ideal for multi-user CDMA.
+		\end{itemize}
 	
-\end{frame}
-	
-\end{frame}
+	\end{frame}
 	
 	% Slide 9
 	\begin{frame}[plain]
@@ -219,6 +217,129 @@
 		
 	\end{frame}
 	
+	% Slide 13
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1 - Part 3}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 14
+	\begin{frame}{Exercise 1 - Part 3}
+		\question{10. Plot the three versions of the Welch bound and the Sidelnikov bound for $N = 127$ and $1 \leq K \leq 200$}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_10.png}
+		\end{center}
+		
+	\end{frame}
+		
+	% Slide 15
+	\begin{frame}{Exercise 1 - Part 3}
+		\question{11. Consider the entire set of $K = 129$ Gold sequences and compute $r_M$ (explain how you computed its value).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item We generated the entire set of $K = 129$ Gold sequences of length $N = 127$ by varying the \texttt{Index} parameter from $-2$ to $126$ ($N - 1$), including the two base m-sequences ($-2$ and $-1$) from $x^7 + x^4 + 1$ and $x^7 + x + 1$, along with their $127$ cyclic-shifted combinations ($0$ to $126$).
+			\item After converting the sequences to bipolar form ($+1, -1$), we computed the periodic autocorrelation for all non-zero lags (excluding the peak of $N = 127$ at lag $0$) and the periodic cross-correlation across all sequence pairs and lags.
+			\item Taking the maximum absolute value across all these correlations gave $r_M = 17$, which we then plotted as the point $(129, 17)$ on the bound figure.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 16
+	\begin{frame}{Exercise 1 - Part 3}
+		\question{12. On the bound figure, add a point corresponding to $r_M$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Plot 
+			\item ...
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 17
+	\begin{frame}{Exercise 1 - Part 3}
+		\question{13. Comment on the result.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item For $K \le 127$ ($K \le N$), the general Welch bound ($s \le 10$) and the simplified version ($s = 1$) coincide and approach $\lceil\sqrt{N}\rceil = 12$. For $K > N$, the $s = 1$ bound saturates at $12$, while the general bound keeps increasing as higher-order terms ($s \ge 2$) become dominant.
+			\item The Sidelnikov bound stays strictly above all three Welch curves for every $K$, since it gives a tighter lower bound by accounting for the binary bipolar nature of the sequences, growing in discrete steps due to the ceiling operations and maximization over $s$.
+			\item At $K = 129$, the Gold sequence set achieves $r_M = 17$, sitting just $1$ unit above the Sidelnikov bound ($16$) and above the Welch bounds ($13$ and $12$), showing that Gold codes are near-optimal while still providing a large family ($K = N + 2$) with bounded three-valued correlation.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 18
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1 - Part 4}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 19
+	\begin{frame}{Exercise 1 - Part 4}
+		\question{14. Starting from the Gold set of $K = 129$ sequences, remove the last chip of each sequence to obtain length $N = 126$. Compute $r_M$ using cyclic correlations of period $126$ (explain how you computed its value).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Starting from the full bipolar Gold set of $K = 129$ sequences of length $127$, we truncated each sequence by removing its last chip, obtaining a new set of length $N = 126$.
+			\item Using $126$-point FFT/IFFT, we computed the periodic autocorrelation for all non-zero lags (excluding the lag-$0$ peak) to find the maximum off-peak value $R_A$, and the periodic cross-correlation across all sequence pairs and lags to find $R_C$.
+			\item Taking $r_M = \max(R_A, R_C)$ across the entire truncated set yielded $r_M = 26$.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 20
+	\begin{frame}{Exercise 1 - Part 4}
+		\question{15. Compute and plot the bounds for $N = 126$ and $1 \leq K \leq 200$.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_15.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 21
+	\begin{frame}{Exercise 1 - Part 4}
+		\question{16. Add $r_M$ to the plot.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_16.png}
+		\end{center}
+		
+	\end{frame}
+	
+% Slide 22
+\begin{frame}{Exercise 1 - Part 4}
+	\question{17. Comment on the result.}
+	
+	\vspace{0.1cm}
+	\begin{itemize}
+		\item For $N = 126$ and $K = 129$, the maximum cyclic correlation reaches $r_M = 26$, which is significantly higher than both the binary Sidelnikov bound ($16$) and the Welch bounds ($12$).
+		\item Unlike the original $N = 127$ case where Gold sequences are near-optimal thanks to the Galois field $GF(2^m)$ structure and preferred pairs removing even a single chip breaks the native $N = 2^m - 1$ periodicity and the balance between $+1$ and $-1$.
+		\item As a result, the three-valued cyclic correlation property $\{-t, -1, t-2\}$ is completely lost, and out-of-phase autocorrelation and cross-correlation peaks increase sharply, making truncated sequences sub-optimal for asynchronous CDMA.
+	\end{itemize}
+	
+\end{frame}
+	
+	% Slide 23
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1 - Part 5 - Walsh–Hadamard Sequences}\\[0.2cm]
+		\vfill
+	\end{frame}
 	
 	% Slide finale
 	\begin{frame}[plain]
