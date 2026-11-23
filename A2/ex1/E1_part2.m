@@ -145,3 +145,12 @@ xlabel('Lag');
 ylabel('Cross-correlation');
 title(sprintf("Cross-correlation of m-sequence with N = %d", L));
 axis('tight');
+
+%% A2.1.2.9 Compare the two results
+% As we can see the cross correlation of both codes seems like a noisy waveform, in the first one (gold codes) we have the shape that is modeled in
+% three levels, one at -t (-17) one at t - 2 (15) and one at -1.
+% 
+% In the other Cross correlation plot the shape of the wave is a lot more noisy than the previous one, in terms of levels we don't have the classic three
+% levels of gold codes simply because the sequence are not gold codes, even
+% without using the same function 
+
