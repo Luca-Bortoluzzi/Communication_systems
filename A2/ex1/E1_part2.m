@@ -25,7 +25,7 @@ release(goldseq);          % Sblocca l'oggetto
 goldseq.Index = i(2);      % Cambia solo l'indice
 x1 = goldseq()';           % Genera la seconda sequenza
 x1b = 1 - 2*x1;
-%% A2.1.2 (Plot Cross-correlation)
+%% A2.1.6 (Plot Cross-correlation)
 
 R_cross = ifft(fft(xb).*conj(fft(x1b))); % non-normalized periodic autocorr.
 R_cross = fftshift(R_cross);
@@ -38,6 +38,7 @@ xlabel('Lag');
 ylabel('Cross-correlation');
 title(sprintf("Cross-correlation of two Gold codes with N = %d ", L));
 axis('tight');
+exportgraphics(gcf, 'A2_1_6.png', 'Resolution', 300);
 
 %% A2.1.7 Generate two m-seq with diff polyms
 N = L;
@@ -145,6 +146,7 @@ xlabel('Lag');
 ylabel('Cross-correlation');
 title(sprintf("Cross-correlation of m-sequence with N = %d", L));
 axis('tight');
+exportgraphics(gcf, 'A2_1_8.png', 'Resolution', 300);
 
 %% A2.1.2.9 Compare the two results
 % As we can see the cross correlation of both codes seems like a noisy waveform, in the first one (gold codes) we have the shape that is modeled in

@@ -26,10 +26,10 @@ R0 = fftshift(R0);
 %% A2.1.2
 figure;
 theme(gcf, "light");
-title("Correlation of Gold code with N = 127")
 plot(n,R0);
+title("Correlation of Gold code with N = 127 (i = 1)")
 axis('tight');
-
+exportgraphics(gcf, 'A2_1_2.png', 'Resolution', 300);
 
 %% A2.1.3 repeat for i = -1 and i = -2
 
@@ -44,9 +44,9 @@ R1 = fftshift(R1);
 figure;
 theme(gcf, "light");
 plot(n,R1);
-title("Correlation of Gold code with N = 127")
+title("Correlation of Gold code with N = 127 (i = -1)")
 axis('tight');
-
+exportgraphics(gcf, 'A2_1_3_m1.png', 'Resolution', 300);
 
 release(goldseq);        % Sblocca l'oggetto
 goldseq.Index = -1;      % Cambia solo l'indice
@@ -59,9 +59,10 @@ R2 = fftshift(R2);
 
 figure;
 theme(gcf, "light");
-title("Correlation of Gold code with N = 127")
 plot(n,R2);
+title("Correlation of Gold code with N = 127 (i = -2)")
 axis('tight');
+exportgraphics(gcf, 'A2_1_3_m2.png', 'Resolution', 300);
 
 %% comment the results A2.1.4
 % come si può vedere dai plot, la funzione di autocorrelazione utilizzando come indice i = 1, è un grafico su 3 livelli eccetto per l'origine che ha correlazione

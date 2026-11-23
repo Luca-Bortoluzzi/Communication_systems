@@ -1,0 +1,232 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx} % Aggiunto per inserire i grafici
+\graphicspath{{immagini/}} % Cartella in cui cercare le immagini
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Palette
+\definecolor{NavyPrimary}{RGB}{18, 43, 73}
+\definecolor{TealAccent}{RGB}{0, 128, 128}
+\definecolor{SlateNeutral}{RGB}{71, 85, 105}
+\definecolor{LightTint}{RGB}{241, 245, 249}
+\definecolor{PlotBlue}{RGB}{30, 136, 229}
+\definecolor{PlotRed}{RGB}{229, 57, 53}
+\definecolor{PlotOrange}{RGB}{251, 140, 0}
+\definecolor{QuestionRed}{RGB}{190, 30, 45} % Colore rosso per le domande
+
+% Comando per le domande in rosso
+\newcommand{\question}[1]{{\color{QuestionRed}\textbf{#1}}}
+
+% Clean Beamer styling
+\usetheme{default}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercolor{title}{fg=NavyPrimary}
+\setbeamercolor{subtitle}{fg=TealAccent}
+\setbeamercolor{author}{fg=SlateNeutral}
+\setbeamercolor{date}{fg=SlateNeutral}
+\setbeamercolor{frametitle}{fg=NavyPrimary, bg=LightTint}
+\setbeamercolor{structure}{fg=NavyPrimary}
+
+\setbeamerfont{title}{size=\LARGE, series=\bfseries}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamerfont{frametitle}{size=\normalsize, series=\bfseries}
+
+\setbeamertemplate{footline}{
+	\leavevmode%
+	\hbox{%
+		\begin{beamercolorbox}[wd=.75\paperwidth,ht=2.5ex,dp=1ex,leftskip=1.5em]{date}%
+			\usebeamerfont{date}ASSIGNMENT 1 -- Communications Systems
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.25\paperwidth,ht=2.5ex,dp=1ex,rightskip=1.5em]{date}%
+			\raggedleft\usebeamerfont{date}\insertframenumber{} / \inserttotalframenumber
+		\end{beamercolorbox}%
+	}%
+	\vskip2pt%
+}
+
+\title{ASSIGNMENT 2}
+\subtitle{Communications Systems}
+\author{Alessandro Felicetti 375462 \and Ivan Pizzulli 368369 \\ Mattia Cilio 377785 \and Luca Bortoluzzi 378057}
+\date{}
+
+\begin{document}
+	
+	% Slide 1
+	\begin{frame}[plain]
+		\vspace{1.0cm}
+		\begin{flushleft}
+			{\color{TealAccent}\rule{2.5cm}{2pt}}\\[0.5cm]
+			{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\\[0.2cm]
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}\\[1.0cm]
+			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}
+		\end{flushleft}
+	\end{frame}
+	
+	% Slide 2
+	\begin{frame}{Exercises}
+		\begin{itemize}
+			\item Gold codes
+			\item CDMA
+			\item Link Budget
+			\item ...
+			\item ...
+		\end{itemize}
+	\end{frame}
+	
+	% Slide 3
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1}\\[0.2cm]
+		{\large\color{SlateNeutral} Gold codes}
+		\vfill
+	\end{frame}
+	
+	% Slide 4
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1 - Part 1}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 5
+	\begin{frame}{Exercise 1 - Part 1}
+		\question{1. Generate a Gold sequence with index i $ \geq 0$}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Per questa parte abbiamo generato una Gold sequence con indice $i = 1 \geq 0$.
+			\item 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 6
+	\begin{frame}{Exercise 1 - Part 1}
+		\question{2. Compute and plot the cyclic auto-correlation}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Funzione di autocorrelazione della Gold sequence $(i=1)$
+		\end{itemize}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_2.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 7
+	\begin{frame}{Exercise 1 - Part 1}
+		\question{3. Repeat for $i = -1$ and $i = -2$}
+		
+		\vspace{0.2cm}
+		\begin{columns}[T]
+			\begin{column}{0.48\textwidth}
+				\centering
+				\textbf{Index $i = -1$}\\[0.15cm]
+				\includegraphics[width=\textwidth, height=0.55\textheight, keepaspectratio]{A2_1_3_m1.png}
+			\end{column}
+			\begin{column}{0.48\textwidth}
+				\centering
+				\textbf{Index $i = -2$}\\[0.15cm]
+				\includegraphics[width=\textwidth, height=0.55\textheight, keepaspectratio]{A2_1_3_m2.png}
+			\end{column}
+		\end{columns}
+		
+	\end{frame}
+	
+% Slide 8
+\begin{frame}{Exercise 1 - Part 1}
+	\question{4. Comment on the results}
+	
+	\vspace{0.1cm}
+	\begin{itemize}
+		\item \textbf{$i = 1$ (Gold sequence):} The autocorrelation peaks at $L = 127$ ($\tau = 0$) and takes the 3 theoretical values $\{-17, -1, 15\}$ elsewhere, matching $t(m) = 2^{(m+1)/2} + 1 = 17$ for $m = 7$.
+		\item \textbf{$i = -1$ and $i = -2$ (m-sequences):} MATLAB outputs the two generating m-sequences. Even though their bits are different, they share the exact same ideal two-level autocorrelation ($127$ at $\tau = 0$, $-1$ everywhere else).
+		\item \textbf{Main trade-off:} Pure m-sequences have ideal autocorrelation for synchronization, but give only 2 codes. Gold codes trade slightly worse autocorrelation sidelobes for 129 low-interference codes, making them ideal for multi-user CDMA.
+	\end{itemize}
+	
+\end{frame}
+	
+\end{frame}
+	
+	% Slide 9
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 1 - Part 2}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 10
+	\begin{frame}{Exercise 1 - Part 2}
+		\question{6. Compute and plot their cyclic cross-correlation}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Due Gold Sequence con random $i \geq 0$.
+		\end{itemize}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_6.png}
+		\end{center}
+		
+	\end{frame}
+	
+	
+	% Slide 11
+	\begin{frame}{Exercise 1 - Part 2}
+		\question{8. Compute and plot their cyclic cross-correlation}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Two different m-sequences with the same length using two distinct primitive polynomials that do not form a preferred pair.
+		\end{itemize}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_8.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 12
+	\begin{frame}{Exercise 1 - Part 2}
+		\question{9. Compare and discuss the two results}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commento dei risultati
+			\item ...
+		\end{itemize}
+		
+	\end{frame}
+	
+	
+	% Slide finale
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2.5cm}{2pt}}\\[0.5cm]
+		{\Huge\bfseries\color{NavyPrimary} Grazie!}\\[0.3cm]
+		\vfill
+	\end{frame}
+	
+\end{document}
