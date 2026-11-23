@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.23)  23 NOV 2026 17:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.11.23)  23 NOV 2026 18:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1352,7 +1352,7 @@ Package pdftex.def Info: immagini/A2_1_8.png  used on input line 206.
 <immagini/A2_1_10.png, id=98, 569.7285pt x 375.804pt>
 File: immagini/A2_1_10.png Graphic file (type png)
 <use immagini/A2_1_10.png>
-Package pdftex.def Info: immagini/A2_1_10.png  used on input line 238.
+Package pdftex.def Info: immagini/A2_1_10.png  used on input line 239.
 (pdftex.def)             Requested size: 213.04782pt x 140.53049pt.
  [14
 
@@ -1370,7 +1370,7 @@ Package pdftex.def Info: immagini/A2_1_10.png  used on input line 238.
 <immagini/A2_1_15.png, id=130, 567.3195pt x 373.6359pt>
 File: immagini/A2_1_15.png Graphic file (type png)
 <use immagini/A2_1_15.png>
-Package pdftex.def Info: immagini/A2_1_15.png  used on input line 309.
+Package pdftex.def Info: immagini/A2_1_15.png  used on input line 310.
 (pdftex.def)             Requested size: 213.38487pt x 140.535pt.
  [20
 
@@ -1378,7 +1378,7 @@ Package pdftex.def Info: immagini/A2_1_15.png  used on input line 309.
 <immagini/A2_1_16.png, id=136, 572.8602pt x 373.6359pt>
 File: immagini/A2_1_16.png Graphic file (type png)
 <use immagini/A2_1_16.png>
-Package pdftex.def Info: immagini/A2_1_16.png  used on input line 320.
+Package pdftex.def Info: immagini/A2_1_16.png  used on input line 321.
 (pdftex.def)             Requested size: 215.46889pt x 140.535pt.
  [21
 
@@ -1387,6 +1387,15 @@ Package pdftex.def Info: immagini/A2_1_16.png  used on input line 320.
 ] [23
 
 ] [24
+
+] [25
+
+] [26
+
+]
+[27
+
+] [28
 
 ]
 \tf@nav=\write6
@@ -1398,8 +1407,7 @@ Package pdftex.def Info: immagini/A2_1_16.png  used on input line 320.
 \tf@snm=\write8
 \openout8 = `A2_Presentation.snm'.
 
-
-(A2_Presentation.aux)
+ (A2_Presentation.aux)
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
@@ -1408,10 +1416,10 @@ Package rerunfilecheck Info: File `A2_Presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36632 strings out of 467310
- 871461 string characters out of 5403299
+ 36648 strings out of 467310
+ 871601 string characters out of 5403299
  1401245 words of memory out of 5000000
- 65357 multiletter control sequences out of 15000+600000
+ 65365 multiletter control sequences out of 15000+600000
  680410 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,738b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1427,9 +1435,9 @@ sers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Us
 ers/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/Use
 rs/Ivan/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam1
 0.pfb>
-Output written on A2_Presentation.pdf (24 pages, 1023832 bytes).
+Output written on A2_Presentation.pdf (28 pages, 1031981 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
+ 246 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
