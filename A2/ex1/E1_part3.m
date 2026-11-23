@@ -60,7 +60,7 @@ X_bipolar = zeros(K_gold, N);
 idx_values = -2:(N - 1); % Da -2 a 126 -> 129 sequenze
 
 for k = 1:K_gold
-    goldseq = comm.GoldSequence('FirstPolynomial', 'x^7+x^3+1', ...
+    goldseq = comm.GoldSequence('FirstPolynomial', 'x^7+x^4+1', ...
         'SecondPolynomial', 'x^7+x+1', ...
         'FirstInitialConditions',  [0 0 0 0 0 0 1], ...
         'SecondInitialConditions', [0 0 0 0 0 0 1], ...
@@ -119,7 +119,7 @@ exportgraphics(gcf, 'A2_1_10.png', 'Resolution', 300);
 % We generated the entire set of K = 129 Gold sequences of length N = 127
 % by varying the 'Index' parameter from -2 to 126 (N - 1). Specifically,
 % Index = -2 and Index = -1 correspond to the two base m-sequences generated
-% by the preferred pair of primitive polynomials x^7 + x^3 + 1 and x^7 + x + 1,
+% by the preferred pair of primitive polynomials x^7 + x^4 + 1 and x^7 + x + 1,
 % while Index = 0 to 126 correspond to their 127 cyclic-shifted combinations.
 % After converting the sequences to bipolar form (+1, -1), we computed the
 % periodic autocorrelation (for non-zero lags, excluding the peak of N = 127
