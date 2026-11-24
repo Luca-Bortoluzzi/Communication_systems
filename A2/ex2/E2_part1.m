@@ -66,7 +66,6 @@ xlabel("E_b / N_0 (dB)");
 ylabel("BER");
 title("2-PAM: Analytical vs Simulated BER");
 legend("Analytical", "Monte Carlo Simulation");
-ylim([1e-9 1]);
 grid on;
 
 %% --- comment on the results
