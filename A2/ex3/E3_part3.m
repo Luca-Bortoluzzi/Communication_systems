@@ -93,11 +93,13 @@ title(sprintf('DVB-S2X Bit Rate vs. Shannon Limit (B = %.0f MHz, SNR = %.2f dB)'
 ylim([0, (C / 1e6) * 1.18]);
 
 % Add numerical labels above each bar
-text(1, Rb / 1e6 + 3, sprintf('%.2f Mbit/s\n(%.1f%% of C | %d HD ch.)', ...
+text(1, Rb / 1e6 + 5, sprintf('%.2f Mbit/s\n(%.1f%% of C | %d HD ch.)', ...
     Rb / 1e6, efficiency_vs_shannon, N_HD_channels), ...
-    'HorizontalAlignment', 'center', 'FontWeight', 'bold');
-text(2, C / 1e6 + 3, sprintf('%.2f Mbit/s\n(Theoretical Bound)', C / 1e6), ...
-    'HorizontalAlignment', 'center', 'FontWeight', 'bold');
+    'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', 'FontWeight', 'bold');
+text(2, C / 1e6 + 5, sprintf('%.2f Mbit/s\n(Theoretical Bound)', C / 1e6), ...
+    'HorizontalAlignment', 'center', 'VerticalAlignment', 'bottom', 'FontWeight', 'bold');
+exportgraphics(gca, "A2_3_3_1.png", 'Resolution', 300);
+
 % Comments about the obtained results
 %    Proximity to the Shannon Limit (~84.3% Efficiency):
 %    With an available SNR (= Es/N0) of 13.52 dB over B = 36 MHz, the highest

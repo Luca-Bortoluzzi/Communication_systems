@@ -1,4 +1,4 @@
-
+close all;
 clear; 
 clc;
 
@@ -38,12 +38,12 @@ d = sqrt((RE+h)^2 - RE^2*cosd(Thetae)^2) - RE*sind(Thetae);
 
 theta_vec = 10:0.5:90;
 d_vec = sqrt((RE + h)^2 - RE^2 * cosd(theta_vec).^2) - RE * sind(theta_vec);
-Lfs_dB = 20 * log10(4 * pi * d_vec / lambda);
+Lfs_dB = 20 * log10(4 * pi * (d_vec * 1e3) / lambda);
 
 figure('Name', 'Slant Range and FSPL vs Elevation Angle');
 
 subplot(2, 1, 1);
-plot(theta_vec, d_vec / 1e3, 'b-', 'LineWidth', 1.5);
+plot(theta_vec, d_vec, 'b-', 'LineWidth', 1.5);
 grid on;
 xlabel('Elevation Angle \theta_e [deg]');
 ylabel('Distance d [km]');
@@ -56,7 +56,7 @@ grid on;
 xlabel('Elevation Angle \theta_e [deg]');
 ylabel('Free-Space Path Loss L_{FS} [dB]');
 title('Free-Space Path Loss vs. Elevation Angle (f_0 = 12 GHz)');
-
+exportgraphics(gcf, "A2_3_1.png", 'Resolution', 300);
 
 % 1. Monotonic Decrease with Elevation Angle:
 %    Both the satellite-to-user slant range d and the free-space path loss L_FS

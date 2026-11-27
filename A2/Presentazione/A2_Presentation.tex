@@ -657,7 +657,10 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Across all tested values of $p \in \{0, 2, 4, 12\}$, the Monte Carlo simulation points ($0$ to $8\text{ dB}$) match the exact analytical BER curve, validating the theoretical model.
+			\item For $p = 0$, the exact and approximate curves coincide over the entire $E_b/N_0$ range and overlap with the single-user 2-PAM benchmark.
+			\item For $p = 2$ and $p = 4$, the high-SNR approximate curve slightly underestimates the exact BER at low $E_b/N_0$ ($0$ to $4\text{ dB}$) because it neglects the constructive interference term, but converges tightly to the exact curve for $E_b/N_0 \ge 6\text{ dB}$.
+			\item For $p = 12$, both the exact and approximate curves flatten out into a horizontal error floor at $\text{BER} = 0.25$.
 		\end{itemize}
 		
 	\end{frame}
@@ -668,7 +671,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item The parameter $p = |\underline{c}_1' \cdot \underline{c}_2'|$ measures the cross-correlation interference between the two users: higher values of $p$ progressively degrade the BER.
+			\item In half of the cases (opposite bits), destructive interference reduces the effective signal amplitude from $N$ to $N - p$, introducing an asymptotic SNR loss of $-20\log_{10}(1 - p/N)\text{ dB}$:
+			\begin{itemize}
+				\item $p = 0$: $0\text{ dB}$ loss (orthogonal codes, single-user 2-PAM performance).
+				\item $p = 2$ and $p = 4$: $1.58\text{ dB}$ and $3.52\text{ dB}$ SNR penalties at high $E_b/N_0$.
+				\item $p = 12$: complete signal cancellation when bits differ, causing an error floor at $\text{BER} = 0.25$.
+			\end{itemize}
+			\item Because downlink users are synchronized ($\tau = 0$), choosing orthogonal codes ($p = 0$, such as Walsh-Hadamard) avoids multi-user interference altogether.
 		\end{itemize}
 		
 	\end{frame}
@@ -688,7 +698,12 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item In the asynchronous CDMA uplink, user $U_2$'s spreading sequence arrives with a random cyclic shift $\tau \in \{0, 1, \dots, N-1\}$ uniformly distributed at each bit.
+			\item At high $E_b/N_0$ (asymptotic regime), the average BER is dominated by the worst-case cyclic shift that causes the strongest destructive interference.
+			\item Consequently, the governing parameter $p$ is the maximum periodic cross-correlation magnitude ($r_C$) across all $N$ cyclic shifts:
+			\[
+			p = \max_{0 \le \tau \le N-1} \left|\underline{c}_1' \cdot T^\tau(\underline{c}_2')\right|
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -699,7 +714,15 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item The received vector is $\underline{r} = b_1'\underline{c}_1' + b_2'T^\tau(\underline{c}_2') + \underline{n}$, where $b_1', b_2' \in \{-1, +1\}$ are equiprobable and $\tau \in \{0, \dots, N-1\}$ is uniformly distributed with probability $1/N$.
+			\item Despreading with $\underline{c}_1'$ yields the decision variable:
+			\[
+			y = \underline{r} \cdot \underline{c}_1' = b_1' N + b_2' r_{\underline{c}_1',\underline{c}_2'}(\tau) + \tilde{n}, \quad \tilde{n} \sim \mathcal{N}\!\left(0, N \frac{N_0}{2}\right)
+			\]
+			\item Defining $p_\tau = \left|r_{\underline{c}_1',\underline{c}_2'}(\tau)\right|$ and averaging over all $2N$ equiprobable combinations of $(b_2', \tau)$ (each with probability $\frac{1}{2N}$), using $E_b = N$ we obtain:
+			\[
+			P_b(e) = \frac{1}{4N} \sum_{\tau=0}^{N-1} \left[ \operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 + \frac{p_\tau}{N}\right)\right) + \operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 - \frac{p_\tau}{N}\right)\right) \right]
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -710,7 +733,12 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item At high $E_b/N_0$, the exact sum is dominated by the worst-case destructive interference term $(1 - p/N)$, where $p = \max_{\tau} p_\tau$.
+			\item Let $K_p$ denote the number of cyclic shifts $\tau \in \{0, \dots, N-1\}$ achieving $p_\tau = p$. Out of the $2N$ equiprobable $(b_2', \tau)$ pairs, the worst-case event occurs $K_p$ times (multiplicity $\frac{K_p}{2N}$), yielding for $p > 0$:
+			\[
+			P_{\text{approx}}(e) = \frac{K_p}{4N}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 - \frac{p}{N}\right)\right)
+			\]
+			\item In the ideal orthogonal case ($p = 0$ for all $\tau$), all $2N$ terms share the same argument $\sqrt{E_b/N_0}$ (multiplicity $1$), recovering the single-user 2-PAM curve $P_{\text{approx}}(e) = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\right)$.
 		\end{itemize}
 		
 	\end{frame}
@@ -719,10 +747,9 @@
 	\begin{frame}{Exercise 2 - Part 4}
 		\question{19. Plot the analytical 2-PAM curve.}
 		
-		\vspace{0.1cm}
-		\begin{itemize}
-			\item Grafico ... 
-		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_2PAM.png}
+		\end{center}
 		
 	\end{frame}
 	
@@ -730,32 +757,44 @@
 	\begin{frame}{Exercise 2 - Part 4}
 		\question{20. Plot the simulated curve obtained for that $p$.}
 		
+		\question{21. Add the analytic curve to the figure.}
+		
+		\question{22. Add the approximate curve to the figure.}
+		
 		\vspace{0.1cm}
-		\begin{itemize}
-			\item Grafico ... 
-		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_0.png}
+		\end{center}
 		
 	\end{frame}
 	
 	% Slide 52
 	\begin{frame}{Exercise 2 - Part 4}
-		\question{21. Add the analytic curve to the figure.}
 		
 		\vspace{0.1cm}
-		\begin{itemize}
-			\item Grafico ... 
-		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_2.png}
+		\end{center}
 		
 	\end{frame}
 	
 	% Slide 53
 	\begin{frame}{Exercise 2 - Part 4}
-		\question{22. Add the approximate curve to the figure.}
 		
 		\vspace{0.1cm}
-		\begin{itemize}
-			\item Grafico ... 
-		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_4.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 53
+	\begin{frame}{Exercise 2 - Part 4}
+		
+		\vspace{0.1cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_12.png}
+		\end{center}
 		
 	\end{frame}
 	
@@ -790,13 +829,16 @@
 		\vfill
 	\end{frame}
 	
-	% Slide 57
-	\begin{frame}{Exercise 3}
-		\question{1. Justify your choices and report the sources of information used to select the system parameters..}
+	% Slide: Exercise 3 - Question 1
+	\begin{frame}{Exercise 3 -- Satellite Link Budget}
+		\question{1. Justify your choices and report the sources of information used to select the system parameters.}
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Carrier frequency ($f_0 = 12\text{ GHz}$): standard Ku-band downlink frequency used for satellite TV broadcasting in Europe (ITU Radio Regulations).
+			\item Bandwidth ($B = 36\text{ MHz}$) and TX power ($P_{\text{TX}} = 50\text{ W}$): typical transponder bandwidth and per-carrier transmit power for European DTH satellites (DVB-S2 standard and Eutelsat Hotbird documentation).
+			\item Antenna diameters ($D_{\text{TX}} = 2\text{ m}$, $D_{\text{RX}} = 0.6\text{ m}$): standard onboard satellite reflector size for regional coverage and common $60\text{ cm}$ residential satellite dish.
+			\item Elevation angle ($\theta_e = 40^\circ$) and system noise temperature ($T_{\text{sys}} = 180\text{ K}$): typical look angle for a user in Central/Southern Europe and standard clear-sky receiver noise temperature.
 		\end{itemize}
 		
 	\end{frame}
@@ -810,13 +852,20 @@
 		\vfill
 	\end{frame}
 	
-	% Slide 59
-	\begin{frame}{Exercise 3 - Part 1}
+	% Slide: Exercise 3 - Question 2
+	\begin{frame}{Exercise 3 -- Satellite Link Budget}
 		\question{2. Compute the distance $d$ for the selected elevation angle $\theta_e$.}
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Considering a geostationary orbit at altitude $h = 35\,786\text{ km}$ and Earth radius $R_E = 6\,371\text{ km}$, the satellite-to-user slant range $d$ as a function of the elevation angle $\theta_e$ is given by:
+			\[
+			d(\theta_e) = \sqrt{(R_E + h)^2 - R_E^2 \cos^2(\theta_e)} - R_E \sin(\theta_e)
+			\]
+			\item Substituting the selected mid-latitude elevation angle $\theta_e = 40^\circ$:
+			\[
+			d(40^\circ) = \sqrt{(6371 + 35786)^2 - 6371^2 \cos^2(40^\circ)} - 6371 \sin(40^\circ) \approx 37\,778.3\text{ km}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -826,19 +875,22 @@
 		\question{3. Plot the distance $d$ and the free-space path loss in dB versus the elevation angle $\theta_e$ for $10^\circ \leq \theta_e \leq 90^\circ$.}
 		
 		\vspace{0.1cm}
-		\begin{itemize}
-			\item Commenti ... 
-		\end{itemize}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_3_1.png}
+		\end{center}
 		
 	\end{frame}
 	
-	% Slide 61
-	\begin{frame}{Exercise 3 - Part 1}
+
+	% Slide: Exercise 3 - Question 4
+	\begin{frame}{Exercise 3 -- Satellite Link Budget}
 		\question{4. Comment on the results.}
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Both the distance $d$ and the free-space path loss $L_{\text{FS}}$ decrease monotonically as the elevation angle $\theta_e$ increases from $10^\circ$ ($d = 40\,581.2\text{ km}$, $L_{\text{FS}} = 206.19\text{ dB}$) to $90^\circ$ ($d = h = 35\,786\text{ km}$, $L_{\text{FS}} = 205.10\text{ dB}$).
+			\item Since the GEO altitude is much larger than the Earth's radius ($h \gg R_E$), the distance varies by only $\sim 11.8\%$ across $[10^\circ, 90^\circ]$, which corresponds to a total variation of just $1.09\text{ dB}$ in free-space path loss (with $\theta_e = 40^\circ$ lying midway at $L_{\text{FS}} = 205.57\text{ dB}$).
+			\item Even though $L_{\text{FS}}$ changes very little, low elevation angles ($\theta_e < 20^\circ$) are avoided in practice because the signal crosses a thicker layer of the atmosphere (higher rain attenuation) and picks up more thermal noise from the ground.
 		\end{itemize}
 		
 	\end{frame}
@@ -858,7 +910,15 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item At $f_0 = 12\text{ GHz}$, the signal wavelength is $\lambda = c / f_0 = 0.025\text{ m}$.
+			\item Assuming a typical aperture efficiency $\eta_{TX} = \eta_{RX} = 0.65$ for parabolic reflectors, the linear antenna gain is given by $G = \eta \left(\frac{\pi D}{\lambda}\right)^2$.
+			\item For the satellite TX antenna ($D_{TX} = 2\text{ m}$) and the residential RX dish ($D_{RX} = 0.6\text{ m}$), the gains in dBi are:
+			\[
+			G_{TX} = 10\log_{10}\!\left(0.65 \left(\frac{\pi \cdot 2}{0.025}\right)^2\right) = 46.13\text{ dBi}
+			\]
+			\[
+			G_{RX} = 10\log_{10}\!\left(0.65 \left(\frac{\pi \cdot 0.6}{0.025}\right)^2\right) = 35.68\text{ dBi}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -869,7 +929,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Converting the satellite transmitted power $P_{TX} = 50\text{ W}$ into logarithmic units gives:
+			\[
+			P_{TX}\,[\text{dBW}] = 10\log_{10}(50) = 16.99\text{ dBW}
+			\]
+			\item Adding the TX antenna gain $G_{TX} = 46.13\text{ dBi}$, the Effective Isotropic Radiated Power (EIRP) is:
+			\[
+			\text{EIRP} = P_{TX}\,[\text{dBW}] + G_{TX}\,[\text{dBi}] = 16.99 + 46.13 = 63.12\text{ dBW}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -880,7 +947,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Using the slant range $d = 37\,778.3\text{ km}$ (at $\theta_e = 40^\circ$) and the wavelength $\lambda = 0.025\text{ m}$ ($f_0 = 12\text{ GHz}$), the free-space path loss is:
+			\[
+			L_{FS}\,[\text{dB}] = 20\log_{10}\!\left(\frac{4\pi d}{\lambda}\right)
+			\]
+			\item Substituting the numerical values yields:
+			\[
+			L_{FS}\,[\text{dB}] = 20\log_{10}\!\left(\frac{4\pi \cdot 37\,778.3 \cdot 10^3}{0.025}\right) = 205.57\text{ dB}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -891,7 +965,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Combining the free-space path loss $L_{FS} = 205.57\text{ dB}$ with the additional system margins $L_{add} = 3\text{ dB}$ gives the total link attenuation:
+			\[
+			L_{tot}\,[\text{dB}] = L_{FS}\,[\text{dB}] + L_{add}\,[\text{dB}]
+			\]
+			\item Substituting the numerical values yields:
+			\[
+			L_{tot}\,[\text{dB}] = 205.57 + 3 = 208.57\text{ dB}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -902,7 +983,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Starting from the transmitted $\text{EIRP} = 63.12\text{ dBW}$, subtracting the total losses $L_{tot} = 208.57\text{ dB}$, and adding the receiver antenna gain $G_{RX} = 35.68\text{ dBi}$, the received power at the antenna output is:
+			\[
+			P_{RX}\,[\text{dBW}] = \text{EIRP}\,[\text{dBW}] - L_{tot}\,[\text{dB}] + G_{RX}\,[\text{dBi}]
+			\]
+			\item Substituting the numerical values yields:
+			\[
+			P_{RX}\,[\text{dBW}] = 63.12 - 208.57 + 35.68 = -109.77\text{ dBW}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -913,7 +1001,15 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Over the transponder bandwidth $B = 36\text{ MHz}$ and with system noise temperature $T_{sys} = 180\text{ K}$, the thermal noise power at the receiver is:
+			\[
+			P_N = k \, T_{sys} \, B
+			\]
+			where $k = 1.38 \cdot 10^{-23}\text{ J/K}$ is Boltzmann's constant.
+			\item Converting into dBW gives:
+			\[
+			P_N\,[\text{dBW}] = 10\log_{10}\!\left(1.38 \cdot 10^{-23} \cdot 180 \cdot 36 \cdot 10^6\right) = -130.49\text{ dBW}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -924,7 +1020,14 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Taking the difference between the received signal power $P_{RX} = -109.77\text{ dBW}$ and the noise power $P_N = -130.49\text{ dBW}$, the signal-to-noise ratio at the receiver is:
+			\[
+			\text{SNR}\,[\text{dB}] = P_{RX}\,[\text{dBW}] - P_N\,[\text{dBW}]
+			\]
+			\item Substituting the numerical values yields:
+			\[
+			\text{SNR}\,[\text{dB}] = -109.77 - (-130.49) = 20.72\text{ dB}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -933,10 +1036,27 @@
 	\begin{frame}{Exercise 3 - Part 2}
 		\question{12. Summarize all the numerical results in a link budget table.}
 		
-		\vspace{0.1cm}
-		\begin{itemize}
-			\item Table ... 
-		\end{itemize}
+		\vspace{0.2cm}
+		\begin{center}
+			\small
+			\begin{tabular}{l r l}
+				\hline
+				Parameter & Value & Unit \\
+				\hline
+				TX Antenna Gain ($G_{TX}$) & $46.13$ & dBi \\
+				RX Antenna Gain ($G_{RX}$) & $35.68$ & dBi \\
+				TX Power ($P_{TX}$) & $16.99$ & dBW \\
+				EIRP & $63.12$ & dBW \\
+				Free-Space Path Loss ($L_{FS}$) & $205.57$ & dB \\
+				Additional Losses ($L_{add}$) & $3.00$ & dB \\
+				Total Losses ($L_{tot}$) & $208.57$ & dB \\
+				Received Power ($P_{RX}$) & $-109.77$ & dBW \\
+				Noise Power ($P_N$) & $-130.49$ & dBW \\
+				\hline
+				Signal-to-Noise Ratio ($\text{SNR}$) & $20.72$ & dB \\
+				\hline
+			\end{tabular}
+		\end{center}
 		
 	\end{frame}
 	
@@ -956,7 +1076,9 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Under the ideal shaping filter assumption ($\alpha = 0$), the symbol rate equals the bandwidth ($R_s = B$) and the available symbol energy-to-noise ratio is $E_s/N_0 = \text{SNR} = 20.72\text{ dB}$.
+			\item Comparing this value against the ideal $E_s/N_0$ thresholds in the DVB-S2X table (ETSI EN 302 307-2), all listed profiles are supported, as the most demanding threshold is $19.57\text{ dB}$.
+			\item The MODCOD yielding the highest spectral efficiency is 256APSK 3/4 (required $E_s/N_0 = 19.57\text{ dB}$), which leaves a residual link margin of $20.72 - 19.57 = 1.15\text{ dB}$.
 		\end{itemize}
 		
 	\end{frame}
@@ -967,7 +1089,11 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item From the DVB-S2X MODCOD table, the spectral efficiency of 256APSK 3/4 is $\eta_{\text{spec}} = 5.900855\text{ bit/symbol}$.
+			\item With roll-off factor $\alpha = 0$, the symbol rate equals the transponder bandwidth ($R_s = B = 36\text{ MHz}$), so the achievable bit rate is:
+			\[
+			R_b = R_s \cdot \eta_{\text{spec}} = 36\text{ MHz} \cdot 5.900855\text{ bit/symbol} = 212.43\text{ Mbit/s}
+			\]
 		\end{itemize}
 		
 	\end{frame}
@@ -978,7 +1104,11 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Dividing the achievable bit rate $R_b = 212.43\text{ Mbit/s}$ by the average bit rate per HD television channel ($R_{\text{HD}} = 5\text{ Mbit/s}$) gives:
+			\[
+			N_{\text{HD}} = \left\lfloor \frac{R_b}{R_{\text{HD}}} \right\rfloor = \left\lfloor \frac{212.43}{5} \right\rfloor = \lfloor 42.49 \rfloor = 42\text{ channels}
+			\]
+			\item The considered satellite carrier can therefore broadcast up to $42$ simultaneous HD channels under clear-sky conditions, leaving a residual unused capacity of $2.43\text{ Mbit/s}$.
 		\end{itemize}
 		
 	\end{frame}
@@ -989,19 +1119,38 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Commenti ... 
+			\item Converting $\text{SNR} = 20.7152\text{ dB}$ into linear units gives:
+			\[
+			\text{SNR}_{\text{lin}} = 10^{\frac{20.7152}{10}} = 117.9017
+			\]
+			\item Substituting $B = 36\text{ MHz}$ and $\text{SNR}_{\text{lin}}$ into the Shannon-Hartley theorem yields the theoretical channel capacity:
+			\[
+			C = B\log_2(1 + \text{SNR}_{\text{lin}}) = 36 \cdot \log_2(1 + 117.9017) = 248.17\text{ Mbit/s}
+			\]
 		\end{itemize}
 		
 	\end{frame}
 	
-	% Slide 76
+	%% Slide 76
 	\begin{frame}{Exercise 3 - Part 3}
 		\question{17. Compare $R_b$ with $C$ and comment on the results.}
 		
 		\vspace{0.1cm}
-		\begin{itemize}
-			\item Commenti ... 
-		\end{itemize}
+		\begin{columns}[T]
+			\begin{column}{0.52\textwidth}
+				\small
+				\begin{itemize}
+					\item $R_b = 212.43\text{ Mbit/s}$ reaches $85.60\%$ of the Shannon limit $C = 248.17\text{ Mbit/s}$, showing the high efficiency of DVB-S2X.
+					\item Unlike $C$, which grows continuously with SNR, a real receiver selects discrete MODCODs; since 256APSK 3/4 is the highest profile ($19.57\text{ dB}$), the remaining $1.15\text{ dB}$ acts as a link margin.
+					\item A non-zero roll-off ($\alpha > 0$) and framing overhead would slightly reduce the net bit rate in practice.
+				\end{itemize}
+			\end{column}
+			
+			\begin{column}{0.46\textwidth}
+				\centering
+				\includegraphics[width=\textwidth]{A2_3_3_1.png} 
+			\end{column}
+		\end{columns}
 		
 	\end{frame}
 	
