@@ -212,8 +212,8 @@
 		\vspace{0.1cm}
 		\begin{itemize}
 			\item While both cross-correlation waveforms appear noise-like across the lags, the two Gold sequences exhibit a well-bounded three-level structure taking only the values $\{-17, -1, 15\}$ (corresponding to $\{-t, -1, t-2\}$ for $m = 7$).
-			\item In contrast, the cross-correlation between the two non-preferred m-sequences ($x^7 + x^4 + 1$ and $x^7 + x^2 + 1$) loses this three-level property and fluctuates across many discrete levels with noticeably higher peaks (reaching up to $\pm 25$).
-			\item These two primitive polynomials do not form a preferred pair so their mutual interference is uncontrolled.
+			\item In contrast, the cross-correlation between the two non-preferred m-sequences ($x^7 + x^4 + 1$ and $x^7 + x^2 + 1$) loses this three-level property and fluctuates across many discrete levels, reaching significantly larger values (up to $+25$ and $-23$, well beyond the Gold code bounds)[cite: 2].
+			\item Because these two primitive polynomials do not form a preferred pair, their maximum cross-correlation is no longer bounded by $t(m) = 17$, resulting in larger interference peaks and worse multi-user separation.
 		\end{itemize}
 		
 	\end{frame}
@@ -255,11 +255,10 @@
 	\begin{frame}{Exercise 1 - Part 3}
 		\question{12. On the bound figure, add a point corresponding to $r_M$.}
 		
-		\vspace{0.1cm}
-		\begin{itemize}
-			\item Plot 
-			\item ...
-		\end{itemize}
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_1_12.png}
+		\end{center}
 		
 	\end{frame}
 	
@@ -373,10 +372,10 @@
 		
 		\vspace{0.1cm}
 		\begin{itemize}
-			\item Although distinct Walsh-Hadamard sequences are perfectly orthogonal at zero delay ($\tau = 0$), their cyclic correlation at non-zero shifts reaches the maximum value $r_M = 128$, far above the Sidelnikov ($16$) and Welch ($12$) bounds.
-			\item In the downlink, all user signals are transmitted synchronously from the same base station with $\tau = 0$, preserving strict orthogonality and eliminating multi-user interference.
-			\item In the uplink, geographically separated users have independent clocks and propagation delays, so signals arrive asynchronously ($\tau \neq 0$) and Walsh-Hadamard codes cannot be used alone.
-			\item Any timing offset, clock jitter, or multipath delay ($\tau \neq 0$) breaks orthogonality and causes severe interference due to $r_A = r_C = 128$, which is mitigated in practice by multiplying Hadamard codes with a long pseudo-noise scrambling sequence.
+			\item Walsh-Hadamard sequences are strictly orthogonal only at zero delay ($\tau = 0$), while for $\tau \neq 0$ their correlation reaches $r_A = r_C = 128$, far above the Sidelnikov ($16$) and Welch ($12$) bounds.
+			\item They work in a synchronous single-transmitter downlink ($\tau = 0$), whereas in the uplink distributed users arrive asynchronously ($\tau \neq 0$) due to different propagation delays and local clocks.
+			\item Since $r_A = r_C = 128$, any timing offset or multipath delay ($\tau \neq 0$) destroys orthogonality and prevents code acquisition (no sharp peak at $\tau = 0$), requiring a PN scrambling code in cellular systems.
+			\item \textbf{GPS} is a key counterexample: although it is a downlink, satellites lie at different distances from the receiver, so signals arrive asynchronously ($\tau \neq 0$) and the receiver must estimate each delay $\tau$, requiring Gold codes instead.
 		\end{itemize}
 		
 	\end{frame}
@@ -389,6 +388,676 @@
 		{\LARGE\bfseries\color{NavyPrimary} Exercise 2 - CDMA}\\[0.2cm]
 		\vfill
 	\end{frame}
+	
+	% Slide 28
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 2 - Part 1}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 29
+	\begin{frame}{Exercise 2 - Part 1}
+		\question{1. Plot the analytical bit error probability $Pb(e)$ versus $Eb/N0$ (in dB), from $0$ to $12$ dB.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_1.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 30
+	\begin{frame}{Exercise 2 - Part 1}
+		\question{2. Plot the simulated BER together with the analytical curve on the same graph.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_2.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 31
+	\begin{frame}{Exercise 2 - Part 1}
+		\question{3. Comment on the results.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item The monte Carlo simulation on 100 errors (red curve) follows almost perfectly the Analytical curve (blue curve) with a little misalignment on 2dB
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 32
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 2 - Part 2}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 33
+	\begin{frame}{Exercise 2 - Part 2}
+		\question{4. Plot the analytical curve.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 34
+	\begin{frame}{Exercise 2 - Part 2}
+		\question{5. Plot the simulated curve.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_5.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 35
+	\begin{frame}{Exercise 2 - Part 2}
+		\question{6. Comment on the results.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item The simulated BER curve for the single-user DSSS system closely matches the analytical 2-PAM curve $P_b(e) = \frac{1}{2}\operatorname{erfc}(\sqrt{E_b/N_0})$, showing the same performance observed in Part 1.
+			\item Since only one user is active with no multi-user interference, spreading each bit over $N = 12$ unit-energy chips ($E_b = N$) and despreading at the receiver corresponds to projecting the received signal onto the normalized basis vector $\underline{c}_1'/\sqrt{N}$.
+			\item At the same $E_b/N_0$, spreading neither improves nor degrades the error rate over an AWGN channel; its role is instead to enable multi-user separation in CDMA.
+			\item Minor fluctuations at low $E_b/N_0$ ($0\text{–}3\text{ dB}$) are solely due to the statistical variance of the Monte Carlo estimation when stopping at $100$ bit errors.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 36
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 2 - Part 3}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 37a
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{7. Which is the parameter $p$ that determines the performance of this scenario? (1/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Over an AWGN channel with chip noise variance $\sigma^2 = N_0/2$ and unit-energy chips ($E_b = N = 12$), the received synchronous vector at user $U_1$ is:
+			\[
+			\underline{r} = b_1'\underline{c}_1' + b_2'\underline{c}_2' + \underline{n}
+			\]
+			where $b_1', b_2' \in \{-1, +1\}$ are equiprobable bits.
+			\item Despreading by projecting $\underline{r}$ onto $\underline{c}_1'$ yields the scalar decision variable:
+			\[
+			y = \underline{r} \cdot \underline{c}_1' = b_1'(\underline{c}_1' \cdot \underline{c}_1') + b_2'(\underline{c}_2' \cdot \underline{c}_1') + (\underline{n} \cdot \underline{c}_1')
+			\]
+			\item Since $c'_{1,k} \in \{-1, +1\}$, we have $\underline{c}_1' \cdot \underline{c}_1' = N$, so the desired signal term is $b_1'N$ and the projected noise is $\tilde{n} = \underline{n} \cdot \underline{c}_1' \sim \mathcal{N}(0, N \cdot N_0/2)$.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 37b
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{7. Which is the parameter $p$ that determines the performance of this scenario? (2/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Both the desired signal ($b_1'N$) and the noise variance ($N N_0/2$) depend solely on the fixed spreading factor $N$ and $N_0$.
+			\item Because $b_2' \in \{-1, +1\}$ is equiprobable, the sign of the inner product $\underline{c}_2' \cdot \underline{c}_1'$ is absorbed by $b_2'$, so the Multiple Access Interference (MAI) term $b_2'(\underline{c}_2' \cdot \underline{c}_1')$ takes values $\pm |\underline{c}_1' \cdot \underline{c}_2'|$ with equal probability $1/2$.
+			\item Thus, the performance is governed by the magnitude of the zero-lag cross-correlation:
+			\[
+			p = |\underline{c}_1' \cdot \underline{c}_2'| = \left|\sum_{k=1}^{N} c'_{1,k} c'_{2,k}\right| \in \{0, 2, 4, \dots, N\}
+			\]
+			where $p = 0$ gives zero MAI (single-user 2-PAM), while increasing $p$ toward $N = 12$ degrades BER.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 38a
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{8. Derive analytically the performance curve of this scenario with two users (and no cyclic shift). (1/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item By antipodal symmetry ($P(b_1'=+1) = P(b_1'=-1) = 1/2$), we set $b_1' = +1$, so $P_b(e) = P(y < 0 \mid b_1' = +1)$.
+			\item Conditioned on $b_2' \in \{-1, +1\}$, $y = N + b_2'(\underline{c}_2' \cdot \underline{c}_1') + \tilde{n}$ is Gaussian with mean $\mu(b_2') = N + b_2'(\underline{c}_2' \cdot \underline{c}_1')$ and standard deviation $\sigma_{\tilde{n}} = \sqrt{N \cdot N_0/2}$, giving:
+			\[
+			P_b(e \mid b_2') = Q\!\left(\frac{\mu(b_2')}{\sigma_{\tilde{n}}}\right) = \frac{1}{2}\operatorname{erfc}\!\left(\frac{N + b_2'(\underline{c}_2' \cdot \underline{c}_1')}{\sqrt{N \cdot N_0}}\right)
+			\]
+			\item Substituting $E_b = N$ ($\sqrt{N \cdot N_0} = \sqrt{E_b N_0}$) and factoring out $N$ yields:
+			\[
+			P_b(e \mid b_2') = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left[1 + b_2'\frac{\underline{c}_2' \cdot \underline{c}_1'}{N}\right]\right)
+			\]
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 38b
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{8. Derive analytically the performance curve of this scenario with two users (and no cyclic shift). (2/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Averaging over the two equiprobable values of $b_2'$ via the Law of Total Probability:
+			\[
+			P_b(e) = \frac{1}{2}P_b(e \mid b_2' = +1) + \frac{1}{2}P_b(e \mid b_2' = -1)
+			\]
+			\item Regardless of the sign of $\underline{c}_2' \cdot \underline{c}_1'$, one bit value produces constructive interference ($+p$) and the other produces destructive interference ($-p$), where $p = |\underline{c}_1' \cdot \underline{c}_2'|$:
+			\[
+			P_b(e) = \frac{1}{4}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 + \frac{p}{N}\right)\right) + \frac{1}{4}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 - \frac{p}{N}\right)\right)
+			\]
+			\item For $p = 0$ we recover 2-PAM; for $p = 2, 4$ the SNR penalty is $1.58\text{ dB}$ and $3.52\text{ dB}$; for $p = 12$ destructive interference cancels the signal, creating an error floor at $P_b(e) = 0.25$.
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 39a
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{9. Derive an approximate performance curve based on $p$. (1/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item At moderate-to-high $E_b/N_0$, the complementary error function decays super-exponentially according to $\operatorname{erfc}(x) \approx \frac{e^{-x^2}}{x\sqrt{\pi}}$.
+			\item Consequently, the total error probability is dominated by the $\operatorname{erfc}(\cdot)$ term with the smallest argument, which corresponds to the worst-case destructive interference event ($1 - p/N$).
+			\item For $p > 0$, since $1 - p/N < 1 + p/N$, the constructive term becomes negligible at high SNR, while destructive interference occurs in only $1$ out of $2$ equiprobable bit combinations of $U_2$ (multiplicity $1/2$).
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 39b
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{9. Derive an approximate performance curve based on $p$. (2/2)}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Accounting for the multiplicity factor $1/2$ (which multiplies the $1/2$ coefficient of $\operatorname{erfc}$), the high-SNR approximation for non-orthogonal codes ($p > 0$) is:
+			\[
+			P_{\text{approx}}(e) = \frac{1}{4}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\left(1 - \frac{p}{N}\right)\right)
+			\]
+			\item In the degenerate orthogonal case ($p = 0$), both terms in the exact expression share the identical argument $\sqrt{E_b/N_0}$.
+			\item Both events contribute equally with multiplicity $2$ out of $2$, so the two $1/4$ terms sum to $1/2$, recovering the exact 2-PAM curve:
+			\[
+			P_{\text{approx}}(e) = \frac{1}{2}\operatorname{erfc}\!\left(\sqrt{\frac{E_b}{N_0}}\right)
+			\]
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 40
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{10. Plot the analytical 2-PAM curve.}
+		
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_2_4_2PAM.png}
+		\end{center}
+	
+		
+	\end{frame}
+	
+	% Slide 41
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{11. Plot the simulated curve obtained for that $p$.}
+		
+		\question{12. Add the analytic curve to the figure.}
+		
+		\question{13. Add the approximate curve to the figure.}
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_3_13_0.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 42
+	\begin{frame}{Exercise 2 - Part 3}
+		
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_3_13_2.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 43
+	\begin{frame}{Exercise 2 - Part 3}
+		
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_3_13_4.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 43
+	\begin{frame}{Exercise 2 - Part 3}
+		
+		
+		\vspace{0.2cm}
+		\begin{center}
+			\includegraphics[width=0.72\textwidth, height=0.58\textheight, keepaspectratio]{A2_3_13_12.png}
+		\end{center}
+		
+	\end{frame}
+	
+	% Slide 44
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{14. Comment on the result.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 45
+	\begin{frame}{Exercise 2 - Part 3}
+		\question{15. Discuss the impact of $p$ on the performance.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 46
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 2 - Part 4 - CDMA Uplink}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 47
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{16. What is the parameter p that determines the asymptotic performance of this scenario?}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 48
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{17. Derive analytically the performance curve of this scenario with two users (and cyclic shift).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 49
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{18. Derive an approximate performance curve based on $p$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 50
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{19. Plot the analytical 2-PAM curve.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Grafico ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 51
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{20. Plot the simulated curve obtained for that $p$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Grafico ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 52
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{21. Add the analytic curve to the figure.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Grafico ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 53
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{22. Add the approximate curve to the figure.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Grafico ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 54
+	\begin{frame}{Exercise 2 - Part 4}
+		\question{23. Comment on the result.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 55
+	\begin{frame}{Exercise 2}
+		\question{24. Provide an overall discussion of the entire exercise.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 56
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 3 - Satellite Link Budget}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 57
+	\begin{frame}{Exercise 3}
+		\question{1. Justify your choices and report the sources of information used to select the system parameters..}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 58
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 3 - Part 1 - Satellite-to-User Distance}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 59
+	\begin{frame}{Exercise 3 - Part 1}
+		\question{2. Compute the distance $d$ for the selected elevation angle $\theta_e$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 60
+	\begin{frame}{Exercise 3 - Part 1}
+		\question{3. Plot the distance $d$ and the free-space path loss in dB versus the elevation angle $\theta_e$ for $10^\circ \leq \theta_e \leq 90^\circ$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 61
+	\begin{frame}{Exercise 3 - Part 1}
+		\question{4. Comment on the results.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 62
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 3 - Part 2 - Link Budget}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 63
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{5. Compute the TX and RX antenna gains $G_{TX}$ and $G_{RX}$ (in dBi) using realistic values for their efficiencies.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 64
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{6. Compute the EIRP (in dBW).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 65
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{7. Compute the free-space path loss (in dB).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 66
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{8. Consider additional losses $L_{add} = 3$ dB (accounting for atmospheric, pointing and polarization losses) and compute the total losses (in dB).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 67
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{9. Compute the received power $P_{RX}$ (in dBW).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 68
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{10. Compute the noise power $P_N$ (in dBW).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 69
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{11. Compute the signal-to-noise ratio SNR (in dB).}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 70
+	\begin{frame}{Exercise 3 - Part 2}
+		\question{12. Summarize all the numerical results in a link budget table.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Table ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 71
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 3 - Part 3 - Bit Rate}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	
+	% Slide 72
+	\begin{frame}{Exercise 3 - Part 3}
+		\question{13. Select the MODCOD providing the highest spectral efficiency among those reported in the table, compatible with the available $E_s/N_0$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 73
+	\begin{frame}{Exercise 3 - Part 3}
+		\question{14. Report its spectral efficiency and compute the corresponding bit rate $R_b$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 74
+	\begin{frame}{Exercise 3 - Part 3}
+		\question{15. Assuming an average bit rate of $5$ Mbit/s per HD television channel, estimate how many television channels can be simultaneously broadcast by the considered satellite carrier, neglecting additional service overhead.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 75
+	\begin{frame}{Exercise 3 - Part 3}
+		\question{16. Compute the Shannon capacity $C = B\log_2(1+SNR)$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 76
+	\begin{frame}{Exercise 3 - Part 3}
+		\question{17. Compare $R_b$ with $C$ and comment on the results.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 77
+	\begin{frame}[plain]
+		\vfill
+		\centering
+		{\color{TealAccent}\rule{2cm}{2pt}}\\[0.4cm]
+		{\LARGE\bfseries\color{NavyPrimary} Exercise 3 - Part 4 - System Trade-offs}\\[0.2cm]
+		\vfill
+	\end{frame}
+	
+	% Slide 78
+	\begin{frame}{Exercise 3 - Part 4}
+		\question{18. Select and justify a suitable range of variation for the power and the bandwidth.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 79
+	\begin{frame}{Exercise 3 - Part 4}
+		\question{19. Plot the bit rate versus the transmitted power $P_{TX}$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Plot ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 80
+	\begin{frame}{Exercise 3 - Part 4}
+		\question{20. Plot the bit rate versus the bandwidth $B$.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Plot ... 
+		\end{itemize}
+		
+	\end{frame}
+	
+	% Slide 81
+	\begin{frame}{Exercise 3 - Part 4}
+		\question{21. Discuss the results.}
+		
+		\vspace{0.1cm}
+		\begin{itemize}
+			\item Commenti ... 
+		\end{itemize}
+		
+	\end{frame}
+	
 	
 	% Slide finale
 	\begin{frame}[plain]

@@ -102,6 +102,8 @@ for p = [0, 2, 4, 12]
     ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
     title(sprintf('CDMA Downlink, 2 users, N = %d, p = %d', N, p), 'FontSize', 14, 'FontWeight', 'bold');
     legend('2-PAM', 'Analytic', 'Simulation', 'Approximated', 'Location', 'northeast', 'FontSize', 11);
+    namefile = sprintf("A2_3_13_%d.png",p)
+    exportgraphics(gcf, namefile, 'Resolution', 300);
 end
 
 %% Point 14 - Comments on the Simulation & Analytical Curves

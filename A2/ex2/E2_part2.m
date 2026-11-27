@@ -75,6 +75,7 @@ ylabel("Bit Error Probability P_b(e)");
 title("Single-user DSSS (N = 12): Analytical vs Simulated BER");
 legend("Analytical (2-PAM)", "Simulated DSSS");
 grid on;
+% exportgraphics(gcf, 'A2_2_5.png', 'Resolution', 300);
 
 %% --- comment on the results ---
 

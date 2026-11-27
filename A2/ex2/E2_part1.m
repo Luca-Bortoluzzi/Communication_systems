@@ -20,6 +20,7 @@ ylabel("BER");
 title("Analytical BER of 2-PAM over a AWGN channel");
 axis("tight");
 grid on;
+exportgraphics(gcf, 'A2_2_1.png', 'Resolution', 300);
 
 %% --- Monte Carlo simulation (0 to 8 dB) ---
 EbN0_sim_db = 0:8;
@@ -67,6 +68,7 @@ ylabel("BER");
 title("2-PAM: Analytical vs Simulated BER");
 legend("Analytical", "Monte Carlo Simulation");
 grid on;
+exportgraphics(gcf, 'A2_2_2.png', 'Resolution', 300);
 
 %% --- comment on the results
 
