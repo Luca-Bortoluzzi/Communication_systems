@@ -48,7 +48,7 @@ P_2pam = 0.5 * erfc(sqrt(EbN0_th_lin));
 
 rng(42);                        % Fixed seed for reproducibility
 
-% Genera c1 bilanciata per U1 (garantisce l'esistenza di partner anche per p = 0)
+% Generate balanced c1 for U1 (guarantees existence of a partner even for p = 0)
 c1 = [0 0 0 0 0 0 1 1 1 1 1 1];
 c1_bipolar = 2*c1 - 1;
 
@@ -62,15 +62,16 @@ xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
 ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
 title('2-PAM Analytical Benchmark', 'FontSize', 14, 'FontWeight', 'bold');
 legend('2-PAM', 'Location', 'northeast', 'FontSize', 11);
+exportgraphics(gcf, "A2_2_4_2PAM.png", Resolution=300);
 
 for target_p = [0, 2, 4, 12]
 
-    % Estrae c2 binaria casuale (senza vincolo di bilanciamento, necessario per p = 2)
+    % Draw random binary c2 (without balance constraint, required for p = 2)
     while true
         c2 = randi([0, 1], 1, N);
         c2_bipolar = 2*c2 - 1;
 
-        % Cross-correlazione periodica tramite FFT
+        % Periodic cross-correlation via FFT
         R_c1c2 = round(real(ifft(fft(c1_bipolar) .* conj(fft(c2_bipolar)))));
         R_c1c2 = fftshift(R_c1c2);
         p_tau = abs(R_c1c2);
@@ -141,32 +142,32 @@ for target_p = [0, 2, 4, 12]
     
     %% 3. Progressive Plots (Points 19 to 22)
     
-    % --- Plot 2 (Point 20): 2-PAM + Simulation ---
-    figure;
-    theme(gcf, "light");
-    semilogy(EbN0_th_db, P_2pam, 'r--', 'LineWidth', 2); hold on;
-    semilogy(EbN0_sim_db, BER_sim, 'ko', 'LineWidth', 1.2, 'MarkerSize', 7);
-    ylim([1e-8 1]); xlim([0 20]); grid on;
-    set(gca, 'FontSize', 12);
-    xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
-    ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
-    title(sprintf('CDMA uplink, 2 users, N = %d, p = %d (Step 2: + Simulation)', N, p), 'FontSize', 13, 'FontWeight', 'bold');
-    legend('2-PAM', 'simulation', 'Location', 'northeast', 'FontSize', 11);
+    % % --- Plot 2 (Point 20): 2-PAM + Simulation ---
+    % figure;
+    % theme(gcf, "light");
+    % semilogy(EbN0_th_db, P_2pam, 'r--', 'LineWidth', 2); hold on;
+    % semilogy(EbN0_sim_db, BER_sim, 'ko', 'LineWidth', 1.2, 'MarkerSize', 7);
+    % ylim([1e-8 1]); xlim([0 20]); grid on;
+    % set(gca, 'FontSize', 12);
+    % xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
+    % ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
+    % title(sprintf('CDMA uplink, 2 users, N = %d, p = %d (Step 2: + Simulation)', N, p), 'FontSize', 13, 'FontWeight', 'bold');
+    % legend('2-PAM', 'simulation', 'Location', 'northeast', 'FontSize', 11);
+    % 
+    % % --- Plot 3 (Point 21): 2-PAM + Simulation + Analytic ---
+    % figure;
+    % theme(gcf, "light");
+    % semilogy(EbN0_th_db, P_2pam, 'r--', 'LineWidth', 2); hold on;
+    % semilogy(EbN0_th_db, P_analytic, 'b-', 'LineWidth', 1.5);
+    % semilogy(EbN0_sim_db, BER_sim, 'ko', 'LineWidth', 1.2, 'MarkerSize', 7);
+    % ylim([1e-8 1]); xlim([0 20]); grid on;
+    % set(gca, 'FontSize', 12);
+    % xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
+    % ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
+    % title(sprintf('CDMA uplink, 2 users, N = %d, p = %d (Step 3: + Analytic)', N, p), 'FontSize', 13, 'FontWeight', 'bold');
+    % legend('2-PAM', 'analytic', 'simulation', 'Location', 'northeast', 'FontSize', 11);
     
-    % --- Plot 3 (Point 21): 2-PAM + Simulation + Analytic ---
-    figure;
-    theme(gcf, "light");
-    semilogy(EbN0_th_db, P_2pam, 'r--', 'LineWidth', 2); hold on;
-    semilogy(EbN0_th_db, P_analytic, 'b-', 'LineWidth', 1.5);
-    semilogy(EbN0_sim_db, BER_sim, 'ko', 'LineWidth', 1.2, 'MarkerSize', 7);
-    ylim([1e-8 1]); xlim([0 20]); grid on;
-    set(gca, 'FontSize', 12);
-    xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
-    ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
-    title(sprintf('CDMA uplink, 2 users, N = %d, p = %d (Step 3: + Analytic)', N, p), 'FontSize', 13, 'FontWeight', 'bold');
-    legend('2-PAM', 'analytic', 'simulation', 'Location', 'northeast', 'FontSize', 11);
-    
-    % --- Plot 4 (Point 22): All 4 curves (+ Approximated) ---
+    % --- Plot 4 (Point 22): All 4 curves ---
     figure;
     theme(gcf, "light");
     semilogy(EbN0_th_db, P_2pam, 'r--', 'LineWidth', 2); hold on;
@@ -177,6 +178,8 @@ for target_p = [0, 2, 4, 12]
     set(gca, 'FontSize', 12);
     xlabel('E_b/N_0 [dB]', 'FontSize', 12, 'FontWeight', 'bold');
     ylabel('BER', 'FontSize', 12, 'FontWeight', 'bold');
-    title(sprintf('CDMA uplink, 2 users, N = %d, p = %d (Step 4: + Approximated)', N, p), 'FontSize', 13, 'FontWeight', 'bold');
+    title(sprintf('CDMA uplink, 2 users, N = %d, p = %d', N, p), 'FontSize', 13, 'FontWeight', 'bold');
     legend('2-PAM', 'analytic', 'simulation', 'approximated', 'Location', 'northeast', 'FontSize', 11);
+    fileName = sprintf("A2_2_4_%d.png", target_p);
+    exportgraphics(gcf, fileName, "resolution", 300);
 end
