@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  27 NOV 2026 18:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2026.11.13)  28 NOV 2026 11:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1543,6 +1543,13 @@ Package pdftex.def Info: immagini/A2_2_4_12.png  used on input line 799.
 [58
 
  <./immagini/A2_2_4_12.png (PNG copy)>]
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <10> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 813.
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <7> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 813.
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <5> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 813.
+
 
 [59
 
@@ -1567,24 +1574,24 @@ Package pdftex.def Info: immagini/A2_2_4_12.png  used on input line 799.
 [64
 
 ]
-<immagini/A2_3_1.png, id=385, 865.0719pt x 557.2017pt>
-File: immagini/A2_3_1.png Graphic file (type png)
-<use immagini/A2_3_1.png>
-Package pdftex.def Info: immagini/A2_3_1.png  used on input line 882.
-(pdftex.def)             Requested size: 218.18143pt x 140.5329pt.
-
 
 [65
 
- <./immagini/A2_3_1.png (PNG copy)>]
+]
 
 [66
 
 ]
+<immagini/A2_3_1.png, id=395, 865.0719pt x 557.2017pt>
+File: immagini/A2_3_1.png Graphic file (type png)
+<use immagini/A2_3_1.png>
+Package pdftex.def Info: immagini/A2_3_1.png  used on input line 913.
+(pdftex.def)             Requested size: 218.18143pt x 140.5329pt.
+
 
 [67
 
-]
+ <./immagini/A2_3_1.png (PNG copy)>]
 
 [68
 
@@ -1621,6 +1628,13 @@ Package pdftex.def Info: immagini/A2_3_1.png  used on input line 882.
 [76
 
 ]
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <9> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 1092.
+
+LaTeX Font Info:    Font shape `T1/lmss/b/n' in size <6> not available
+(Font)              Font shape `T1/lmss/bx/n' tried instead on input line 1092.
+
+
 
 [77
 
@@ -1637,24 +1651,24 @@ Package pdftex.def Info: immagini/A2_3_1.png  used on input line 882.
 [80
 
 ]
-<immagini/A2_3_3_1.png, id=471, 849.1725pt x 542.7477pt>
-File: immagini/A2_3_3_1.png Graphic file (type png)
-<use immagini/A2_3_3_1.png>
-Package pdftex.def Info: immagini/A2_3_3_1.png  used on input line 1155.
-(pdftex.def)             Requested size: 183.23842pt x 117.11084pt.
-
 
 [81
 
- <./immagini/A2_3_3_1.png (PNG copy)>]
+]
 
 [82
 
 ]
+<immagini/A2_3_3_1.png, id=481, 849.1725pt x 542.7477pt>
+File: immagini/A2_3_3_1.png Graphic file (type png)
+<use immagini/A2_3_3_1.png>
+Package pdftex.def Info: immagini/A2_3_3_1.png  used on input line 1186.
+(pdftex.def)             Requested size: 183.23842pt x 117.11084pt.
+
 
 [83
 
-]
+ <./immagini/A2_3_3_1.png (PNG copy)>]
 
 [84
 
@@ -1669,6 +1683,14 @@ Package pdftex.def Info: immagini/A2_3_3_1.png  used on input line 1155.
 ]
 
 [87
+
+]
+
+[88
+
+]
+
+[89
 
 ]
 \tf@nav=\write6
@@ -1689,11 +1711,11 @@ Package rerunfilecheck Info: File `A2_Presentation.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 36538 strings out of 467874
- 851355 string characters out of 5430466
+ 36555 strings out of 467874
+ 851551 string characters out of 5430466
  1387703 words of memory out of 5000000
- 64566 multiletter control sequences out of 15000+600000
- 698394 words of font info for 87 fonts, out of 8000000 for 9000
+ 64579 multiletter control sequences out of 15000+600000
+ 709466 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,14n,123p,738b,609s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/Programmi/MikTeX/fonts/type1/public/lm/lmex10.pfb><D:/Programmi/MikTeX/fo
@@ -1710,9 +1732,9 @@ ublic/lm/lmsy5.pfb><D:/Programmi/MikTeX/fonts/type1/public/lm/lmsy7.pfb><D:/Pro
 grammi/MikTeX/fonts/type1/public/lm/lmsy9.pfb><D:/Programmi/MikTeX/fonts/type1/
 public/lm/lmtt10.pfb><D:/Programmi/MikTeX/fonts/type1/public/amsfonts/symbols/m
 sam10.pfb>
-Output written on A2_Presentation.pdf (87 pages, 3533909 bytes).
+Output written on A2_Presentation.pdf (89 pages, 3541456 bytes).
 PDF statistics:
- 637 PDF objects out of 1000 (max. 8388607)
- 175 named destinations out of 1000 (max. 500000)
+ 647 PDF objects out of 1000 (max. 8388607)
+ 179 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 
